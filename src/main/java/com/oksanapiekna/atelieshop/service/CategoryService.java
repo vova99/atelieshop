@@ -1,7 +1,6 @@
 package com.oksanapiekna.atelieshop.service;
 
 import com.oksanapiekna.atelieshop.entity.Category;
-import com.oksanapiekna.atelieshop.entity.Order;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
 
 import java.util.List;

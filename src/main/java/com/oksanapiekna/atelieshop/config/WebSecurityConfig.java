@@ -10,8 +10,6 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
-import javax.sql.DataSource;
-
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
