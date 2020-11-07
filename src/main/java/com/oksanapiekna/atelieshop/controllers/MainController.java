@@ -12,4 +12,16 @@ public class MainController {
         return "index_new";
     }
 
+    @GetMapping ("/delivery&payment")
+    public String getPayment(Model model){
+        return "pricing";
+    }
+
+    @GetMapping ("/contacts")
+    public String getContacs(Model model){
+        return "contacts";
+    }
+
+
+
 }
