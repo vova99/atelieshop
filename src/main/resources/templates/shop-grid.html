@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <!-- Site Title-->
     <title>Магазин</title>
@@ -28,38 +31,7 @@
     <!-- Page-->
     <div class="page">
      <!-- Page header-->
-     <header class="page-header">
-      <!-- RD Navbar-->
-      <div class="rd-navbar-wrap">
-        <nav class="rd-navbar novi-bg novi-bg-img" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-sm-device-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-xl-device-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-stick-up-clone="false" data-sm-stick-up="true" data-md-stick-up="true" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true" data-lg-stick-up-offset="69px" data-xl-stick-up-offset="1px" data-xxl-stick-up-offset="1px">
-          <div class="rd-navbar-inner">
-            <!-- RD Navbar Panel-->
-            <div class="rd-navbar-panel">
-              <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-              <!-- RD Navbar Brand-->
-              <div class="rd-navbar-brand">
-                <!-- Brand--><a class="brand" href="index_new.html"><img class="brand-logo-dark" src="images/logo.png" alt="" width="173" height="100%"/><img class="brand-logo-light" src="images/logo-inverse-347x65.png" alt="" width="173" height="32"/></a>
-              </div>
-            </div>
-            <!-- RD Navbar Nav-->
-            <div class="rd-navbar-nav-wrap">
-              <ul class="rd-navbar-nav">
-                <li class="rd-nav-item"><a class="rd-nav-link" href="index_new.html">Головна</a></li>
-                <li class="rd-nav-item active"><a class="rd-nav-link" href="shop-grid.html">Магазин</a></li>
-                <li class="rd-nav-item"><a class="rd-nav-link" href="pricing.html">Оплата і доставка</a></li>
-                <li class="rd-nav-item"><a class="rd-nav-link" href="contacts.html">Контакти</a></li>
-              </ul>
-            </div>
-
-            <ul class="rd-navbar-items-list ">
-              <li>
-                <div class="rd-navbar-fixed__element-1"><a class="icon novi-icon icon-md linear-icon-cart link-gray-4" href="cart.html">2</a></div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </header>
+      <div th:replace="~{fragments/headersFrag.html :: mainHeader}"></div>
 
       <!-- Breadcrumbs-->
       <section class="section novi-bg novi-bg-img breadcrumbs-custom">
@@ -102,9 +74,9 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
                         <p class="product-price"><span>48</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
@@ -120,9 +92,9 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">ASOS ‘Sculpt Me’ Premium Jeans in Clean Black</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">ASOS ‘Sculpt Me’ Premium Jeans in Clean Black</a></h6>
                         <p class="product-price"><span>45</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
@@ -136,9 +108,9 @@
                           <li><a href="#">Men</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">ASOS 70s Metal Round With Flash Flat Lens</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">ASOS 70s Metal Round With Flash Flat Lens</a></h6>
                         <p class="product-price sale-price"><span>45</span><span>56</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
@@ -155,9 +127,9 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">ASOS Cat Eye Sunglasses</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">ASOS Cat Eye Sunglasses</a></h6>
                         <p class="product-price"><span>36</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
@@ -172,9 +144,9 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">ASOS Denim Shrunken Jacket In Washed</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">ASOS Denim Shrunken Jacket In Washed</a></h6>
                         <p class="product-price"><span>16</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
@@ -190,9 +162,9 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">ASOS Patch Pocket Woven Shorts</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">ASOS Patch Pocket Woven Shorts</a></h6>
                         <p class="product-price"><span>44</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
@@ -209,9 +181,9 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">Boopacks Mini Boo Backpack</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">Boopacks Mini Boo Backpack</a></h6>
                         <p class="product-price"><span>34</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
@@ -226,9 +198,9 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">Calvin Klein Iron Strength Bralette</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">Calvin Klein Iron Strength Bralette</a></h6>
                         <p class="product-price"><span>32</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
@@ -244,9 +216,9 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="single-product.html">Cheap Monday Drift High Rise Skinny Ankle Kick Jeans</a></h6>
+                        <h6 class="product-title"><a href="/singleProduct">Cheap Monday Drift High Rise Skinny Ankle Kick Jeans</a></h6>
                         <p class="product-price"><span>65</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <!-- Site Title-->
     <title>Головна</title>
@@ -25,87 +28,7 @@
     <!-- Page-->
     <div class="page">
       <!-- Page header-->
-      <header class="page-header">
-        <!-- RD Navbar-->
-        <div class="rd-navbar-wrap">
-          <nav class="rd-navbar rd-navbar_transparent" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-xl-device-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-stick-up-clone="false" data-sm-stick-up="true" data-md-stick-up="true" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true" data-lg-stick-up-offset="100px" data-xl-stick-up-offset="100px" data-xxl-stick-up-offset="100px" data-body-class="rd-navbar-absolute rd-navbar_transparent-linked">
-            <!-- RD Navbar Top Panel-->
-            <div class="rd-navbar-top-panel rd-navbar-search-wrap">
-              <div class="rd-navbar-top-panel__aside">
-              </div>
-            </div>
-            <div class="rd-navbar-inner">
-              <!-- RD Navbar Panel-->
-              <div class="rd-navbar-panel">
-                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                <!-- RD Navbar Brand-->
-                <div class="rd-navbar-brand">
-                  <!-- Brand--><a class="brand" href="/"><img class="brand-logo-dark" src="images/logo.png" alt="" width="173" height="100%"/><img class="brand-logo-light" src="images/logo-inverse-347x65.png" alt="" width="173" height="32"/></a>
-                </div>
-              </div>
-              <!-- RD Navbar Nav-->
-              <!-- <div style="display: inline-flex; justify-content: space-between;"> -->
-              <div class="rd-navbar-nav-wrap">
-                <ul class="rd-navbar-nav">
-                  <li class="rd-nav-item active"><a class="rd-nav-link" href="/">Головна</a></li>
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="shop-grid.html">Магазин</a></li>
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="/delivery&payment">Оплата і доставка</a></li>
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="/contacts">Контакти</a></li>
-                </ul>
-              </div>
-              <ul class="rd-navbar-items-list ">
-                <li>
-                  <div class="rd-navbar-fixed__element-1"><a class="icon novi-icon icon-md linear-icon-cart link-gray-4" href="cart.html">2</a></div>
-                </li>
-              </ul>
-              <!-- </div> -->
-            </div>
-          </nav>
-        </div>
-        <!-- Swiper-->
-        <section class="rd-parallax">
-          <div class="rd-parallax-layer" data-type="html" data-speed="1">
-            <div class="swiper-container swiper-slider swiper-slider_fullheight" data-simulate-touch="false" data-loop="false" data-autoplay="5500">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide bg-secondary-7" data-slide-bg="images/slide-1-ps.jpg">
-                  <div class="swiper-slide-caption text-left" data-speed="0.5" data-fade="true">
-                    <div class="container">
-                      <h2 data-caption-animate="fadeInLeftSmall">Discover the Full<br> Potential of Bootstrap<br class="d-none d-lg-block">with Monstroid²</h2><a class="button button-gray-light-outline" data-caption-animate="fadeInLeftSmall" data-caption-delay="200" href="//www.templatemonster.com/website-templates/monstroid2.html" target="_blank">Buy template</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide bg-gray-dark" data-slide-bg="images/slider-slide-5-1920x1080.jpg">
-                  <div class="swiper-slide-caption text-center" data-speed="0.5" data-fade="true">
-                    <div class="container">
-                      <h1 data-caption-animate="fadeInUpSmall"><span>Monstroid</span><sup>2</sup></h1>
-                      <h3 data-caption-animate="fadeInUpSmall" data-caption-delay="200">New HTML Templates Generation</h3>
-                      <div class="group-lg group-middle"><a class="button button-primary" data-caption-animate="fadeInUpSmall" data-caption-delay="350" href="#section-see-features" data-custom-scroll-to="section-see-features">See Features</a><a class="button button-black" data-caption-animate="fadeInUpSmall" data-caption-delay="350" href="//www.templatemonster.com/website-templates/monstroid2.html" target="_blank">Buy template</a></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide swiper-slide_video context-dark video-bg-overlay">
-                    <!-- RD Video-->
-                    <div class="vide_bg novi-vide" data-vide-bg="video/video-lg-new2" data-vide-options="posterType: jpg"> 
-                    <div class="swiper-slide-caption text-center" data-speed="0.5" data-fade="true">
-                        <div class="container">
-                        <h2 data-caption-animate="fadeInUpSmall">Built by geeks & used by humans</h2>
-                        <h5 class="text-width-2 block-centered" data-caption-animate="fadeInUpSmall" data-caption-delay="200">Monstroid² aims to satisfy real needs of real projects. We've got a pack of useful tools for that.</h5>
-                        <div class="group-lg group-middle"><a class="button button-black" data-caption-animate="fadeInUpSmall" data-caption-delay="350" href="#section-see-features" data-custom-scroll-to="section-see-features">Take a tour</a><a class="button button-primary" data-caption-animate="fadeInUpSmall" data-caption-delay="350" href="//www.templatemonster.com/website-templates/monstroid2.html" target="_blank">Buy template</a></div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-              </div>
-              <!-- Swiper Pagination-->
-              <div class="swiper-pagination"></div>
-              <!-- Swiper Navigation-->
-              <div class="swiper-button-prev linear-icon-chevron-left"></div>
-              <div class="swiper-button-next linear-icon-chevron-right"></div>
-            </div>
-          </div>
-        </section>
-
-      </header>
+      <div th:replace="~{fragments/headersFrag.html :: indexHeader}"></div>
 
       <!-- Presentation-->
       <section class="section novi-bg novi-bg-img section-xl bg-default text-center" id="section-see-features">
@@ -220,7 +143,7 @@
         <div class="parallax-content">
           <div class="container section-xxl">
             <h2>Вдалося зацікавити?</h2>
-            <p>Запрошуємо до перегляду нашого асортименту.</p><a class="button button-primary" href="#">Перейти то магазину</a>
+            <p>Запрошуємо до перегляду нашого асортименту.</p><a class="button button-primary" href="/shop">Перейти то магазину</a>
           </div>
         </div>
       </section>
