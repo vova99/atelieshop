@@ -9,7 +9,7 @@ public class MainController {
     @GetMapping("/")
     public String getIndex(Model model){
         model.addAttribute("activeLink","index");
-        return "index_new";
+        return "index";
     }
 
     @GetMapping("/shop")
