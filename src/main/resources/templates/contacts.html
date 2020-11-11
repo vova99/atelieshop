@@ -113,22 +113,8 @@
       </section>
 
      <!-- Page Footer-->
-     <footer>
-      <div class="footer-corporate novi-bg novi-bg-img">
-        <div class="container">
-          <div class="footer-corporate__inner">
-            <p class="rights"><span>© Oksana Piekna,</span>
-              <!-- <span>&nbsp;</span> -->
-              <span class="copyright-year"></span>.</p>
-            <ul class="list-inline-xxs">
-              <li><a class="icon novi-icon icon-md icon-primary fa fa-facebook" href="#"></a></li>
-              <li><a class="icon novi-icon icon-md icon-primary fa fa-instagram" href="#"></a></li>
-              <li><a class="icon novi-icon icon-md icon-primary fa fa-instagram" href="#"></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+      <div th:replace="~{fragments/footersFrag.html :: contactsFooter}"></div>
+
     </div>
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
