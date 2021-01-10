@@ -9347,7 +9347,20 @@ body.nav-shown { overflow: hidden; }
 @media (min-width: 768px) { .nk-header-onlymobile { display: none; }
   .nk-header-onlymobile + .nk-content { margin-top: 0; } }
 
-.nk-sidebar { position: absolute; background: #f5f6fa; border-right: 1px solid #e5e9f2; height: 100%; min-height: 100vh; top: 0; left: 0; z-index: 999; transform: translateX(-100%); width: 290px; transition: transform 450ms ease, width 450ms ease; }
+.nk-sidebar {
+  position: absolute;
+  /*background: #f5f6fa;*/
+  background: #f1f4ff;
+  border-right: 1px solid #e5e9f2;
+  height: 100%;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transform: translateX(-100%);
+  width: 290px;
+  transition: transform 450ms ease, width 450ms ease;
+}
 
 .nk-sidebar + .nk-wrap { transition: padding 450ms ease; }
 
