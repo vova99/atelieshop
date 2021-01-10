@@ -12,4 +12,9 @@ public class AdminController {
     public String getAdminIndex(Model model){
         return "index-analytics";
     }
+
+    @GetMapping("/products")
+    public String getAdminProducts(Model model){
+        return "admin-products";
+    }
 }
