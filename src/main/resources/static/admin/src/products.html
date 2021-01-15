@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+
+<head>
+    <!-- <base href="../"> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="images/OP_ico.png">
+    <!-- Page Title  -->
+    <title>Товари</title>
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="assets/css/dashlite.css?ver=1.4.0">
+    <link id="skin-default" rel="stylesheet" href="assets/css/theme.css?ver=1.4.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="nk-body bg-lighter npc-general has-sidebar ">
+<div class="nk-app-root">
+    <!-- main @s -->
+    <div class="nk-main ">
+        <!-- sidebar @s -->
+        <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
+            <div class="nk-sidebar-element nk-sidebar-head">
+                <div class="nk-sidebar-brand">
+                    <a href="html/general/index.html" class="logo-link nk-sidebar-logo">
+                        <img class="logo-light logo-img" src="images/logo.png" srcset="images/logo.png" alt="logo">
+                        <img class="logo-dark logo-img" src="images/logo-dark.png" srcset="images/logo-dark.png" alt="logo-dark">
+                    </a>
+                </div>
+                <div class="nk-menu-trigger mr-n2">
+                    <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+                </div>
+            </div><!-- .nk-sidebar-element -->
+            <div class="nk-sidebar-element">
+                <div class="nk-sidebar-content">
+                    <div class="nk-sidebar-menu" data-simplebar>
+                        <ul class="nk-menu">
+                            <li class="nk-menu-item">
+                                <a href="orders.html" class="nk-menu-link">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span>
+                                    <span class="nk-menu-text">Замовлення</span>
+                                    <span class="nk-menu-badge">1</span>
+                                </a>
+                            </li><!-- .nk-menu-item -->
+                            <li class="nk-menu-item">
+                                <a href="products.html" class="nk-menu-link">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-microsoft"></em></span>
+                                    <span class="nk-menu-text">Товари</span>
+                                </a>
+                            </li><!-- .nk-menu-item -->
+                            <li class="nk-menu-item">
+                                <a href="messages.html" class="nk-menu-link">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-mail"></em></span>
+                                    <span class="nk-menu-text">Повідомлення</span>
+                                    <span class="nk-menu-badge">2</span>
+                                </a>
+                            </li><!-- .nk-menu-item -->
+                            <li class="nk-menu-item">
+                                <a href="users.html" class="nk-menu-link">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                    <span class="nk-menu-text">Клієнти</span>
+                                </a>
+                            </li><!-- .nk-menu-item -->
+                        </ul><!-- .nk-menu -->
+                    </div><!-- .nk-sidebar-menu -->
+                </div><!-- .nk-sidebar-content -->
+            </div><!-- .nk-sidebar-element -->
+        </div>
+        <!-- sidebar @e -->
+
+        <!-- wrap @s -->
+        <div class="nk-wrap ">
+            <!-- main header @s -->
+            <div class="nk-header nk-header-fixed is-light">
+                <div class="container-fluid">
+                    <div class="nk-header-wrap">
+                        <div class="nk-menu-trigger d-xl-none ml-n1">
+                            <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+                        </div>
+                        <div class="nk-header-brand d-xl-none">
+                            <a href="html/crypto/index.html" class="logo-link">
+                                <img class="logo-light logo-img" src="images/logo.png" srcset="images/logo.png" alt="logo">
+                                <img class="logo-dark logo-img" src="images/logo-dark.png" srcset="images/logo-dark.png" alt="logo-dark">
+                            </a>
+                        </div><!-- .nk-header-brand -->
+
+                        <div class="nk-header-tools">
+                            <ul class="nk-quick-nav">
+                                <li class="dropdown user-dropdown">
+                                    <div class="user-toggle">
+                                        <div class="user-avatar sm">
+                                            <em class="icon ni ni-user-alt"></em>
+                                        </div>
+                                        <div class="user-info d-none d-md-block">
+                                            <h6>Адміністратор</h6>
+                                        </div>
+                                    </div>
+                                </li><!-- .dropdown -->
+                                <li>
+                                    <a href="#" class="nk-quick-nav-icon" data-toggle="tooltip" data-placement="bottom" title="Вийти">
+                                        <em class="icon ni ni-signout"></em>
+                                    </a>
+                                </li>
+                            </ul><!-- .nk-quick-nav -->
+                        </div><!-- .nk-header-tools -->
+                    </div><!-- .nk-header-wrap -->
+                </div><!-- .container-fliud -->
+            </div>
+            <!-- main header @e -->
+            <!-- content @s -->
+            <div class="nk-content ">
+                <div class="container-fluid">
+                    <div class="nk-content-inner">
+                        <div class="nk-content-body">
+                            <div class="components-preview wide-md mx-auto">
+                                <div class="nk-block-head nk-block-head-lg wide-sm">
+                                    <div class="nk-block-head-content">
+                                        <h3 class="nk-block-title fw-normal">Товари</h3>
+                                    </div>
+                                </div><!-- .nk-block-head -->
+
+                                <div class="nk-block nk-block-lg">
+                                    <div class="card card-bordered card-preview">
+                                        <div class="card-inner">
+                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                                                <thead>
+                                                <tr class="nk-tb-item nk-tb-head">
+                                                    <th class="nk-tb-col">Зображення</th>
+                                                    <th class="nk-tb-col"><span class="sub-text">Назва</span></th>
+                                                    <th class="nk-tb-col tb-col-md"><span class="sub-text">Артикул</span></th>
+                                                    <th class="nk-tb-col tb-col-md"><span class="sub-text">Ціна</span></th>
+                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Статус</span></th>
+                                                    <th class="nk-tb-col"><span class="sub-text">Дії</span></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="nk-tb-item">
+                                                    <td class="nk-tb-col" style="width: 20%;">
+                                                        <img src="images/products/1.jpg" alt="">
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <div class="user-info">
+                                                            <span class="tb-lead">Abu Bin Ishtiyak <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                            <!-- <span>info@softnio.com</span> -->
+                                                        </div>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span>25апвап</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span>250</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-lg">
+                                                        <span class="tb-status text-success">Active</span>
+                                                    </td>
+                                                    <td class="nk-tb-col nk-tb-col-tools">
+                                                        <ul class="nk-tb-actions gx-1">
+                                                            <li>
+                                                                <div class="drodown">
+                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                                        <ul class="link-list-opt no-bdr">
+                                                                            <li><a target="_blank" href="#"><em class="icon ni ni-eye"></em><span>Переглянути</span></a></li>
+                                                                            <li><a data-toggle="modal" data-target="#changeProductStatusModal"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
+                                                                            <li><a data-toggle="modal" data-target="#editProductModal"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
+                                                                            <li><a href="#" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr><!-- .nk-tb-item  -->
+
+                                                <tr class="nk-tb-item">
+                                                    <td class="nk-tb-col" style="width: 20%;">
+                                                        <img src="images/products/2.jpg" alt="">
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <div class="user-info">
+                                                            <span class="tb-lead">Ashley Lawson <span class="dot dot-warning d-md-none ml-1"></span></span>
+                                                            <span>ashley@softnio.com</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span>вавапвап</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span>1787</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-lg">
+                                                        <span class="tb-status text-warning">Pending</span>
+                                                    </td>
+                                                    <td class="nk-tb-col nk-tb-col-tools">
+                                                        <ul class="nk-tb-actions gx-1">
+                                                            <li>
+                                                                <div class="drodown">
+                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                                        <ul class="link-list-opt no-bdr">
+                                                                            <li><a target="_blank" href="#"><em class="icon ni ni-eye"></em><span>Переглянути</span></a></li>                                                                                    <li class="divider"></li>
+                                                                            <li><a data-toggle="modal" data-target="#changeProductStatusModal"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
+                                                                            <li><a data-toggle="modal" data-target="#editProductModal"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
+                                                                            <li><a href="#" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr><!-- .nk-tb-item  -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!-- .card-preview -->
+                                </div> <!-- nk-block -->
+                            </div><!-- .components-preview -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="" data-toggle="modal" data-target="#addProductModal" title="Добавити товар" class="btn btn-icon btn-lg btn-primary float-right" style="position: fixed; bottom: 25px; right: 25px; z-index: 1000;">
+                <em class="icon ni ni-grid-add-c"></em>
+            </a>
+
+            <!-- Adding start -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="addProductModal" aria-modal="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                        <div class="modal-body modal-body-md">
+                            <h4 class="title">Добавлення товару</h4>
+                            <br>
+                            <form action="">
+                                <div class="row form-group mb-md-0">
+                                    <div class="col-md-6 form-group">
+                                        <!-- <div class="form-group"> -->
+                                        <label class="form-label" for="default-06">Зображення</label>
+                                        <div class="form-control-wrap">
+                                            <div class="custom-file">
+                                                <input type="file" multiple class="custom-file-input" id="productImage">
+                                                <label class="custom-file-label" for="productImage"></label>
+                                            </div>
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <!-- <div class="form-group"> -->
+                                        <label class="form-label" for="articleNumber">Артикул</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="articleNumber" placeholder="Артикул...">
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="productName">Назва продукту</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="productName" placeholder="Назва...">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="productDescription">Опис</label>
+                                    <div class="form-control-wrap">
+                                        <textarea class="form-control" id="productDescription" placeholder="Введіть текст..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group mb-md-0">
+                                    <div class="col-md-6 form-group">
+                                        <div class="form-control-wrap">
+                                            <div class="form-text-hint" style="top: 50%;">
+                                                <span class="overline-title">UAH</span>
+                                            </div>
+                                            <label class="form-label" for="productPrice">ЦІна</label>
+                                            <input type="text" class="form-control" id="productPrice" placeholder="Input placeholder">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Категорія</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg" id="mainCategories">
+                                                <option value="clothes">Одяг</option>
+                                                <option value="shoes">Взуття</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Одяг start -->
+                                <div class="form-group row mb-md-0" id="clothesDetails">
+                                    <div class="col-12 form-group">
+                                        <label class="form-label">Сезон</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg">
+                                                <option value="default_option">Не вибрано</option>
+                                                <option value="option_select_name">Option select name</option>
+                                                <option value="option_select_name">Option select name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Тип</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg">
+                                                <option value="default_option">Не вибрано</option>
+                                                <option value="option_select_name">Option select name</option>
+                                                <option value="option_select_name">Option select name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Розміри</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options">
+                                                <option value="option_select_name">44</option>
+                                                <option value="option_select_name">46</option>
+                                                <option value="option_select_name">48</option>
+                                                <option value="option_select_name">50</option>
+                                                <option value="option_select_name">52</option>
+                                                <option value="option_select_name">54</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Одяг end -->
+                                <!-- Взуття start-->
+                                <div class="form-group row mb-md-0" id="shoesDetails" style="display: none;">
+                                    <div class="col-12 form-group">
+                                        <label class="form-label">Сезон</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg">
+                                                <option value="default_option">Не вибрано</option>
+                                                <option value="option_select_name">Option select name</option>
+                                                <option value="option_select_name">Option select name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Тип</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg">
+                                                <option value="default_option">Не вибрано</option>
+                                                <option value="option_select_name">Option select name</option>
+                                                <option value="option_select_name">Option select name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Розміри</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options">
+                                                <option value="option_select_name">36</option>
+                                                <option value="option_select_name">37</option>
+                                                <option value="option_select_name">38</option>
+                                                <option value="option_select_name">39</option>
+                                                <option value="option_select_name">40</option>
+                                                <option value="option_select_name">41</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Взуття end -->
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-primary">Добавити</button>
+                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Скасувати</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Adding end -->
+
+            <!-- Edit start -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="editProductModal" aria-modal="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                        <div class="modal-body modal-body-md">
+                            <h4 class="title">Редагування</h4>
+                            <br>
+                            <form action="">
+                                <div class="row form-group mb-md-0">
+                                    <div class="col-md-6 form-group">
+                                        <!-- <div class="form-group"> -->
+                                        <label class="form-label" for="default-06">Зображення</label>
+                                        <div class="form-control-wrap">
+                                            <div class="custom-file">
+                                                <input type="file" multiple class="custom-file-input" id="productImage">
+                                                <label class="custom-file-label" for="productImage"></label>
+                                            </div>
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <!-- <div class="form-group"> -->
+                                        <label class="form-label" for="articleNumber">Артикул</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="articleNumber" placeholder="Артикул...">
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="productName">Назва продукту</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="productName" placeholder="Назва...">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="productDescription">Опис</label>
+                                    <div class="form-control-wrap">
+                                        <textarea class="form-control" id="productDescription" placeholder="Введіть текст..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group mb-md-0">
+                                    <div class="col-md-6 form-group">
+                                        <div class="form-control-wrap">
+                                            <div class="form-text-hint" style="top: 50%;">
+                                                <span class="overline-title">UAH</span>
+                                            </div>
+                                            <label class="form-label" for="productPrice">ЦІна</label>
+                                            <input type="text" class="form-control" id="productPrice" placeholder="Input placeholder">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Категорія</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg" id="mainCategories">
+                                                <option value="clothes">Одяг</option>
+                                                <option value="shoes">Взуття</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Одяг start -->
+                                <div class="form-group row mb-md-0" id="clothesDetails">
+                                    <div class="col-12 form-group">
+                                        <label class="form-label">Сезон</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg">
+                                                <option value="default_option">Не вибрано</option>
+                                                <option value="option_select_name">Option select name</option>
+                                                <option value="option_select_name">Option select name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Тип</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg">
+                                                <option value="default_option">Не вибрано</option>
+                                                <option value="option_select_name">Option select name</option>
+                                                <option value="option_select_name">Option select name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Розміри</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options">
+                                                <option value="option_select_name">44</option>
+                                                <option value="option_select_name">46</option>
+                                                <option value="option_select_name">48</option>
+                                                <option value="option_select_name">50</option>
+                                                <option value="option_select_name">52</option>
+                                                <option value="option_select_name">54</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Одяг end -->
+                                <!-- Взуття start-->
+                                <div class="form-group row mb-md-0" id="shoesDetails" style="display: none;">
+                                    <div class="col-12 form-group">
+                                        <label class="form-label">Сезон</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg">
+                                                <option value="default_option">Не вибрано</option>
+                                                <option value="option_select_name">Option select name</option>
+                                                <option value="option_select_name">Option select name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Тип</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select form-control form-control-lg">
+                                                <option value="default_option">Не вибрано</option>
+                                                <option value="option_select_name">Option select name</option>
+                                                <option value="option_select_name">Option select name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label">Розміри</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options">
+                                                <option value="option_select_name">36</option>
+                                                <option value="option_select_name">37</option>
+                                                <option value="option_select_name">38</option>
+                                                <option value="option_select_name">39</option>
+                                                <option value="option_select_name">40</option>
+                                                <option value="option_select_name">41</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Взуття end -->
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-primary">Зберегти</button>
+                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Скасувати</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Edit end -->
+
+            <!-- Change status start -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="changeProductStatusModal" aria-modal="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                        <div class="modal-body modal-body-md">
+                            <h4 class="title">Змінити статус</h4>
+                            <br>
+                            <form action="">
+                                <div class="form-group">
+                                    <div class="preview-block">
+                                        <span class="preview-title overline-title">Статус товару</span>
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" checked id="customSwitch2">
+                                            <label class="custom-control-label" for="customSwitch2">Відображати в магазині</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-primary">Змінити</button>
+                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Скасувати</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Change status end -->
+
+            <!-- content @e -->
+            <!-- footer @s -->
+            <div class="nk-footer">
+                <div class="container-fluid">
+                    <div class="nk-footer-wrap">
+                        <div class="nk-footer-copyright"> &copy; 2020 Oksana Piekna</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer @e -->
+        </div>
+        <!-- wrap @e -->
+    </div>
+    <!-- main @e -->
+</div>
+<!-- app-root @e -->
+<!-- JavaScript -->
+<script src="./assets/js/bundle.js?ver=1.4.0"></script>
+<script src="./assets/js/scripts.js?ver=1.4.0"></script>
+<script src="./assets/js/example-sweetalert.js?ver=1.4.0"></script>
+<script>
+    $('#mainCategories').on('change', function (e) {
+        var optionSelected = $("option:selected", this);
+        var selectedValue = this.value;
+
+        console.log("OS: "+optionSelected+"\nSV: "+selectedValue);
+
+        if (selectedValue === "clothes"){
+            $('#clothesDetails').show();
+            $('#shoesDetails').hide();
+        }else if (selectedValue === "shoes"){
+            $('#clothesDetails').hide();
+            $('#shoesDetails').show();
+        }
+    });
+</script>
+</body>
+
+</html>
