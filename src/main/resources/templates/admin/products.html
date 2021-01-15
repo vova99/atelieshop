@@ -166,8 +166,8 @@
                                                                     <div class="dropdown-menu dropdown-menu-right">
                                                                         <ul class="link-list-opt no-bdr">
                                                                             <li><a target="_blank" href="#"><em class="icon ni ni-eye"></em><span>Переглянути</span></a></li>
-                                                                            <li><a data-toggle="modal" data-target="#changeProductStatusModal"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
-                                                                            <li><a data-toggle="modal" data-target="#editProductModal"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
+                                                                            <li><a data-toggle="modal" onclick="showEditProductStatusModal(this)"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
+                                                                            <li><a data-toggle="modal" onclick="showEditProductModal(this)"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
                                                                             <li><a href="#" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
                                                                         </ul>
                                                                     </div>
@@ -204,8 +204,8 @@
                                                                     <div class="dropdown-menu dropdown-menu-right">
                                                                         <ul class="link-list-opt no-bdr">
                                                                             <li><a target="_blank" href="#"><em class="icon ni ni-eye"></em><span>Переглянути</span></a></li>                                                                                    <li class="divider"></li>
-                                                                            <li><a data-toggle="modal" data-target="#changeProductStatusModal"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
-                                                                            <li><a data-toggle="modal" data-target="#editProductModal"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
+                                                                            <li><a data-toggle="modal" onclick="showEditProductStatusModal(this)"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
+                                                                            <li><a data-toggle="modal" onclick="showEditProductModal(this)"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
                                                                             <li><a href="#" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
                                                                         </ul>
                                                                     </div>
@@ -387,6 +387,7 @@
                             <h4 class="title">Редагування</h4>
                             <br>
                             <form action="">
+                                <input type="text" id="selectedForEditItem" hidden="" name="id">
                                 <div class="row form-group mb-md-0">
                                     <div class="col-md-6 form-group">
                                         <!-- <div class="form-group"> -->
@@ -394,7 +395,7 @@
                                         <div class="form-control-wrap">
                                             <div class="custom-file">
                                                 <input type="file" multiple class="custom-file-input" id="editProductImage">
-                                                <label class="custom-file-label" for="productPreviousImage"></label>
+                                                <label class="custom-file-label" for="editProductImage"></label>
                                             </div>
                                         </div>
                                         <!-- </div> -->
@@ -429,7 +430,7 @@
                                             <div class="form-text-hint" style="top: 50%;">
                                                 <span class="overline-title">UAH</span>
                                             </div>
-                                            <label class="form-label" for="editProductPrice">ЦІна</label>
+                                            <label class="form-label" for="editProductPrice">Ціна</label>
                                             <input type="text" class="form-control" id="editProductPrice" placeholder="Input placeholder">
                                         </div>
                                     </div>
@@ -537,6 +538,7 @@
                             <h4 class="title">Змінити статус</h4>
                             <br>
                             <form action="">
+                                <input type="text" id="selectedForChangingStatusItem" hidden="" name="id">
                                 <div class="form-group">
                                     <div class="preview-block">
                                         <span class="preview-title overline-title">Статус товару</span>
@@ -580,8 +582,8 @@
 <script th:src="@{/admin/src/assets/js/example-sweetalert.js}"></script>
 <script>
     $('#mainCategories').on('change', function (e) {
-        var optionSelected = $("option:selected", this);
-        var selectedValue = this.value;
+        let optionSelected = $("option:selected", this);
+        let selectedValue = this.value;
 
         console.log("OS: "+optionSelected+"\nSV: "+selectedValue);
 
@@ -593,6 +595,45 @@
             $('#shoesDetails').show();
         }
     });
+
+    function showEditProductModal(btnObj) {
+        let trObj = btnObj.closest("tbody tr");
+        let trId =  $(trObj).attr('id');
+
+        console.log("row id:" + $(trObj).attr('id'));
+
+        // let image =         $(trObj).find('td:eq(0)').text();
+        let productName =   $(trObj).find('td:eq(1)').text();
+        let article =       $(trObj).find('td:eq(2)').text();
+        // let desc =          $(trObj).find('td:eq(3)').text();
+        let price =         $(trObj).find('td:eq(3)').text();
+        // let category =      $(trObj).find('td:eq(5)').text();
+        // let season =        $(trObj).find('td:eq(6)').text();
+        // let type =          $(trObj).find('td:eq(7)').text();
+        // let sizes =         $(trObj).find('td:eq(8)').text();
+
+
+        $('#selectedForEditItem')           .val(trId);
+        // $('#editProductImage')              .val(image);
+        $('#editProductName')               .val(productName);
+        $('#editArticleNumber')             .val(article);
+        // $('#editProductDescription')        .val(desc);
+        $('#editProductPrice')              .val(price);
+
+        $('#editProductModal').modal('show');
+    }
+
+    function showEditProductStatusModal(btnObj) {
+        let trObj = btnObj.closest("tbody tr");
+        let trId =  $(trObj).attr('id');
+
+        console.log("row id:" + $(trObj).attr('id'));
+
+        $('#selectedForChangingStatusItem') .val(trId);
+
+        $('#changeProductStatusModal').modal('show');
+    }
+
 </script>
 </body>
 
