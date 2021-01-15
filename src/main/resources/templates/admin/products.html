@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="zxx" class="js">
+<html class="js" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- <base href="../"> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="images/OP_ico.png">
+    <link rel="shortcut icon" th:href="@{admin/src/images/OP_ico.png}">
     <!-- Page Title  -->
     <title>Товари</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="assets/css/dashlite.css?ver=1.4.0">
-    <link id="skin-default" rel="stylesheet" href="assets/css/theme.css?ver=1.4.0">
+    <link rel="stylesheet" th:href="@{/admin/src/assets/css/dashlite.css}">
+    <link id="skin-default" rel="stylesheet" th:href="@{/admin/src/assets/css/theme.css}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -24,9 +27,9 @@
         <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
             <div class="nk-sidebar-element nk-sidebar-head">
                 <div class="nk-sidebar-brand">
-                    <a href="html/general/index.html" class="logo-link nk-sidebar-logo">
-                        <img class="logo-light logo-img" src="images/logo.png" srcset="images/logo.png" alt="logo">
-                        <img class="logo-dark logo-img" src="images/logo-dark.png" srcset="images/logo-dark.png" alt="logo-dark">
+                    <a href="../../static/admin/src/html/general/index.html" class="logo-link nk-sidebar-logo">
+                        <img class="logo-light logo-img" th:src="@{admin/src/images/logo.png}" th:srcset="@{/static/images/logo.png}" alt="logo">
+                        <img class="logo-dark logo-img" th:src="@{/static/admin/src/images/logo-dark.png}" th:srcset="@{/static/admin/src/images/logo-dark.png}" alt="logo-dark">
                     </a>
                 </div>
                 <div class="nk-menu-trigger mr-n2">
@@ -38,7 +41,7 @@
                     <div class="nk-sidebar-menu" data-simplebar>
                         <ul class="nk-menu">
                             <li class="nk-menu-item">
-                                <a href="orders.html" class="nk-menu-link">
+                                <a href="../../static/admin/src/orders.html" class="nk-menu-link">
                                     <span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span>
                                     <span class="nk-menu-text">Замовлення</span>
                                     <span class="nk-menu-badge">1</span>
@@ -51,14 +54,14 @@
                                 </a>
                             </li><!-- .nk-menu-item -->
                             <li class="nk-menu-item">
-                                <a href="messages.html" class="nk-menu-link">
+                                <a href="../../static/admin/src/messages.html" class="nk-menu-link">
                                     <span class="nk-menu-icon"><em class="icon ni ni-mail"></em></span>
                                     <span class="nk-menu-text">Повідомлення</span>
                                     <span class="nk-menu-badge">2</span>
                                 </a>
                             </li><!-- .nk-menu-item -->
                             <li class="nk-menu-item">
-                                <a href="users.html" class="nk-menu-link">
+                                <a href="../../static/admin/src/users.html" class="nk-menu-link">
                                     <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                     <span class="nk-menu-text">Клієнти</span>
                                 </a>
@@ -81,8 +84,8 @@
                         </div>
                         <div class="nk-header-brand d-xl-none">
                             <a href="html/crypto/index.html" class="logo-link">
-                                <img class="logo-light logo-img" src="images/logo.png" srcset="images/logo.png" alt="logo">
-                                <img class="logo-dark logo-img" src="images/logo-dark.png" srcset="images/logo-dark.png" alt="logo-dark">
+                                <img class="logo-light logo-img" src="../../static/images/logo.png" srcset="../../static/images/logo.png" alt="logo">
+                                <img class="logo-dark logo-img" src="../../static/admin/src/images/logo-dark.png" srcset="../../static/admin/src/images/logo-dark.png" alt="logo-dark">
                             </a>
                         </div><!-- .nk-header-brand -->
 
@@ -138,7 +141,7 @@
                                                 <tbody>
                                                 <tr class="nk-tb-item">
                                                     <td class="nk-tb-col" style="width: 20%;">
-                                                        <img src="images/products/1.jpg" alt="">
+                                                        <img th:src="@{/static/admin/src/images/products/1.jpg}" alt="">
                                                     </td>
                                                     <td class="nk-tb-col">
                                                         <div class="user-info">
@@ -176,7 +179,7 @@
 
                                                 <tr class="nk-tb-item">
                                                     <td class="nk-tb-col" style="width: 20%;">
-                                                        <img src="images/products/2.jpg" alt="">
+                                                        <img src="../../static/admin/src/images/products/2.jpg" alt="">
                                                     </td>
                                                     <td class="nk-tb-col">
                                                         <div class="user-info">
@@ -238,11 +241,10 @@
                                 <div class="row form-group mb-md-0">
                                     <div class="col-md-6 form-group">
                                         <!-- <div class="form-group"> -->
-                                        <label class="form-label" for="default-06">Зображення</label>
+                                        <label class="form-label" for="productImage">Зображення</label>
                                         <div class="form-control-wrap">
                                             <div class="custom-file">
-                                                <input type="file" multiple class="custom-file-input" id="productImage">
-                                                <label class="custom-file-label" for="productImage"></label>
+                                                <input type="file" multiple class="custom-file-input" id="productImage" name="multipartFile">
                                             </div>
                                         </div>
                                         <!-- </div> -->
@@ -573,9 +575,9 @@
 </div>
 <!-- app-root @e -->
 <!-- JavaScript -->
-<script src="./assets/js/bundle.js?ver=1.4.0"></script>
-<script src="./assets/js/scripts.js?ver=1.4.0"></script>
-<script src="./assets/js/example-sweetalert.js?ver=1.4.0"></script>
+<script th:src="@{/admin/src/assets/js/bundle.js}"></script>
+<script th:src="@{/admin/src/assets/js/scripts.js}"></script>
+<script th:src="@{/admin/src/assets/js/example-sweetalert.js}"></script>
 <script>
     $('#mainCategories').on('change', function (e) {
         var optionSelected = $("option:selected", this);
