@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" th:href="@{admin/src/images/OP_ico.png}">
+    <link rel="shortcut icon" th:href="@{/admin/src/images/OP_ico.png}">
     <!-- Page Title  -->
     <title>Товари</title>
     <!-- StyleSheets  -->
@@ -84,8 +84,8 @@
                         </div>
                         <div class="nk-header-brand d-xl-none">
                             <a href="html/crypto/index.html" class="logo-link">
-                                <img class="logo-light logo-img" src="../../static/images/logo.png" srcset="../../static/images/logo.png" alt="logo">
-                                <img class="logo-dark logo-img" src="../../static/admin/src/images/logo-dark.png" srcset="../../static/admin/src/images/logo-dark.png" alt="logo-dark">
+                                <img class="logo-light logo-img" th:src="@{/admin/src/images/logo.png}" th:srcset="@{/admin/src/images/logo.png}" alt="logo">
+                                <img class="logo-dark logo-img" th:src="@{/admin/src/images/logo-dark.png}" th:srcset="@{/admin/src/images/logo-dark.png}" alt="logo-dark">
                             </a>
                         </div><!-- .nk-header-brand -->
 
@@ -141,7 +141,7 @@
                                                 <tbody>
                                                 <tr class="nk-tb-item">
                                                     <td class="nk-tb-col" style="width: 20%;">
-                                                        <img th:src="@{/static/admin/src/images/products/1.jpg}" alt="">
+                                                        <img th:src="@{/admin/src/images/products/1.jpg}" alt="">
                                                     </td>
                                                     <td class="nk-tb-col">
                                                         <div class="user-info">
@@ -179,7 +179,7 @@
 
                                                 <tr class="nk-tb-item">
                                                     <td class="nk-tb-col" style="width: 20%;">
-                                                        <img src="../../static/admin/src/images/products/2.jpg" alt="">
+                                                        <img th:src="@{/admin/src/images/products/2.jpg}" alt="">
                                                     </td>
                                                     <td class="nk-tb-col">
                                                         <div class="user-info">
