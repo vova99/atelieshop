@@ -281,7 +281,7 @@
                                                 <span class="overline-title">UAH</span>
                                             </div>
                                             <label class="form-label" for="productPrice">Ціна</label>
-                                            <input type="text" class="form-control" id="productPrice" placeholder="Input placeholder" name="price">
+                                            <input type="text" pattern="[0-9]*\.?[0-9]*" class="form-control" id="productPrice" placeholder="Не заповнено..." name="price" value="0.00">
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -438,7 +438,7 @@
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Категорія</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" id="mainCategories">
+                                            <select class="form-select form-control form-control-lg" id="mainCategories2">
                                                 <option value="clothes">Одяг</option>
                                                 <option value="shoes">Взуття</option>
                                             </select>
