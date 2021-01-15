@@ -13,10 +13,18 @@ public class Product {
     private int id;
 
     private String name;
+    private String article;
+    private String imgSrc;
     private String description;
 
-    @ManyToMany
-    private List<Category> categoryList;
+    private double price;
+    private String season;
+
+
+    private List<String> sizes;
+
+    @ManyToOne
+    private Category category;
 
     @Enumerated(EnumType.STRING)
     private StatusOfEntity statusOfEntity;
