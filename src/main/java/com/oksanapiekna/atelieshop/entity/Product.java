@@ -21,7 +21,22 @@ public class Product {
     private String season;
 
 
-    private List<String> sizes;
+    @ManyToMany
+    @JoinTable(
+            name = "product_sizes",
+            joinColumns = @JoinColumn(name = "products", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "sizes",referencedColumnName = "id")
+    )
+    private List<Size> sizes;
+
+    @ManyToMany
+    @JoinTable(name = "products_orders",
+            joinColumns = @JoinColumn(name = "productList"),
+            inverseJoinColumns = @JoinColumn(name = "orders"))
+    private List<OrderInfo> orders;
+
+    @ManyToOne
+    private TypeOfProduct typeOfProduct;
 
     @ManyToOne
     private Category category;

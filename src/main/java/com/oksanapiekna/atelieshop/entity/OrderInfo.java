@@ -17,6 +17,9 @@ public class OrderInfo {
     private String nameOfClient;
     private String phone;
     @ManyToMany
+    @JoinTable(name = "products_orders",
+            inverseJoinColumns =  @JoinColumn(name = "productList"),
+            joinColumns = @JoinColumn(name = "orders"))
     private List<Product> productList;
 
     @Enumerated(EnumType.STRING)
