@@ -6,6 +6,7 @@ import com.oksanapiekna.atelieshop.jpa.ProductJPA;
 import com.oksanapiekna.atelieshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -19,8 +20,25 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void save(Product product) {
-        productJPA.save(product);
+    public Product save(Product product) {
+        return productJPA.save(product);
+    }
+
+    @Override
+    public Product save(Product product, MultipartFile multipartFile) {
+        if(multipartFile!=null && product!=null){
+            try {
+                product.setImg(multipartFile.getBytes());
+                product.setImgName(multipartFile.getOriginalFilename());
+                product.setImgType(multipartFile.getContentType());
+                return productJPA.save(product);
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        return null;
     }
 
     @Override

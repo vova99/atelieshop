@@ -2,11 +2,13 @@ package com.oksanapiekna.atelieshop.service;
 
 import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface ProductService {
-    void save(Product product);
+    Product save(Product product);
+    Product save(Product product, MultipartFile multipartFile);
     Product findById(int id);
     List<Product> findAll();
     List<Product> findByStatus(StatusOfEntity status);

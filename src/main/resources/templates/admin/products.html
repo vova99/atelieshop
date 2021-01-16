@@ -177,43 +177,7 @@
                                                     </td>
                                                 </tr><!-- .nk-tb-item  -->
 
-                                                <tr class="nk-tb-item">
-                                                    <td class="nk-tb-col" style="width: 20%;">
-                                                        <img th:src="@{/admin/src/images/products/2.jpg}" alt="">
-                                                    </td>
-                                                    <td class="nk-tb-col">
-                                                        <div class="user-info">
-                                                            <span class="tb-lead">Ashley Lawson <span class="dot dot-warning d-md-none ml-1"></span></span>
-                                                            <span>ashley@softnio.com</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="nk-tb-col tb-col-md">
-                                                        <span>вавапвап</span>
-                                                    </td>
-                                                    <td class="nk-tb-col tb-col-md">
-                                                        <span>1787</span>
-                                                    </td>
-                                                    <td class="nk-tb-col tb-col-lg">
-                                                        <span class="tb-status text-warning">Pending</span>
-                                                    </td>
-                                                    <td class="nk-tb-col nk-tb-col-tools">
-                                                        <ul class="nk-tb-actions gx-1">
-                                                            <li>
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                                        <ul class="link-list-opt no-bdr">
-                                                                            <li><a target="_blank" href="#"><em class="icon ni ni-eye"></em><span>Переглянути</span></a></li>                                                                                    <li class="divider"></li>
-                                                                            <li><a data-toggle="modal" onclick="showEditProductStatusModal(this)"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
-                                                                            <li><a data-toggle="modal" onclick="showEditProductModal(this)"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
-                                                                            <li><a href="#" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr><!-- .nk-tb-item  -->
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -244,7 +208,7 @@
                                         <label class="form-label" for="productImage">Зображення</label>
                                         <div class="form-control-wrap">
                                             <div class="custom-file">
-                                                <input type="file" multiple class="custom-file-input" id="productImage">
+                                                <input type="file" multiple class="custom-file-input" id="productImage" name="multipartFile">
                                                 <label class="custom-file-label" for="productImage"></label>
                                             </div>
                                         </div>

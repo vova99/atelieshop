@@ -1,6 +1,5 @@
 package com.oksanapiekna.atelieshop.jpa;
 
-import com.oksanapiekna.atelieshop.entity.OrderInfo;
 import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
