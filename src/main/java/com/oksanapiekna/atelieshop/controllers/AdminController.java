@@ -33,12 +33,6 @@ public class AdminController {
         return "admin/products";
     }
 
-    @GetMapping("/categories")
-    public String getAdminCategories(Model model){
-//        model.addAttribute("categories",productService.findAll());
-        return "admin/categories";
-    }
-
     @PostMapping("/addProduct")
     public String addProducts(@RequestParam MultipartFile multipartFile, Product product){
         productService.save(product,multipartFile);
@@ -55,6 +49,13 @@ public class AdminController {
     public String deleteProductById(int productId){
         productService.deleteByID(productId);
         return "redirect:/admin/products";
+    }
+
+//    Categories
+    @GetMapping("/categories")
+    public String getAdminCategories(Model model){
+    //        model.addAttribute("categories",productService.findAll());
+        return "admin/categories";
     }
 
 }
