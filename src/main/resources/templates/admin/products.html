@@ -535,7 +535,7 @@
                         <div class="modal-body modal-body-md">
                             <h4 class="title">Видалення товару</h4>
                             <br>
-                            <form action="">
+                            <form action="/admin/deleteProductById" method="post">
                                 <input type="text" id="selectedForDeleteItem" hidden="" name="id">
                                 <p style="margin-bottom: 2rem;">Ви впеанені, що хочете видалити товар? Підтвердивши дію, ви не зможете повернутися до попереднього стану продукту.</p>
                                 <div class="form-group">
@@ -630,7 +630,7 @@
 
         console.log("row id:" + $(trObj).attr('id'));
 
-        $('#selectedForDeleteItem')           .val(trId);
+        $('#selectedForDeleteItem').val(trId);
 
         $('#deleteProductModal').modal('show');
     }
