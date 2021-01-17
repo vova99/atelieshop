@@ -45,8 +45,8 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
-    @PostMapping("/deleteProductById/{productId}")
-    public String deleteProductById(@PathVariable int productId){
+    @PostMapping("/deleteProductById")
+    public String deleteProductById(int productId){
         productService.deleteByID(productId);
         return "redirect:/admin/products";
     }

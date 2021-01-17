@@ -48,5 +48,5 @@ public class Product {
 //    private Category category;
 
     @Enumerated(EnumType.STRING)
-    private StatusOfEntity statusOfEntity;
+    private StatusOfEntity statusOfEntity = StatusOfEntity.ACTIVE;
 }
