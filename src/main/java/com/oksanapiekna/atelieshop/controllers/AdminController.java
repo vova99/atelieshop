@@ -29,7 +29,7 @@ public class AdminController {
 
     @GetMapping("/products")
     public String getAdminProducts(Model model){
-        model.addAttribute("products",productService.findByStatus(StatusOfEntity.ACTIVE));
+        model.addAttribute("products",productService.findAll());
         return "admin/products";
     }
 
@@ -39,12 +39,16 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
-    @GetMapping("/getImgByProductId/{productId}")
-    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable int productId){
-        Product doc = productService.findById(productId);
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(doc.getImgType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment:filename=\""+doc.getImgName()+"\"")
-                .body(new ByteArrayResource(doc.getImg()));
+    @PostMapping("/changeStatusOfProduct")
+    public String changeStatusOfProduct(int productId,boolean switchValue){
+        productService.changeStatus(productId,switchValue);
+        return "redirect:/admin/products";
     }
+
+    @PostMapping("/deleteProductById/{productId}")
+    public String deleteProductById(@PathVariable int productId){
+        productService.deleteByID(productId);
+        return "redirect:/admin/products";
+    }
+
 }

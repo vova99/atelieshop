@@ -17,6 +17,7 @@ public class MainController {
         model.addAttribute("activeLink","shop");
         return "shop-grid";
     }
+
     @GetMapping("/contacts")
     public String getContact(Model model){
         model.addAttribute("activeLink","contacts");

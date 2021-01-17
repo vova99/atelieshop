@@ -10,6 +10,7 @@ public interface ProductService {
     Product save(Product product);
     Product save(Product product, MultipartFile multipartFile);
     Product findById(int id);
+    Product changeStatus(int id, boolean status);
     List<Product> findAll();
     List<Product> findByStatus(StatusOfEntity status);
     void deleteByID(int id);

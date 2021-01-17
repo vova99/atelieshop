@@ -80,9 +80,9 @@
             <div class="col-md-6 col-lg-7">
               <div class="product-single">
                 <p class="product-stock">В наявності</p>
-                <h4>Adidas Originals Trefoil Logo Snapback Trucker Cap</h4>
-                <p class="product-price"><span>45</span></p>
-                <p class="product-text">Fashion has always been so temporary and uncertain. You can’t keep up with it.This social phenomenon is very whimsical, thus we as the consumers always try to stay in touch with all the latest fashion tendencies.</p>
+                <h4 th:text="${product.getName()}">Product Name</h4>
+                <p class="product-price"><span th:text="${product.getPrice()}">Price</span></p>
+                <p class="product-text" th:text="${product.getDescription()}">Product description</p>
                 <div class="form-wrap product-select">
                   <!--Select 2-->
                   <select class="form-input select-filter" data-placeholder="Size" data-minimum-results-for-search="Infinity">
@@ -134,49 +134,49 @@
                 </ul>
               </div>
             </div>
-            <div class="col-sm-12">
-              <!-- Bootstrap tabs-->
-              <div class="tabs-custom tabs-horizontal" id="tabs-1">
-                <!-- Nav tabs-->
-                <ul class="nav nav-custom nav-custom-tabs nav-custom__align-left">
-                  <li class="nav-item"><a class="nav-link" href="#tabs-1-1" data-toggle="tab">ОПИС</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tabs-1-2" data-toggle="tab">ДОДАТКОВА ІНФОРМАЦІЯ</a></li>
-                </ul>
-              </div>
-              <div class="tab-content text-left">
-                <div class="tab-pane fade" id="tabs-1-1">
-                  <h5>Опис</h5>
-                  <p>Fashion has always been so temporary and uncertain. You can’t keep up with it.  This social phenomenon is very whimsical, thus we as the consumers always try to stay in touch with all the latest fashion tendencies. Obviously there is nothing wrong about it because fashion satisfies our willingness to be attractive. And also fashion is the detector of prosperity and social rank. So, our natural desire to wear fashionable clothes has many reasons such as historical, social and others. Therefore being fashionable costs a lot of money. But nowadays fashion is not such unavailable as it was a couple of centuries ago. We are lucky to have an opportunity to buy qualitative, fashionable and affordable clothes.</p>
-                </div>
-                <div class="tab-pane fade" id="tabs-1-2">
-                  <h5>Додаткова інформація</h5>
-                  <table class="table-product-info">
-                    <tbody>
-                      <tr>
-                        <td>brand</td>
-                        <td>Gola Exclusive</td>
-                      </tr>
-                      <tr>
-                        <td>manufacturer</td>
-                        <td>China</td>
-                      </tr>
-                      <tr>
-                        <td>occasion</td>
-                        <td>Casual</td>
-                      </tr>
-                      <tr>
-                        <td>season</td>
-                        <td>Winter/Autumn</td>
-                      </tr>
-                      <tr>
-                        <td>wash</td>
-                        <td>Machine wash</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+<!--            <div class="col-sm-12">-->
+<!--              &lt;!&ndash; Bootstrap tabs&ndash;&gt;-->
+<!--              <div class="tabs-custom tabs-horizontal" id="tabs-1">-->
+<!--                &lt;!&ndash; Nav tabs&ndash;&gt;-->
+<!--                <ul class="nav nav-custom nav-custom-tabs nav-custom__align-left">-->
+<!--                  <li class="nav-item"><a class="nav-link" href="#tabs-1-1" data-toggle="tab">ОПИС</a></li>-->
+<!--                  <li class="nav-item"><a class="nav-link" href="#tabs-1-2" data-toggle="tab">ДОДАТКОВА ІНФОРМАЦІЯ</a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+<!--              <div class="tab-content text-left">-->
+<!--                <div class="tab-pane fade" id="tabs-1-1">-->
+<!--                  <h5>Опис</h5>-->
+<!--                  <p>Fashion has always been so temporary and uncertain. You can’t keep up with it.  This social phenomenon is very whimsical, thus we as the consumers always try to stay in touch with all the latest fashion tendencies. Obviously there is nothing wrong about it because fashion satisfies our willingness to be attractive. And also fashion is the detector of prosperity and social rank. So, our natural desire to wear fashionable clothes has many reasons such as historical, social and others. Therefore being fashionable costs a lot of money. But nowadays fashion is not such unavailable as it was a couple of centuries ago. We are lucky to have an opportunity to buy qualitative, fashionable and affordable clothes.</p>-->
+<!--                </div>-->
+<!--                <div class="tab-pane fade" id="tabs-1-2">-->
+<!--                  <h5>Додаткова інформація</h5>-->
+<!--                  <table class="table-product-info">-->
+<!--                    <tbody>-->
+<!--                      <tr>-->
+<!--                        <td>brand</td>-->
+<!--                        <td>Gola Exclusive</td>-->
+<!--                      </tr>-->
+<!--                      <tr>-->
+<!--                        <td>manufacturer</td>-->
+<!--                        <td>China</td>-->
+<!--                      </tr>-->
+<!--                      <tr>-->
+<!--                        <td>occasion</td>-->
+<!--                        <td>Casual</td>-->
+<!--                      </tr>-->
+<!--                      <tr>-->
+<!--                        <td>season</td>-->
+<!--                        <td>Winter/Autumn</td>-->
+<!--                      </tr>-->
+<!--                      <tr>-->
+<!--                        <td>wash</td>-->
+<!--                        <td>Machine wash</td>-->
+<!--                      </tr>-->
+<!--                    </tbody>-->
+<!--                  </table>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
           </div>
         </div>
       </section>

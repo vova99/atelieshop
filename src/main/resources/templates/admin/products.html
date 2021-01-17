@@ -139,24 +139,25 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr class="nk-tb-item">
+                                                <tr th:id="${p.getId()}" th:each="p :${products} " class="nk-tb-item">
                                                     <td class="nk-tb-col" style="width: 20%;">
-                                                        <img th:src="@{/admin/src/images/products/1.jpg}" alt="">
+                                                        <img th:src="@{'/shop/getImgByProductId/'+${p.getId()}}" alt="">
                                                     </td>
                                                     <td class="nk-tb-col">
                                                         <div class="user-info">
-                                                            <span class="tb-lead">Abu Bin Ishtiyak <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                            <span class="tb-lead" th:text="${p.getName()}">Here must be name<span class="dot dot-success d-md-none ml-1"></span></span>
                                                             <!-- <span>info@softnio.com</span> -->
                                                         </div>
                                                     </td>
                                                     <td class="nk-tb-col tb-col-md">
-                                                        <span>25апвап</span>
+                                                        <span th:text="${p.getArticle()}">Article</span>
                                                     </td>
                                                     <td class="nk-tb-col tb-col-md">
-                                                        <span>250</span>
+                                                        <span th:text="${p.getPrice()}"></span>
                                                     </td>
                                                     <td class="nk-tb-col tb-col-lg">
-                                                        <span class="tb-status text-success">Active</span>
+                                                        <span class="tb-status text-success" th:if="${p.getStatusOfEntity().name().equals('ACTIVE')}">Active</span>
+                                                        <span class="tb-status text-danger" th:if="${p.getStatusOfEntity().name().equals('ARCHIVED')}">Archive</span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1">
@@ -168,7 +169,7 @@
                                                                             <li><a target="_blank" href="#"><em class="icon ni ni-eye"></em><span>Переглянути</span></a></li>
                                                                             <li><a data-toggle="modal" onclick="showEditProductStatusModal(this)"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
                                                                             <li><a data-toggle="modal" onclick="showEditProductModal(this)"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
-                                                                            <li><a href="#" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
+                                                                            <li><a th:href="@{'/admin/deleteProductById/'+${p.getId()}}" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -502,13 +503,13 @@
                         <div class="modal-body modal-body-md">
                             <h4 class="title">Змінити статус</h4>
                             <br>
-                            <form action="">
-                                <input type="text" id="selectedForChangingStatusItem" hidden="" name="id">
+                            <form action="/admin/changeStatusOfProduct" method="post">
+                                <input type="number" id="selectedForChangingStatusItem" hidden="" name="productId">
                                 <div class="form-group">
                                     <div class="preview-block">
                                         <span class="preview-title overline-title">Статус товару</span>
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" checked id="showItemSwitch">
+                                            <input type="checkbox" class="custom-control-input" checked id="showItemSwitch" name="F">
                                             <label class="custom-control-label" for="showItemSwitch">Відображати в магазині</label>
                                         </div>
                                     </div>

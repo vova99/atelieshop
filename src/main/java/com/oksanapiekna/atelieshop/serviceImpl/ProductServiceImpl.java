@@ -47,6 +47,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product changeStatus(int id, boolean status) {
+        if(id>0){
+            Product product = productJPA.getOne(id);
+            if(status){
+                product.setStatusOfEntity(StatusOfEntity.ACTIVE);
+            }else {
+                product.setStatusOfEntity(StatusOfEntity.ARCHIVED);
+            }
+            return productJPA.save(product);
+        }
+        return null;
+    }
+
+    @Override
     public List<Product> findAll() {
         return productJPA.findAll();
     }
