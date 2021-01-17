@@ -169,7 +169,8 @@
                                                                             <li><a target="_blank" href="#"><em class="icon ni ni-eye"></em><span>Переглянути</span></a></li>
                                                                             <li><a data-toggle="modal" onclick="showEditProductStatusModal(this)"><em class="icon ni ni-bullet"></em><span>Змінити статус</span></a></li>
                                                                             <li><a data-toggle="modal" onclick="showEditProductModal(this)"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
-                                                                            <li><a th:href="@{'/admin/deleteProductById/'+${p.getId()}}" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
+                                                                            <li><a data-toggle="modal" onclick="showConfirmationDeleteProductModal(this)" ><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
+                                                                            <!-- <li><a th:href="@{'/admin/deleteProductById/'+${p.getId()}}" class="eg-swal-av3"><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>-->
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -525,6 +526,29 @@
             </div>
             <!-- Change status end -->
 
+
+            <!-- Delete product start -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="deleteProductModal" aria-modal="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                        <div class="modal-body modal-body-md">
+                            <h4 class="title">Видалення товару</h4>
+                            <br>
+                            <form action="">
+                                <input type="text" id="selectedForDeleteItem" hidden="" name="id">
+                                <p style="margin-bottom: 2rem;">Ви впеанені, що хочете видалити товар? Підтвердивши дію, ви не зможете повернутися до попереднього стану продукту.</p>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-primary">Підтвердити</button>
+                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Скасувати</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Delete product end -->
+
             <!-- content @e -->
             <!-- footer @s -->
             <div class="nk-footer">
@@ -598,6 +622,17 @@
         $('#selectedForChangingStatusItem') .val(trId);
 
         $('#changeProductStatusModal').modal('show');
+    }
+
+    function showConfirmationDeleteProductModal(btnObj){
+        let trObj = btnObj.closest("tbody tr");
+        let trId =  $(trObj).attr('id');
+
+        console.log("row id:" + $(trObj).attr('id'));
+
+        $('#selectedForDeleteItem')           .val(trId);
+
+        $('#deleteProductModal').modal('show');
     }
 
 </script>
