@@ -35,12 +35,12 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "orders"))
     private List<OrderInfo> orders;
 
-    @ManyToOne
-    private TypeOfProduct typeOfProduct;
-
-
-    @Enumerated(EnumType.STRING)
-    private Category category;
+//    @ManyToOne
+//    private TypeOfProduct typeOfProduct;
+//
+//
+//    @Enumerated(EnumType.STRING)
+//    private Category category;
 
     @Enumerated(EnumType.STRING)
     private StatusOfEntity statusOfEntity = StatusOfEntity.ACTIVE;
