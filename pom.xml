@@ -123,8 +123,8 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>com.swida</groupId>
-                                    <artifactId>documetation</artifactId>
+                                    <groupId>com.oksanaPiekna</groupId>
+                                    <artifactId>atelieshop</artifactId>
                                     <version>1.0</version>
                                     <destFileName>project.jar</destFileName>
                                 </artifactItem>
