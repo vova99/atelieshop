@@ -1,10 +1,12 @@
 package com.oksanapiekna.atelieshop.entity;
 
-import com.amazonaws.services.dynamodbv2.xspec.S;
+import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Data
 public class TypeOfProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,6 +14,9 @@ public class TypeOfProduct {
 
     private String name;
 
-    @ManyToOne
+    @OneToMany
+    private List<Product> products;
+
+    @Enumerated(EnumType.STRING)
     private Category category;
 }
