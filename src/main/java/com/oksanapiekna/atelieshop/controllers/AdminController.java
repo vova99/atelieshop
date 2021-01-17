@@ -51,4 +51,11 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
+//    Categories
+    @GetMapping("/categories")
+    public String getAdminCategories(Model model){
+    //        model.addAttribute("categories",productService.findAll());
+        return "admin/categories";
+    }
+
 }

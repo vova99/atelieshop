@@ -11,7 +11,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" th:href="@{/admin/src/images/OP_ico.png}">
     <!-- Page Title  -->
-    <title>Товари</title>
+    <title>Категорії</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" th:href="@{/admin/src/assets/css/dashlite.css}">
     <link id="skin-default" rel="stylesheet" th:href="@{/admin/src/assets/css/theme.css}">
@@ -54,10 +54,9 @@
                                 </a>
                             </li><!-- .nk-menu-item -->
                             <li class="nk-menu-item">
-                                <a href="../../static/admin/src/messages.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-mail"></em></span>
-                                    <span class="nk-menu-text">Повідомлення</span>
-                                    <span class="nk-menu-badge">2</span>
+                                <a href="/categories" class="nk-menu-link">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-cards"></em></span>
+                                    <span class="nk-menu-text">Категорії</span>
                                 </a>
                             </li><!-- .nk-menu-item -->
                             <li class="nk-menu-item">
@@ -537,7 +536,7 @@
                             <br>
                             <form action="/admin/deleteProductById" method="post">
                                 <input type="number" id="selectedForDeleteItem" hidden="" name="productId">
-                                <p style="margin-bottom: 2rem;">Ви впеанені, що хочете видалити товар? Підтвердивши дію, ви не зможете повернутися до попереднього стану продукту.</p>
+                                <p style="margin-bottom: 2rem;">Ви впеанені, що хочете видалити товар? Підтвердивши дію, Ви не зможете повернутися до попереднього стану продукту.</p>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-outline-primary">Підтвердити</button>
                                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Скасувати</button>
