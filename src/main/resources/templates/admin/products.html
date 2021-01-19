@@ -134,6 +134,10 @@
                                                     <th class="nk-tb-col tb-col-md"><span class="sub-text">Артикул</span></th>
                                                     <th class="nk-tb-col tb-col-md"><span class="sub-text">Ціна</span></th>
                                                     <th class="nk-tb-col tb-col-lg"><span class="sub-text">Статус</span></th>
+                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Опис</span></th>
+                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Сезон</span></th>
+                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Тип</span></th>
+                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Розміри</span></th>
                                                     <th class="nk-tb-col"><span class="sub-text" style="text-align: right; padding-right: 2rem;">Дії</span></th>
                                                 </tr>
                                                 </thead>
@@ -157,6 +161,18 @@
                                                     <td class="nk-tb-col tb-col-lg">
                                                         <span class="tb-status text-success" th:if="${p?.getStatusOfEntity()?.name()?.equals('ACTIVE')}">Active</span>
                                                         <span class="tb-status text-danger" th:if="${p?.getStatusOfEntity()?.name()?.equals('ARCHIVED')}">Archive</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-lg">
+                                                        <span th:text="${p.getDescription()}"></span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-lg">
+                                                        <span th:text="${p.getSeason()}"></span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-lg">
+<!--                                                        <span th:text="${p.getXXXXXXXXXXXX()}"></span>-->
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-lg">
+                                                        <span th:text="${p.getSizes()}"></span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1">
