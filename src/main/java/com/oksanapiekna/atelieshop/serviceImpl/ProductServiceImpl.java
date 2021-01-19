@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
     public Product save(Product product, MultipartFile multipartFile,String[] sizes) {
         if(multipartFile!=null && product!=null){
             try {
-                if(sizes.length>0){
+                if(sizes!=null && sizes.length>0){
                     product.setSizes(Arrays.toString(sizes));
                 }
                 product.setImg(multipartFile.getBytes());

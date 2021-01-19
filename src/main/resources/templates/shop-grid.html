@@ -61,10 +61,11 @@
                     </select>
                   </div>
                 </div>
+
                 <div class="row justify-content-sm-center row-70">
-                  <div class="col-md-6 col-xl-4">
+                  <div class="col-md-6 col-xl-4" th:each="pr : ${products}">
                     <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-300x400.jpg" alt="" width="300" height="400"/>
+                      <div class="product-img-wrap"><img th:src="@{'/shop/getImgByProductId/'+${pr.getId()}}" alt="" width="300" height="400"/>
                         <div class="product-label-wrap"><span class="featured">Featured</span></div>
                       </div>
                       <div class="product-caption">
@@ -74,155 +75,15 @@
                           <li><a href="#">Sport</a></li>
                           <li><a href="#">Women</a></li>
                         </ul>
-                        <h6 class="product-title"><a href="/singleProduct">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
-                        <p class="product-price"><span>48</span>
+                        <h6 class="product-title"><a th:href="@{'/singleProduct/'+${pr.getId()}}" th:text="${pr.getName()}">Product name</a></h6>
+                        <p class="product-price"><span th:text="${pr.getPrice()}">price</span>
                         </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6 col-xl-4">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/ASOS-Sculpt-Me-Premium-Jeans-in-Clean-Black-300x400.jpg" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span class="new">New</span></div>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Men</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Sport</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a href="/singleProduct">ASOS ‘Sculpt Me’ Premium Jeans in Clean Black</a></h6>
-                        <p class="product-price"><span>45</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-xl-4">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/ASOS-70s-Metal-Round-With-Flash-Flat-Lens_2-300x400.jpg" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span class="sale">Sale</span></div>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Men</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a href="/singleProduct">ASOS 70s Metal Round With Flash Flat Lens</a></h6>
-                        <p class="product-price sale-price"><span>45</span><span>56</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 2 row-->
-                  <div class="col-md-6 col-xl-4">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/ASOS-Cat-Eye-Sunglasses_2-300x400.jpg" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span></span></div>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Accessories</a></li>
-                          <li><a href="#">Men</a></li>
-                          <li><a href="#">Sport</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a href="/singleProduct">ASOS Cat Eye Sunglasses</a></h6>
-                        <p class="product-price"><span>36</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-xl-4">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/ASOS-Denim-Shrunken-Jacket-In-Washed-Black_1-300x400.jpg" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span></span></div>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Accessories</a></li>
-                          <li><a href="#">Sport</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a href="/singleProduct">ASOS Denim Shrunken Jacket In Washed</a></h6>
-                        <p class="product-price"><span>16</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-xl-4">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/ASOS-Patch-Pocket-Woven-Shorts-300x400.jpg" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span></span></div>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Accessories</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Sport</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a href="/singleProduct">ASOS Patch Pocket Woven Shorts</a></h6>
-                        <p class="product-price"><span>44</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 3 row-->
-                  <div class="col-md-6 col-xl-4">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/Boopacks-Mini-Boo-Backpack-300x400.jpg" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span></span></div>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Accessories</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Sport</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a href="/singleProduct">Boopacks Mini Boo Backpack</a></h6>
-                        <p class="product-price"><span>34</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-xl-4">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/Calvin-Klein-Iron-Strength-Bralette-300x400.jpg" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span></span></div>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Accessories</a></li>
-                          <li><a href="#">Sport</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a href="/singleProduct">Calvin Klein Iron Strength Bralette</a></h6>
-                        <p class="product-price"><span>32</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-xl-4">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img src="images/Cheap-Monday-Drift-High-Rise-Skinny-Ankle-Kick-Jeans_1-300x400.jpg" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span></span></div>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Accessories</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Sport</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a href="/singleProduct">Cheap Monday Drift High Rise Skinny Ankle Kick Jeans</a></h6>
-                        <p class="product-price"><span>65</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
+
               </div>
               <!-- Pagination-->
               <div class="section-md">

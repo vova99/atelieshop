@@ -1,11 +1,18 @@
 package com.oksanapiekna.atelieshop.controllers;
 
+import com.oksanapiekna.atelieshop.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
+    private ProductService productService;
+
+    public MainController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @GetMapping("/")
     public String getIndex(Model model){
         model.addAttribute("activeLink","index");
@@ -14,6 +21,7 @@ public class MainController {
 
     @GetMapping("/shop")
     public String getShop(Model model){
+        model.addAttribute("products",productService.findAll());
         model.addAttribute("activeLink","shop");
         return "shop-grid";
     }
