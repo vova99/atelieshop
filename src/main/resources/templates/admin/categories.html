@@ -415,6 +415,9 @@
             
             console.log("row id:" + $(trObj).attr('id'));
 
+            let typeName =   $(trObj).find('td:eq(1)').text();
+
+            $('#editSubcategoryItemName').val(typeName);
             $('#selectedForEditItem').val(trId);
 
             $('#editSubcategoryItemModal').modal('show');
