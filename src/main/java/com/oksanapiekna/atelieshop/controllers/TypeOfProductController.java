@@ -22,7 +22,7 @@ public class TypeOfProductController {
     @GetMapping("/allTypes")
     private String getAll(Model model,String categoryName){
         model.addAttribute("types",typeOfProductService.findAll());
-        if(categoryName.isEmpty()) {
+        if(categoryName==null) {
             model.addAttribute("tabName", "CLOTHES");
         }else {
             model.addAttribute("tabName", categoryName);

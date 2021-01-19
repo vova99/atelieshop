@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -25,9 +26,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product save(Product product, MultipartFile multipartFile) {
+    public Product save(Product product, MultipartFile multipartFile,String[] sizes) {
         if(multipartFile!=null && product!=null){
             try {
+                if(sizes.length>0){
+                    product.setSizes(Arrays.toString(sizes));
+                }
                 product.setImg(multipartFile.getBytes());
                 product.setImgName(multipartFile.getOriginalFilename());
                 product.setImgType(multipartFile.getContentType());

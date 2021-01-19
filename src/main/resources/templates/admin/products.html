@@ -169,7 +169,7 @@
                                                         <span th:text="${p.getSeason()}"></span>
                                                     </td>
                                                     <td class="nk-tb-col tb-col-lg">
-<!--                                                        <span th:text="${p.getXXXXXXXXXXXX()}"></span>-->
+                                                        <span th:text="${p?.getTypeOfProduct()?.getName()}"></span>
                                                     </td>
                                                     <td class="nk-tb-col tb-col-lg">
                                                         <span th:text="${p.getSizes()}"></span>
@@ -251,7 +251,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="productDescription">Опис</label>
                                     <div class="form-control-wrap">
-                                        <textarea class="form-control" id="productDescription" placeholder="Введіть текст..." name="descriprion"></textarea>
+                                        <textarea class="form-control" id="productDescription" placeholder="Введіть текст..." name="description"></textarea>
                                     </div>
                                 </div>
 
@@ -290,23 +290,22 @@
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Тип</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.name">
-                                                <option value="default_option">Не вибрано</option>
-                                                <option value="option_select_name">Option select name</option>
-                                                <option value="option_select_name">Option select name</option>
+                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.id">
+                                                <option th:each="t :${types}" th:value="${t.getId()}" th:text="${t.getName()}"
+                                                        th:if="${t.getCategory().name().equals('CLOTHES')}"></option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options" >
-                                                <option value="option_select_name">44</option>
-                                                <option value="option_select_name">46</option>
-                                                <option value="option_select_name">48</option>
-                                                <option value="option_select_name">50</option>
-                                                <option value="option_select_name">52</option>
-                                                <option value="option_select_name">54</option>
+                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options" name="sizes">
+                                                <option value="44">44</option>
+                                                <option value="46">46</option>
+                                                <option value="48">48</option>
+                                                <option value="50">50</option>
+                                                <option value="52">52</option>
+                                                <option value="54">54</option>
                                             </select>
                                         </div>
                                     </div>
@@ -327,23 +326,22 @@
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Тип</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.name">
-                                                <option value="default_option">Не вибрано</option>
-                                                <option value="option_select_name">Option select name</option>
-                                                <option value="option_select_name">Option select name</option>
+                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.id">
+                                                <option th:each="t :${types}" th:value="${t.getId()}" th:text="${t.getName()}"
+                                                th:if="${t.getCategory().name().equals('SHOES')}"></option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options">
-                                                <option value="option_select_name">36</option>
-                                                <option value="option_select_name">37</option>
-                                                <option value="option_select_name">38</option>
-                                                <option value="option_select_name">39</option>
-                                                <option value="option_select_name">40</option>
-                                                <option value="option_select_name">41</option>
+                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options" name="sizes">
+                                                <option value="36">36</option>
+                                                <option value="37">37</option>
+                                                <option value="38">38</option>
+                                                <option value="39">39</option>
+                                                <option value="40">40</option>
+                                                <option value="41">41</option>
                                             </select>
                                         </div>
                                     </div>
@@ -443,17 +441,16 @@
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Тип</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg">
-                                                <option value="default_option">Не вибрано</option>
-                                                <option value="option_select_name">Option select name</option>
-                                                <option value="option_select_name">Option select name</option>
+                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.id">
+                                                <option th:each="t :${types}" th:value="${t.getId()}" th:text="${t.getName()}"
+                                                        th:if="${t.getCategory().name().equals('CLOTHES')}"></option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options">
+                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options" name="sizes">
                                                 <option value="option_select_name">40</option>
                                                 <option value="option_select_name">42</option>
                                                 <option value="option_select_name">44</option>
@@ -484,10 +481,9 @@
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Тип</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg">
-                                                <option value="default_option">Не вибрано</option>
-                                                <option value="option_select_name">Option select name</option>
-                                                <option value="option_select_name">Option select name</option>
+                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.id">
+                                                <option th:each="t :${types}" th:value="${t.getId()}" th:text="${t.getName()}"
+                                                        th:if="${t.getCategory().name().equals('SHOES')}"></option>
                                             </select>
                                         </div>
                                     </div>

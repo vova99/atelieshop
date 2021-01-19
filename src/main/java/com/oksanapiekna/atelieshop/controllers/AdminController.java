@@ -1,26 +1,27 @@
 package com.oksanapiekna.atelieshop.controllers;
 
 import com.oksanapiekna.atelieshop.entity.Product;
-import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
 import com.oksanapiekna.atelieshop.service.ProductService;
-import org.hibernate.annotations.FetchProfile;
+import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.annotation.MultipartConfig;
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private TypeOfProductService typeOfProductService;
 
     @GetMapping("/")
     public String getAdminIndex(Model model){
@@ -29,13 +30,15 @@ public class AdminController {
 
     @GetMapping("/products")
     public String getAdminProducts(Model model){
+        model.addAttribute("types",typeOfProductService.findAll());
         model.addAttribute("products",productService.findAll());
         return "admin/products";
     }
 
     @PostMapping("/addProduct")
-    public String addProducts(@RequestParam MultipartFile multipartFile, Product product){
-        productService.save(product,multipartFile);
+    public String addProducts(@RequestParam MultipartFile multipartFile, Product product,String[] sizes){
+        System.out.println(Arrays.toString(sizes));
+        productService.save(product,multipartFile,sizes);
         return "redirect:/admin/products";
     }
 
@@ -49,13 +52,6 @@ public class AdminController {
     public String deleteProductById(int productId){
         productService.deleteByID(productId);
         return "redirect:/admin/products";
-    }
-
-//    Categories
-    @GetMapping("/categories")
-    public String getAdminCategories(Model model){
-    //        model.addAttribute("categories",productService.findAll());
-        return "admin/categories";
     }
 
 }
