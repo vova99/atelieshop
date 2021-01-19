@@ -412,7 +412,6 @@
         function showEditProductTypeModal(btnObj){
             let trObj = btnObj.closest("tbody tr");
             let trId =  $(trObj).attr('id');
-            
             console.log("row id:" + $(trObj).attr('id'));
 
             let typeName =   $(trObj).find('td:eq(0)').text();

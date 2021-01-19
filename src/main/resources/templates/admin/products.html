@@ -397,21 +397,21 @@
                                                 <span class="overline-title">UAH</span>
                                             </div>
                                             <label class="form-label" for="editProductPrice">Ціна</label>
-                                            <input type="text" class="form-control" id="editProductPrice" placeholder="Input placeholder">
+                                            <input type="text" class="form-control" id="editProductPrice" placeholder="Не заповнено...">
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Категорія</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" id="mainCategories2">
-                                                <option value="clothes">Одяг</option>
-                                                <option value="shoes">Взуття</option>
+                                            <select class="form-select form-control form-control-lg" id="mainCategoriesEdit">
+                                                <option value="CLOTHES">Одяг</option>
+                                                <option value="SHOES">Взуття</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Одяг start -->
-                                <div class="form-group row mb-md-0" id="clothesDetails">
+                                <div class="form-group row mb-md-0" id="clothesDetailsEdit">
                                     <div class="col-12 form-group">
                                         <label class="form-label">Сезон</label>
                                         <div class="form-control-wrap">
@@ -452,7 +452,7 @@
                                 </div>
                                 <!-- Одяг end -->
                                 <!-- Взуття start-->
-                                <div class="form-group row mb-md-0" id="shoesDetails" style="display: none;">
+                                <div class="form-group row mb-md-0" id="shoesDetailsEdit" style="display: none;">
                                     <div class="col-12 form-group">
                                         <label class="form-label">Сезон</label>
                                         <div class="form-control-wrap">
@@ -583,12 +583,27 @@
 
         console.log("OS: "+optionSelected+"\nSV: "+selectedValue);
 
-        if (selectedValue === "clothes"){
+        if (selectedValue === "CLOTHES"){
             $('#clothesDetails').show();
             $('#shoesDetails').hide();
-        }else if (selectedValue === "shoes"){
+        }else if (selectedValue === "SHOES"){
             $('#clothesDetails').hide();
             $('#shoesDetails').show();
+        }
+    });
+
+    $('#mainCategoriesEdit').on('change', function (e) {
+        let optionSelected = $("option:selected", this);
+        let selectedValue = this.value;
+
+        console.log("OS: "+optionSelected+"\nSV: "+selectedValue);
+
+        if (selectedValue === "CLOTHES"){
+            $('#clothesDetailsEdit').show();
+            $('#shoesDetailsEdit').hide();
+        }else if (selectedValue === "SHOES"){
+            $('#clothesDetailsEdit').hide();
+            $('#shoesDetailsEdit').show();
         }
     });
 
