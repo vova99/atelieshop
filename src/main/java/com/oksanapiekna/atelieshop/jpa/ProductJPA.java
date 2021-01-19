@@ -10,4 +10,9 @@ import java.util.List;
 public interface ProductJPA extends JpaRepository<Product,Integer> {
     @Query("select obj from Product obj where obj.statusOfEntity=?1")
     List<Product> findByStatus(StatusOfEntity status);
+
+
+    List<Product> getByStatusOfEntity(StatusOfEntity status);
+
+
 }
