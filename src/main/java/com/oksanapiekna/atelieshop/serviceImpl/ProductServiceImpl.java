@@ -46,6 +46,37 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product update(Product product, MultipartFile multipartFile, String[] sizes) {
+        if(product!=null){
+            Product productDB = productJPA.getOne(product.getId());
+
+            productDB.setName(product.getName());
+            productDB.setArticle(product.getArticle());
+            productDB.setDescription(product.getDescription());
+            productDB.setCategory(product.getCategory());
+            productDB.setSeason(product.getSeason());
+            productDB.setPrice(product.getPrice());
+            productDB.setTypeOfProduct(product.getTypeOfProduct());
+
+            if(sizes!=null && sizes.length>0){
+                product.setSizes(Arrays.toString(sizes));
+            }
+            if(multipartFile!=null){
+                try {
+                    product.setImg(multipartFile.getBytes());
+                    product.setImgName(multipartFile.getOriginalFilename());
+                    product.setImgType(multipartFile.getContentType());
+                    return productJPA.save(product);
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
     public Product findById(int id) {
         return productJPA.getOne(id);
     }

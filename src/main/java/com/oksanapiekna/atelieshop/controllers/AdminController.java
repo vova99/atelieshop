@@ -37,8 +37,13 @@ public class AdminController {
 
     @PostMapping("/addProduct")
     public String addProducts(@RequestParam MultipartFile multipartFile, Product product,String[] sizes){
-        System.out.println(Arrays.toString(sizes));
         productService.save(product,multipartFile,sizes);
+        return "redirect:/admin/products";
+    }
+
+    @PostMapping("/editProduct")
+    public String editProduct(@RequestParam MultipartFile multipartFile, Product product,String[] sizes){
+        productService.update(product,multipartFile,sizes);
         return "redirect:/admin/products";
     }
 
