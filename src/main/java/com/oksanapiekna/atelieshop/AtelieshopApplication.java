@@ -1,6 +1,5 @@
 package com.oksanapiekna.atelieshop;
 
-import com.oksanapiekna.atelieshop.viberBot.ViberBotConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

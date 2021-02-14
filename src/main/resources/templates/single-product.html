@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
     <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" th:href="@{https://fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic}">
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
   </head>
   <body>
@@ -44,49 +44,22 @@
           <div class="row row-fix row-60">
             <div class="col-md-6 col-lg-5">
               <!-- Slick Carousel-->
-              <div class="slick-slider carousel-parent" data-arrows="false" data-loop="false" data-dots="false" data-swipe="true" data-items="1" data-child="#child-carousel" data-for="#child-carousel" data-lightgallery="group">
-                <div class="item"><a class="img-thumbnail-variant-2" href="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-535x714.jpg" data-lightgallery="item">
-                    <figure><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-535x714.jpg" alt="" width="535" height="714"/>
+              <div class="item"><a class="img-thumbnail-variant-2" th:href="@{|/shop/getImgByProductId/${product.getId()}|}" data-lightgallery="item">
+                    <figure><img th:src="@{|/shop/getImgByProductId/${product.getId()}|}" alt="" width="535" height="714"/>
                     </figure>
                     <div class="caption"><span class="icon novi-icon icon-lg linear-icon-magnifier"></span></div></a>
-                </div>
-                <div class="item"><a class="img-thumbnail-variant-2" href="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-1-535x714.jpg" data-lightgallery="item">
-                    <figure><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-1-535x714.jpg" alt="" width="535" height="714"/>
-                    </figure>
-                    <div class="caption"><span class="icon novi-icon icon-lg linear-icon-magnifier"></span></div></a>
-                </div>
-                <div class="item"><a class="img-thumbnail-variant-2" href="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-3-535x714.jpg" data-lightgallery="item">
-                    <figure><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-3-535x714.jpg" alt="" width="535" height="714"/>
-                    </figure>
-                    <div class="caption"><span class="icon novi-icon icon-lg linear-icon-magnifier"></span></div></a>
-                </div>
-                <div class="item"><a class="img-thumbnail-variant-2" href="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-2-535x714.jpg" data-lightgallery="item">
-                    <figure><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-2-535x714.jpg" alt="" width="535" height="714"/>
-                    </figure>
-                    <div class="caption"><span class="icon novi-icon icon-lg linear-icon-magnifier"></span></div></a>
-                </div>
-              </div>
-              <div class="slick-slider" id="child-carousel" data-for=".carousel-parent" data-arrows="true" data-loop="false" data-dots="false" data-swipe="true" data-items="3" data-xs-items="4" data-sm-items="4" data-md-items="4" data-lg-items="4" data-xl-items="5" data-slide-to-scroll="1">
-                <div class="item"><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-89x120.jpg" alt="" width="89" height="120"/>
-                </div>
-                <div class="item"><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap_1-89x120.jpg" alt="" width="89" height="120"/>
-                </div>
-                <div class="item"><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap_3-89x120.jpg" alt="" width="89" height="120"/>
-                </div>
-                <div class="item"><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap_2-89x120.jpg" alt="" width="89" height="120"/>
-                </div>
               </div>
             </div>
             <div class="col-md-6 col-lg-7">
               <div class="product-single">
                 <p class="product-stock">В наявності</p>
-                <h4 th:text="${product.getName()}">Product Name</h4>
-                <p class="product-price"><span th:text="${product.getPrice()}">Price</span></p>
-                <p class="product-text" th:text="${product.getDescription()}">Product description</p>
+                <h4 th:text="${product?.getName()}">Product Name</h4>
+                <p class="product-price"><span th:text="${product?.getPrice()}">Price</span></p>
+                <p class="product-text" th:text="${product?.getDescription()}">Product description</p>
                 <div class="form-wrap product-select">
                   <!--Select 2-->
                   <select class="form-input select-filter" data-placeholder="Size" data-minimum-results-for-search="Infinity">
-                    <option>Size</option>
+                    <option th:each="s :${product.getSizes()}" th:value="${s}" th:text="${s}"></option>
                     <option value="2">XS</option>
                     <option value="3">S</option>
                     <option value="4">M</option>
@@ -134,49 +107,6 @@
                 </ul>
               </div>
             </div>
-<!--            <div class="col-sm-12">-->
-<!--              &lt;!&ndash; Bootstrap tabs&ndash;&gt;-->
-<!--              <div class="tabs-custom tabs-horizontal" id="tabs-1">-->
-<!--                &lt;!&ndash; Nav tabs&ndash;&gt;-->
-<!--                <ul class="nav nav-custom nav-custom-tabs nav-custom__align-left">-->
-<!--                  <li class="nav-item"><a class="nav-link" href="#tabs-1-1" data-toggle="tab">ОПИС</a></li>-->
-<!--                  <li class="nav-item"><a class="nav-link" href="#tabs-1-2" data-toggle="tab">ДОДАТКОВА ІНФОРМАЦІЯ</a></li>-->
-<!--                </ul>-->
-<!--              </div>-->
-<!--              <div class="tab-content text-left">-->
-<!--                <div class="tab-pane fade" id="tabs-1-1">-->
-<!--                  <h5>Опис</h5>-->
-<!--                  <p>Fashion has always been so temporary and uncertain. You can’t keep up with it.  This social phenomenon is very whimsical, thus we as the consumers always try to stay in touch with all the latest fashion tendencies. Obviously there is nothing wrong about it because fashion satisfies our willingness to be attractive. And also fashion is the detector of prosperity and social rank. So, our natural desire to wear fashionable clothes has many reasons such as historical, social and others. Therefore being fashionable costs a lot of money. But nowadays fashion is not such unavailable as it was a couple of centuries ago. We are lucky to have an opportunity to buy qualitative, fashionable and affordable clothes.</p>-->
-<!--                </div>-->
-<!--                <div class="tab-pane fade" id="tabs-1-2">-->
-<!--                  <h5>Додаткова інформація</h5>-->
-<!--                  <table class="table-product-info">-->
-<!--                    <tbody>-->
-<!--                      <tr>-->
-<!--                        <td>brand</td>-->
-<!--                        <td>Gola Exclusive</td>-->
-<!--                      </tr>-->
-<!--                      <tr>-->
-<!--                        <td>manufacturer</td>-->
-<!--                        <td>China</td>-->
-<!--                      </tr>-->
-<!--                      <tr>-->
-<!--                        <td>occasion</td>-->
-<!--                        <td>Casual</td>-->
-<!--                      </tr>-->
-<!--                      <tr>-->
-<!--                        <td>season</td>-->
-<!--                        <td>Winter/Autumn</td>-->
-<!--                      </tr>-->
-<!--                      <tr>-->
-<!--                        <td>wash</td>-->
-<!--                        <td>Machine wash</td>-->
-<!--                      </tr>-->
-<!--                    </tbody>-->
-<!--                  </table>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
           </div>
         </div>
       </section>
@@ -190,164 +120,23 @@
           <h5>Пов'язані продукти</h5>
           <!-- Owl Carousel-->
           <div class="owl-carousel carousel-product" data-autoplay="true" data-items="1" data-md-items="2" data-lg-items="3" data-xl-items="4" data-stage-padding="0" data-loop="false" data-margin="50" data-mouse-drag="false" data-nav="true">
-            <div class="item">
+            <div class="item" th:each="pr : ${allProducts}">
               <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span class="featured">Featured</span></div>
+                <div class="product-img-wrap"><img th:src="@{|/shop/getImgByProductId/${pr.getId()}|}" alt="" width="300" height="400"/>
                 </div>
                 <div class="product-caption">
                   <ul class="product-categories">
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Shoes</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Women</a></li>
+                    <li th:each="type : ${pr.getTypeOfProduct()}">
+                      <a href="#" th:text="${type.getName()}">Accessories</a>
+                    </li>
                   </ul>
-                  <h6 class="product-title"><a href="single-product.html">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
-                  <p class="product-price"><span>48</span>
+                  <h6 class="product-title"><a th:href="@{'/singleProduct/'+${pr.getId()}}" th:text="${pr.getName()}">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
+                  <p class="product-price"><span th:text="${pr.getPrice()}">48</span>
                   </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/ASOS-Sculpt-Me-Premium-Jeans-in-Clean-Black-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span class="new">New</span></div>
-                </div>
-                <div class="product-caption">
-                  <ul class="product-categories">
-                    <li><a href="#">Men</a></li>
-                    <li><a href="#">Shoes</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Women</a></li>
-                  </ul>
-                  <h6 class="product-title"><a href="single-product.html">ASOS ‘Sculpt Me’ Premium Jeans in Clean Black</a></h6>
-                  <p class="product-price"><span>45</span>
-                  </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/ASOS-70s-Metal-Round-With-Flash-Flat-Lens_2-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span class="sale">Sale</span></div>
-                </div>
-                <div class="product-caption">
-                  <ul class="product-categories">
-                    <li><a href="#">Men</a></li>
-                    <li><a href="#">Women</a></li>
-                  </ul>
-                  <h6 class="product-title"><a href="single-product.html">ASOS 70s Metal Round With Flash Flat Lens</a></h6>
-                  <p class="product-price sale-price"><span>45</span><span>56</span>
-                  </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/ASOS-Cat-Eye-Sunglasses_2-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span></span></div>
-                </div>
-                <div class="product-caption">
-                  <ul class="product-categories">
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Men</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Women</a></li>
-                  </ul>
-                  <h6 class="product-title"><a href="single-product.html">ASOS Cat Eye Sunglasses</a></h6>
-                  <p class="product-price"><span>36</span>
-                  </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/ASOS-Denim-Shrunken-Jacket-In-Washed-Black_1-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span></span></div>
-                </div>
-                <div class="product-caption">
-                  <ul class="product-categories">
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Women</a></li>
-                  </ul>
-                  <h6 class="product-title"><a href="single-product.html">ASOS Denim Shrunken Jacket In Washed</a></h6>
-                  <p class="product-price"><span>16</span>
-                  </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/ASOS-Patch-Pocket-Woven-Shorts-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span></span></div>
-                </div>
-                <div class="product-caption">
-                  <ul class="product-categories">
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Shoes</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Women</a></li>
-                  </ul>
-                  <h6 class="product-title"><a href="single-product.html">ASOS Patch Pocket Woven Shorts</a></h6>
-                  <p class="product-price"><span>44</span>
-                  </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/Boopacks-Mini-Boo-Backpack-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span></span></div>
-                </div>
-                <div class="product-caption">
-                  <ul class="product-categories">
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Shoes</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Women</a></li>
-                  </ul>
-                  <h6 class="product-title"><a href="single-product.html">Boopacks Mini Boo Backpack</a></h6>
-                  <p class="product-price"><span>34</span>
-                  </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/Calvin-Klein-Iron-Strength-Bralette-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span></span></div>
-                </div>
-                <div class="product-caption">
-                  <ul class="product-categories">
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Women</a></li>
-                  </ul>
-                  <h6 class="product-title"><a href="single-product.html">Calvin Klein Iron Strength Bralette</a></h6>
-                  <p class="product-price"><span>32</span>
-                  </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="product product-grid">
-                <div class="product-img-wrap"><img src="images/Cheap-Monday-Drift-High-Rise-Skinny-Ankle-Kick-Jeans_1-300x400.jpg" alt="" width="300" height="400"/>
-                  <div class="product-label-wrap"><span></span></div>
-                </div>
-                <div class="product-caption">
-                  <ul class="product-categories">
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Shoes</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Women</a></li>
-                  </ul>
-                  <h6 class="product-title"><a href="single-product.html">Cheap Monday Drift High Rise Skinny Ankle Kick Jeans</a></h6>
-                  <p class="product-price"><span>65</span>
-                  </p><a class="button-primary button button-icon button-icon-left" href="single-product.html"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -357,7 +146,7 @@
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
+    <script th:src="@{/js/core.min.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
   </body>
 </html>
