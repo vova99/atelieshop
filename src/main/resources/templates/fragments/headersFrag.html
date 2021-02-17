@@ -29,7 +29,7 @@
                     </div>
                     <ul class="rd-navbar-items-list ">
                         <li>
-                            <div class="rd-navbar-fixed__element-1"><a class="icon novi-icon icon-md linear-icon-cart link-gray-4" th:classappend="(${activeLink?.equals('cart')})?'link-gray-1':'link-gray-4'" href="/cart">2</a></div>
+                            <div class="rd-navbar-fixed__element-1"><a class="icon novi-icon icon-md linear-icon-cart link-gray-4" th:classappend="(${activeLink?.equals('cart')})?'link-gray-1':'link-gray-4'" href="/cart" th:text="${(order?.getOrderDetails()?.size()>0)?order?.getOrderDetails()?.size():''}">2</a></div>
                         </li>
                     </ul>
                     <!-- </div> -->
@@ -105,7 +105,7 @@
 
                     <ul class="rd-navbar-items-list ">
                         <li>
-                            <div class="rd-navbar-fixed__element-1"><a class="icon novi-icon icon-md linear-icon-cart" th:classappend="(${activeLink?.equals('cart')})?'link-gray-1':'link-gray-4'" href="/cart">2</a></div>
+                            <div class="rd-navbar-fixed__element-1"><a class="icon novi-icon icon-md linear-icon-cart" th:classappend="(${activeLink?.equals('cart')})?'link-gray-1':'link-gray-4'" href="/cart" th:text="${(order?.getOrderDetails()?.size()>0)?order?.getOrderDetails()?.size():''}">2</a></div>
                         </li>
                     </ul>
                 </div>

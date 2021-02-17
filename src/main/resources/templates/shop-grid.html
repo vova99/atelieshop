@@ -77,7 +77,7 @@
                         </ul>
                         <h6 class="product-title"><a th:href="@{'/singleProduct/'+${pr.getId()}}" th:text="${pr.getName()}">Product name</a></h6>
                         <p class="product-price"><span th:text="${pr.getPrice()}">price</span>
-                        </p><a class="button-primary button button-icon button-icon-left" href="/singleProduct"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
+                        </p><a class="button-primary button button-icon button-icon-left" th:href="@{'/addToCart/'+${pr.getId()}}"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
                       </div>
                     </div>
                   </div>

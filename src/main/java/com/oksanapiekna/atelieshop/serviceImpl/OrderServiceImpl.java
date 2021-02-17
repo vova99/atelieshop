@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -19,13 +20,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void save(OrderInfo orderInfo) {
-        orderJPA.save(orderInfo);
+    public OrderInfo save(OrderInfo orderInfo)
+    {
+        return orderJPA.save(orderInfo);
     }
 
     @Override
-    public OrderInfo findById(int id) {
-        return orderJPA.getOne(id);
+    public OrderInfo findById(UUID id) {
+        return orderJPA.findById(id).orElse(null);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void deleteByID(int id) {
+    public void deleteByID(UUID id) {
         orderJPA.deleteById(id);
     }
 }

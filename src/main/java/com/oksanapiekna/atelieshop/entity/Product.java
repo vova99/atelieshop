@@ -29,11 +29,8 @@ public class Product {
 
     private String sizes;
 
-    @ManyToMany
-    @JoinTable(name = "products_orders",
-            joinColumns = @JoinColumn(name = "productList"),
-            inverseJoinColumns = @JoinColumn(name = "orders"))
-    private List<OrderInfo> orders;
+    @OneToMany(mappedBy = "product")
+    private List<OrderDetails> orderDetails;
 
     @ManyToOne
     private TypeOfProduct typeOfProduct;

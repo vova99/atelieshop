@@ -52,43 +52,26 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="table-cart-remove-item"><span class="icon novi-icon icon-sm linear-icon-cross2 icon-gray-4"></span></td>
+                <tr th:each="pr : ${order.getOrderDetails()}" th>
+                  <td class="table-cart-remove-item">
+                    <a th:href="@{'/deleteFromCart/'+${pr.getProduct().getId()}}">
+                      <span class="icon novi-icon icon-sm linear-icon-cross2 icon-gray-4"></span>
+                    </a>
+                  </td>
                   <td style="min-width: 330px">
                     <div class="unit flex-row unit-spacing-md align-items-center">
-                      <div class="unit-left"><img src="images/adidas-Originals-Trefoil-Logo-Snapback-Trucker-Cap-141x188.jpg" alt="" width="141" height="188"/>
+                      <div class="unit-left"><img th:src="@{'/shop/getImgByProductId/'+${pr.getProduct().getId()}}" alt="" width="141" height="188"/>
                       </div>
                       <div class="unit-body">
-                        <h6><a class="thumbnail-classic-title" href="single-product.html">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
+                        <h6><a class="thumbnail-classic-title" th:href="@{'/singleProduct/'+${pr.getProduct().getId()}}" th:text="${pr.getProduct().getName()}">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div class="product-price"><span>45</span></div>
+                    <div class="product-price"><span th:text="${pr.getProduct().getPrice()}">45</span></div>
                   </td>
                   <td>
-                    <input class="form-input" type="number" data-zeros="true" value="1" min="1" max="20">
-                  </td>
-                  <td>
-                    <div class="product-price"><span>45</span></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="table-cart-remove-item"><span class="icon novi-icon icon-sm linear-icon-cross2 icon-gray-4"></span></td>
-                  <td style="min-width: 330px">
-                    <div class="unit flex-row unit-spacing-md align-items-center">
-                      <div class="unit-left"><img src="images/ASOS-Sculpt-Me-Premium-Jeans-in-Clean-Black-141x188.jpg" alt="" width="141" height="188"/>
-                      </div>
-                      <div class="unit-body">
-                        <h6><a class="thumbnail-classic-title" href="single-product.html">ASOS ‘Sculpt Me’ Premium Jeans in Clean Black</a></h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="product-price"><span>45</span></div>
-                  </td>
-                  <td>
-                    <input class="form-input" type="number" data-zeros="true" value="1" min="1" max="20">
+                    <input class="form-input" type="number" data-zeros="true" th:value="${pr.getCount()}" min="1" max="20">
                   </td>
                   <td>
                     <div class="product-price"><span>45</span></div>

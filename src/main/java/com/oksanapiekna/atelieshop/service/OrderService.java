@@ -4,11 +4,12 @@ import com.oksanapiekna.atelieshop.entity.OrderInfo;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface OrderService {
-    void save(OrderInfo orderInfo);
-    OrderInfo findById(int id);
+    OrderInfo save(OrderInfo orderInfo);
+    OrderInfo findById(UUID id);
     List<OrderInfo> findAll();
     List<OrderInfo> findByStatus(StatusOfEntity status);
-    void deleteByID(int id);
+    void deleteByID(UUID id);
 }
