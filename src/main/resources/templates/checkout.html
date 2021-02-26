@@ -38,58 +38,35 @@
           </div>
         </div>
       </section>
-
       <!-- Forms-->
+      <form class="" th:action="@{/submitOrder}" method="post">
       <section class="section novi-bg novi-bg-img section-md bg-default">
         <div class="container">
           <!-- Accordion-->
           <div id="accordion4" role="tablist">
 
           <!-- RD Mailform-->
-          <form class="rd-mailform text-left row row-50">
+          <div class="rd-mailform text-left row row-50">
             <div class="col-md-6 col-lg-4">
               <h5>Дані замовника</h5>
               <div class="form-wrap">
-                <input class="form-input" id="contact-last-name" type="text" name="name" data-constraints="@Required">
-                <label class="form-label" for="contact-name">Прізвище *</label>
-              </div>
-              <div class="form-wrap">
                 <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
-                <label class="form-label" for="contact-last-name">Ім'я *</label>
-              </div>
-              <div class="form-wrap">
-                <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
-                <label class="form-label" for="contact-email">E-mail *</label>
+                <label class="form-label" for="contact-name">Ім'я *</label>
               </div>
               <div class="form-wrap">
                 <input class="form-input" id="contact-phone" type="text" name="phone" data-constraints="@Numeric @Required">
                 <label class="form-label" for="contact-phone">Телефон *</label>
               </div>
-              <div class="form-wrap">
-                <input class="form-input" id="address" type="text" name="name" data-constraints="">
-                <label class="form-label" for="address">Вулиця</label>
-              </div>
-              <div class="form-wrap">
-                <input class="form-input" id="address-2" type="text" name="name">
-                <label class="form-label" for="address-2">Квартира/будинок</label>
-              </div>
-              <div class="form-wrap">
-                <input class="form-input" id="city" type="text" name="name" data-constraints="">
-                <label class="form-label" for="city">Місто</label>
-              </div>
-              <div class="form-wrap">
-                <input class="form-input" id="postcode" type="text" name="name" data-constraints="">
-                <label class="form-label" for="postcode">Поштовий код</label>
-              </div>
             </div>
             <div class="col-md-6 col-lg-8">
               <h5>Додаткова інформація</h5>
               <div class="form-wrap">
-                <textarea class="form-input" id="contact-message" name="message" data-constraints=""></textarea>
+                <textarea class="form-input" id="contact-message" name="description" data-constraints=""></textarea>
                 <label class="form-label" for="contact-message">Повідомлення...</label>
               </div>
             </div>
-          </form>
+          </div>
+          </div>
         </div>
       </section>
       <section>
@@ -109,30 +86,26 @@
                   <thead>
                     <tr>
                       <th>Товар</th>
+                      <th>Кількість</th>
                       <th>Сума</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr th:each="pr : ${order.getOrderDetails()}" >
                       <td>
-                        <h6><a class="thumbnail-classic-title" href="single-product.html">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
+                        <h6><a class="thumbnail-classic-title" th:href="@{|/singleProduct/${pr.getProduct().getId()}|}" th:text="${pr.getProduct().getName()}">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
                       </td>
                       <td>
-                        <div class="product-price"><span>45</span></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <h6><a class="thumbnail-classic-title" href="single-product.html">ASOS ‘Sculpt Me’ Premium Jeans in Clean Black</a></h6>
+                        <div class="product-caption"><span th:text="${pr.getCount()}">45</span></div>
                       </td>
                       <td>
-                        <div class="product-price"><span>45</span></div>
+                        <div class="product-price"><span th:text="${pr.getProduct().getPrice()*pr.getCount()}">45</span></div>
                       </td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td class="text-md-right" colspan="2">
+                      <td class="text-md-right" colspan="3">
                         <dl class="heading-5 list-terms-minimal">
                           <dt>До сплати</dt>
                           <dd>$90</dd>
@@ -160,7 +133,7 @@
           </div>
         </div>
       </section>
-
+      </form>
       <!-- Page Footer-->
       <div th:replace="~{fragments/footersFrag.html :: mainFooter}"></div>
 

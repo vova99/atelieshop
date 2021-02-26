@@ -26,6 +26,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public OrderInfo submitOrder(OrderInfo order, String name, String phone, String description) {
+        order.setNameOfClient(name);
+        order.setPhone(phone);
+        order.setDescription(description);
+        order.setStatusOfEntity(StatusOfEntity.SUBMITTED);
+
+
+        return save(order);
+    }
+
+    @Override
     public OrderInfo findById(UUID id) {
         return orderJPA.findById(id).orElse(null);
     }

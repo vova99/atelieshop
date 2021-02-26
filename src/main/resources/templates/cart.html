@@ -41,18 +41,20 @@
 
       <section class="section novi-bg novi-bg-img section-lg bg-default">
         <div class="container">
-          <div class="table-responsive">
-            <table class="table-cart">
-              <thead>
+          <form th:action="@{/checkout}" method="post">
+            <div class="table-responsive">
+
+              <table class="table-cart">
+                <thead>
                 <tr>
                   <th colspan="2">Замовлення</th>
                   <th>Ціна</th>
                   <th>Кількість</th>
                   <th>Разом</th>
                 </tr>
-              </thead>
-              <tbody>
-                <tr th:each="pr : ${order.getOrderDetails()}" th>
+                </thead>
+                <tbody>
+                <tr th:each="pr, i : ${order.getOrderDetails()}" th>
                   <td class="table-cart-remove-item">
                     <a th:href="@{'/deleteFromCart/'+${pr.getProduct().getId()}}">
                       <span class="icon novi-icon icon-sm linear-icon-cross2 icon-gray-4"></span>
@@ -71,29 +73,28 @@
                     <div class="product-price"><span th:text="${pr.getProduct().getPrice()}">45</span></div>
                   </td>
                   <td>
-                    <input class="form-input" type="number" data-zeros="true" th:value="${pr.getCount()}" min="1" max="20">
+                    <input class="form-input" type="number" data-zeros="true" th:value="${pr.getCount()}" min="1" max="20" name="count">
+                    <input type="hidden"  th:value="${pr.getId()}" name="id">
                   </td>
                   <td>
-                    <div class="product-price"><span>45</span></div>
+                    <div class="product-price"><span th:text="${pr.getProduct().getPrice()*pr.getCount()}">45</span></div>
                   </td>
                 </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="row row-fix row-50 text-center">
-            <div class="col-sm-12">
-              <div class="text-md-right">
-                <!-- <dl class="list-terms-minimal">
-                  <dt>До оплати</dt>
-                  <dd>$90</dd>
-                </dl> -->
-                <dl class="heading-5 list-terms-minimal">
-                  <dt>До сплати</dt>
-                  <dd>$90</dd>
-                </dl><a class="button button-primary" href="/checkout">Перейти до оформлення</a>
+                </tbody>
+              </table>
+            </div>
+            <div class="row row-fix row-50 text-center">
+              <div class="col-sm-12">
+                <div class="text-md-right">
+                  <dl class="heading-5 list-terms-minimal">
+                    <dt>До оплати</dt>
+                    <dd>$90</dd>
+                  </dl>
+                  <input class="button button-primary" type="submit" value="Перейти до оформлення">
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </section>
       <!-- Page Footer-->

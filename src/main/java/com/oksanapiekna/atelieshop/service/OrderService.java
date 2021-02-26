@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public interface OrderService {
     OrderInfo save(OrderInfo orderInfo);
+    OrderInfo submitOrder(OrderInfo order,String name, String phone, String description);
     OrderInfo findById(UUID id);
     List<OrderInfo> findAll();
     List<OrderInfo> findByStatus(StatusOfEntity status);

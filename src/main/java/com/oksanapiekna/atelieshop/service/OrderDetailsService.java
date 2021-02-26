@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public interface OrderDetailsService {
     OrderDetails save(OrderDetails orderDetails);
+    void save(List<Integer> id, List<Integer> count);
     OrderDetails update(OrderDetails orderDetails);
     OrderDetails addProductToOrder(UUID orderId, int productId);
     void deleteProductFromOrder(UUID orderId, int productId);

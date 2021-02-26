@@ -5,24 +5,26 @@ import com.oksanapiekna.atelieshop.entity.OrderInfo;
 import com.oksanapiekna.atelieshop.service.OrderDetailsService;
 import com.oksanapiekna.atelieshop.service.OrderService;
 import com.oksanapiekna.atelieshop.service.ProductService;
+import com.oksanapiekna.atelieshop.viberBot.ViberBotConfig;
+import com.oksanapiekna.atelieshop.viberBot.ViberListenerService;
 import lombok.AllArgsConstructor;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
 @AllArgsConstructor
 public class MainController {
-    private ProductService productService;
-    private OrderService orderService;
-    private OrderDetailsService orderDetailsService;
+    private final ProductService productService;
+    private final OrderService orderService;
+    private final OrderDetailsService orderDetailsService;
+    private final ViberListenerService viberListenerService;
 
 
     public void checkCheckCookie(String id,HttpServletResponse httpServletResponse,Model model){
@@ -58,6 +60,11 @@ public class MainController {
         model.addAttribute("activeLink","contacts");
         return "contacts";
     }
+    @PostMapping("/contacts")
+    public String getContact(String name, String phone, String description){
+        viberListenerService.sendForAll(name,phone,description);
+        return "redirect:/";
+    }
 
     @GetMapping("/cart")
     public String getCart(@CookieValue(value = "id", defaultValue = "") String username,Model model,HttpServletResponse httpServletResponse){
@@ -88,6 +95,27 @@ public class MainController {
         model.addAttribute("activeLink","cart");
         return "checkout";
     }
+
+    @PostMapping("/checkout")
+    public String postCheckout(@RequestParam List<Integer> count,@RequestParam List<Integer> id){
+        orderDetailsService.save(id,count);
+        return "redirect:/checkout";
+    }
+
+    @PostMapping("/submitOrder")
+    public String submitOrder(@CookieValue(value = "id", defaultValue = "") String username,Model model,HttpServletResponse httpServletResponse,
+                              String name, String phone, String description){
+        checkCheckCookie(username,httpServletResponse,model);
+        OrderInfo order = (OrderInfo) model.getAttribute("order");
+        order = orderService.submitOrder(order,name,phone,description);
+
+        viberListenerService.sendForAll(order);
+
+        Cookie cookie = new Cookie("id","");
+        httpServletResponse.addCookie(cookie);
+        return "redirect:/";
+    }
+
 
     @GetMapping("/pricing")
     public String getPricing(@CookieValue(value = "id", defaultValue = "") String username,Model model,HttpServletResponse httpServletResponse){

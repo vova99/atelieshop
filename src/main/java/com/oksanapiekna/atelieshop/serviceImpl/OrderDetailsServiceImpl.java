@@ -5,6 +5,7 @@ import com.oksanapiekna.atelieshop.jpa.OrderDetailsJPA;
 import com.oksanapiekna.atelieshop.service.OrderDetailsService;
 import com.oksanapiekna.atelieshop.service.OrderService;
 import com.oksanapiekna.atelieshop.service.ProductService;
+import com.oksanapiekna.atelieshop.viberBot.ViberBotConfig;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,19 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     @Override
     public OrderDetails save(OrderDetails orderDetails) {
         return detailsJPA.save(orderDetails);
+    }
+
+    @Override
+    public void save(List<Integer> id, List<Integer> count) {
+        if(id.size()==count.size()){
+            for(int i=0;i<id.size();i++){
+                OrderDetails orderDetails = findById(id.get(i));
+                if(orderDetails!=null){
+                    orderDetails.setCount(count.get(i));
+                    save(orderDetails);
+                }
+            }
+        }
     }
 
     @Override
@@ -59,9 +73,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 
     @Override
     public OrderDetails findByOrderInfoIdAndOrderByProductId(UUID orderId, int productId) {
-        OrderDetails orderDetails = detailsJPA.findByOrderInfoByProduct(orderId,productId);
-        System.out.println(orderDetails.getId());
-        return orderDetails;
+        return detailsJPA.findByOrderInfoByProduct(orderId,productId);
     }
 
     @Override

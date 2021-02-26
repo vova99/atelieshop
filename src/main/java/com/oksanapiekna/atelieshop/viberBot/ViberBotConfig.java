@@ -7,9 +7,13 @@ import com.google.common.util.concurrent.Uninterruptibles;
 import com.sun.istack.Nullable;
 import com.viber.bot.Request;
 import com.viber.bot.ViberSignatureValidator;
+import com.viber.bot.api.MessageDestination;
 import com.viber.bot.api.ViberBot;
+import com.viber.bot.event.callback.OnMessageReceived;
+import com.viber.bot.message.Message;
 import com.viber.bot.message.TextMessage;
 import com.viber.bot.profile.BotProfile;
+import com.viber.bot.profile.UserProfile;
 import fi.iki.elonen.NanoHTTPD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,21 +24,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
-//@Component
-public class ViberBotConfig extends NanoHTTPD {
-    @Autowired
-    private ViberListenerService viberListenerService;
 
-    private static final int PORT =15001;
+@Component
+public class ViberBotConfig extends NanoHTTPD {
+    private static final int PORT =8081;
 
     private static final String AUTH_TOKEN = "4cc3fede4d67de74-d83368003d5b2c32-db48269e48e4be64";
-    private static final String WEBHOOK_URL = "https://be7371825da3.ngrok.io";
-
+    private static final String WEBHOOK_URL = "https://3929295a7f79.ngrok.io";
 
     private final ViberBot bot;
     private final ViberSignatureValidator signatureValidator;
 
-    ViberBotConfig() throws IOException, ExecutionException, InterruptedException {
+    public ViberBotConfig(ViberListenerService viberListenerService) throws IOException, ExecutionException, InterruptedException {
         super(PORT);
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
 
@@ -43,16 +44,15 @@ public class ViberBotConfig extends NanoHTTPD {
 
 
         bot.setWebhook(WEBHOOK_URL).get();
-        bot.onMessageReceived((event, message, response) -> response.send(
-                viberListenerService.listen(message)
-        )); // echos everything back
+        bot.onMessageReceived(viberListenerService); // echos everything back
         bot.onConversationStarted(event -> Futures.immediateFuture(Optional.of(
-                new TextMessage("Hi " + event.getUser().getName()))));
+                new TextMessage("Привіт, " + event.getUser().getName()))));
     }
 
-    public static void init() throws IOException, ExecutionException, InterruptedException {
-        new ViberBotConfig();
+    public void sendMessage(MessageDestination messageDestination, Message message){
+        bot.sendMessage(messageDestination,message);
     }
+
 
     @Override
     public Response serve(final IHTTPSession session) {
