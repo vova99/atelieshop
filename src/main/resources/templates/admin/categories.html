@@ -25,53 +25,7 @@
     <!-- main @s -->
     <div class="nk-main ">
         <!-- sidebar @s -->
-        <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
-            <div class="nk-sidebar-element nk-sidebar-head">
-                <div class="nk-sidebar-brand">
-                    <a href="html/general/index.html" class="logo-link nk-sidebar-logo">
-                        <img class="logo-light logo-img" th:src="@{/admin/src/images/logo.png}" th:srcset="@{/admin/src/images/logo.png}" alt="logo">
-                        <img class="logo-dark logo-img" th:src="@{/admin/src/images/logo-dark.png}" th:srcset="@{/admin/src/images/logo-dark.png}" alt="logo-dark">
-                    </a>
-                </div>
-                <div class="nk-menu-trigger mr-n2">
-                    <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em
-                            class="icon ni ni-arrow-left"></em></a>
-                </div>
-            </div><!-- .nk-sidebar-element -->
-            <div class="nk-sidebar-element">
-                <div class="nk-sidebar-content">
-                    <div class="nk-sidebar-menu" data-simplebar>
-                        <ul class="nk-menu">
-                            <li class="nk-menu-item">
-                                <a href="orders.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span>
-                                    <span class="nk-menu-text">Замовлення</span>
-                                    <span class="nk-menu-badge">1</span>
-                                </a>
-                            </li><!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="/admin/products" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-microsoft"></em></span>
-                                    <span class="nk-menu-text">Товари</span>
-                                </a>
-                            </li><!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="/admin/categories" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-cards"></em></span>
-                                    <span class="nk-menu-text">Категорії</span>
-                                </a>
-                            </li><!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="users.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                    <span class="nk-menu-text">Клієнти</span>
-                                </a>
-                            </li><!-- .nk-menu-item -->
-                        </ul><!-- .nk-menu -->
-                    </div><!-- .nk-sidebar-menu -->
-                </div><!-- .nk-sidebar-content -->
-            </div><!-- .nk-sidebar-element -->
-        </div>
+        <div th:replace="~{fragments/fragAdminHeader.html}"></div>
         <!-- sidebar @e -->
 
         <!-- wrap @s -->

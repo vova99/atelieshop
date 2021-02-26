@@ -30,7 +30,7 @@ public class ViberBotConfig extends NanoHTTPD {
     private static final int PORT =8081;
 
     private static final String AUTH_TOKEN = "4cc3fede4d67de74-d83368003d5b2c32-db48269e48e4be64";
-    private static final String WEBHOOK_URL = "https://3929295a7f79.ngrok.io";
+    private static final String WEBHOOK_URL = "https://6c9926a738e8.ngrok.io";
 
     private final ViberBot bot;
     private final ViberSignatureValidator signatureValidator;
