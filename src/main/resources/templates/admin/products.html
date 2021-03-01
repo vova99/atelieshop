@@ -320,7 +320,7 @@
                         <div class="modal-body modal-body-md">
                             <h4 class="title">Редагування</h4>
                             <br>
-                            <form action="">
+                            <form action="" id="editProductModalForm">
                                 <input type="text" id="selectedForEditItem" hidden="" name="id">
                                 <div class="row form-group mb-md-0">
                                     <div class="col-md-6 form-group">
@@ -592,7 +592,7 @@
         $('#editProductDescription')        .val(description.trim());
         $('#selectClothesSeasonEdit')       .val(season.trim()).change();
         $('#selectClothesTypeEdit')         .val(type.trim()).change();
-        $('#selectClothesSizesEdit')        .val(size);
+        $('#selectClothesSizesEdit')        .val(size).change();
 
 
         $('#editProductModal').modal('show');
