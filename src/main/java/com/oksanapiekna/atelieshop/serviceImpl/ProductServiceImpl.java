@@ -2,6 +2,7 @@ package com.oksanapiekna.atelieshop.serviceImpl;
 
 import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
+import com.oksanapiekna.atelieshop.jpa.PageableProductJPA;
 import com.oksanapiekna.atelieshop.jpa.ProductJPA;
 import com.oksanapiekna.atelieshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,13 @@ import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-    private ProductJPA productJPA;
+    private final ProductJPA productJPA;
+    private final PageableProductJPA pageableProductJPA;
 
     @Autowired
-    public ProductServiceImpl(ProductJPA productJPA) {
+    public ProductServiceImpl(ProductJPA productJPA, PageableProductJPA pageableProductJPA) {
         this.productJPA = productJPA;
+        this.pageableProductJPA = pageableProductJPA;
     }
 
     @Override

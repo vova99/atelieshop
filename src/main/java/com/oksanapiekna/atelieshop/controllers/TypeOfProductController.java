@@ -19,7 +19,7 @@ public class TypeOfProductController {
     }
 
 
-    @GetMapping("/allTypes")
+    @GetMapping("/categories")
     private String getAll(Model model,String categoryName){
         model.addAttribute("types",typeOfProductService.findAll());
         if(categoryName==null) {
@@ -33,19 +33,19 @@ public class TypeOfProductController {
     @PostMapping("/addType")
     private String addType(String categoryName, String nameOfType){
         typeOfProductService.create(nameOfType,categoryName);
-        return "redirect:/admin/allTypes?categoryName="+categoryName;
+        return "redirect:/admin/categories?categoryName="+categoryName;
     }
 
     @PostMapping("/editType")
     private String editType(TypeOfProduct type){
         TypeOfProduct typeOfProduct = typeOfProductService.update(type);
-        return "redirect:/admin/allTypes?categoryName="+typeOfProduct.getCategory().name();
+        return "redirect:/admin/categories?categoryName="+typeOfProduct.getCategory().name();
     }
 
     @PostMapping("/deleteType")
     private String deleteType(int typeId){
         String name = typeOfProductService.findById(typeId).getCategory().name();
         typeOfProductService.deleteByID(typeId);
-        return "redirect:/admin/allTypes?categoryName="+name;
+        return "redirect:/admin/categories?categoryName="+name;
     }
 }

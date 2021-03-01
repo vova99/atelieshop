@@ -7,7 +7,6 @@
 <head>
     <!-- <base href="../"> -->
     <meta charset="utf-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Fav Icon  -->
     <link rel="shortcut icon" th:href="@{/admin/src/images/OP_ico.png}">
@@ -181,137 +180,31 @@
                     </div>
                 </div>
             </div>
-            <!-- Add subcategory item start -->
-            <div class="modal fade" tabindex="-1" role="dialog" id="addSubcategoryItemModal" aria-modal="true">
-                <div class="modal-dialog modal-md" role="document">
-                    <div class="modal-content">
-                        <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                        <div class="modal-body modal-body-sm">
-                            <form action="/admin/addType" method="post">
-                                <h4 class="title" id="addTypeModelTitle">Добавлення</h4>
-                                <input type="text" id="addSubcategoryItemCategory" hidden="" name="categoryName">
-                                <div class="form-group"  style="margin-top: 2rem;">
-                                    <label class="form-label" for="addSubcategoryItemName">Назва</label>
-                                    <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="addSubcategoryItemName" placeholder="Не заповнено..." name="nameOfType">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-outline-primary">Добавити</button>
-                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Скасувати</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Add subcategory item end -->
-            <!-- Edit subcategory item start -->
-            <div class="modal fade" tabindex="-1" role="dialog" id="editSubcategoryItemModal" aria-modal="true">
-                <div class="modal-dialog modal-md" role="document">
-                    <div class="modal-content">
-                        <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                        <div class="modal-body modal-body-sm">
-                            <form action="/admin/editType" method="post">
-                                <h4 class="title">Редагування</h4>
-                                <input type="number" id="selectedForEditItem" hidden="" name="id">
-                                <div class="form-group"  style="margin-top: 2rem;">
-                                    <label class="form-label" for="editSubcategoryItemName">Назва</label>
-                                    <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="editSubcategoryItemName" placeholder="Не заповнено..." name="name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-outline-primary">Зберегти</button>
-                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Скасувати</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Edit subcategory item end -->
-            <!-- Delete subcategory item start -->
-            <div class="modal fade" tabindex="-1" role="dialog" id="deleteSubcategoryItemModal" aria-modal="true">
-                <div class="modal-dialog modal-md" role="document">
-                    <div class="modal-content">
-                        <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                        <div class="modal-body modal-body-sm">
-                            <h4 class="title">Видалення</h4>
-                            <br>
-                            <form action="/admin/deleteType" method="post">
-                                <input type="text" id="selectedForDeleteItem" hidden="" name="typeId">
-                                <p style="margin-bottom: 2rem;">Ви впеанені, що хочете видалити тип? Підтвердивши дію, ви не зможете повернутися до попереднього стану.</p>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-outline-primary">Підтвердити</button>
-                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Скасувати</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Delete subcategory item end -->
+          
 
 
-
-                <!-- content @e -->
-                <!-- footer @s -->
-                <div class="nk-footer">
-                    <div class="container-fluid">
-                        <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2020 Oksana Piekna</a>
-                            </div>
+            <!-- content @e -->
+            <!-- footer @s -->
+            <div class="nk-footer">
+                <div class="container-fluid">
+                    <div class="nk-footer-wrap">
+                        <div class="nk-footer-copyright"> &copy; 2020 Oksana Piekna</a>
                         </div>
                     </div>
                 </div>
-                <!-- footer @e -->
             </div>
-            <!-- wrap @e -->
+            <!-- footer @e -->
         </div>
-        <!-- main @e -->
+        <!-- wrap @e -->
     </div>
-    <!-- app-root @e -->
-    <!-- JavaScript -->
-    <script th:src="@{/admin/src/assets/js/bundle.js}"></script>
-    <script th:src="@{/admin/src/assets/js/scripts.js}"></script>
-    <script th:src="@{/admin/src/assets/js/example-sweetalert.js}"></script>
-    <script>
-        function addClothesType(){
-            $('#addSubcategoryItemCategory').val("CLOTHES");
-            $('#addTypeModelTitle').text('Додати тип одягу');
-            $('#addSubcategoryItemModal').modal('show');
-        }
-        function addShoesType(){
-            $('#addSubcategoryItemCategory').val("SHOES");
-            $('#addTypeModelTitle').text('Додати тип взуття');
-            $('#addSubcategoryItemModal').modal('show');
-        }
-        function showEditProductTypeModal(btnObj){
-            let trObj = btnObj.closest("tbody tr");
-            let trId =  $(trObj).attr('id');
-            
-            console.log("row id:" + $(trObj).attr('id'));
+    <!-- main @e -->
+</div>
+<!-- app-root @e -->
+<!-- JavaScript -->
+<script th:src="@{/admin/src/assets/js/bundle.js}"></script>
+<script th:src="@{/admin/src/assets/js/scripts.js}"></script>
+<script th:src="@{/admin/src/assets/js/example-sweetalert.js}"></script>
 
-            let typeName =   $(trObj).find('td:eq(0)').text();
-            console.log($(trObj).find('td:eq(0)').text());
-
-            $('#editSubcategoryItemName').val(typeName);
-            $('#selectedForEditItem').val(trId);
-
-            $('#editSubcategoryItemModal').modal('show');
-        }
-        function showConfirmationDeleteProductTypeModal(btnObj){
-            let trObj = btnObj.closest("tbody tr");
-            let trId =  $(trObj).attr('id');
-            
-            console.log("row id:" + $(trObj).attr('id'));
-
-            $('#selectedForDeleteItem').val(trId);
-
-            $('#deleteSubcategoryItemModal').modal('show');
-        }
-    </script>
 </body>
 
 </html>
