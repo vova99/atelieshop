@@ -89,10 +89,9 @@
                                                     <div class="form-text-hint">
                                                         <span class="overline-title">UUID</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="default-05" placeholder="Input placeholder">
+                                                    <input type="text" th:value="${viberToken}" class="form-control" id="default-05" placeholder="Input placeholder">
                                                 </div>
-                                                <a href="#" class="btn btn-primary" style="margin-top: 1.2rem">Empty</a>
-                                                <a href="#" class="btn btn-primary" style="margin-top: 1.2rem">Згенерувати новий</a>
+                                                <a href="/admin/getNewViberToken" class="btn btn-primary" style="margin-top: 1.2rem">Згенерувати новий</a>
                                             </div>
                                         </div>
                                     </div><!-- .card-preview -->
@@ -102,8 +101,6 @@
                     </div>
                 </div>
             </div>
-          
-
 
             <!-- content @e -->
             <!-- footer @s -->
