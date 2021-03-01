@@ -27,7 +27,13 @@ public class Product {
     private String imgName;
 
 
-    private String sizes;
+    @ManyToMany
+    @JoinTable(
+            name = "product_size",
+            joinColumns = @JoinColumn(name = "product", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "size",referencedColumnName = "id")
+    )
+    private List<Size>  sizes;
 
     @OneToMany(mappedBy = "product")
     private List<OrderDetails> orderDetails;

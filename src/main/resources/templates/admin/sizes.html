@@ -107,9 +107,9 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr th:each="t, c : ${types}" th:id="${t.getId()}" th:if="${t.getCategory().name().equals('CLOTHES')}">
+                                                        <tr th:each="t, c : ${sizes}" th:id="${t.getId()}" th:if="${t.getCategory().name().equals('CLOTHES')}">
                                                             <th scope="row" th:text="${c.count}">1</th>
-                                                            <td th:text="${t.getName()}">Mark</td>
+                                                            <td th:text="${t.getSize()}">Mark</td>
                                                             <td class="nk-tb-col nk-tb-col-tools">
                                                                 <ul class="nk-tb-actions gx-1">
                                                                     <li>
@@ -145,9 +145,9 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr th:each="t, count : ${types}" th:id="${t.getId()}" th:if="${t.getCategory().name().equals('SHOES')}">
+                                                        <tr th:each="t, count : ${sizes}" th:id="${t.getId()}" th:if="${t.getCategory().name().equals('SHOES')}">
                                                             <th scope="row" th:text="${count.count}">1</th>
-                                                            <td th:text="${t.getName()}">Mark</td>
+                                                            <td th:text="${t.getSize()}">Mark</td>
                                                             <td class="nk-tb-col nk-tb-col-tools">
                                                                 <ul class="nk-tb-actions gx-1">
                                                                     <li>
@@ -187,7 +187,7 @@
                     <div class="modal-content">
                         <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                         <div class="modal-body modal-body-sm">
-                            <form action="/admin/addType" method="post">
+                            <form action="/admin/addSize" method="post">
                                 <h4 class="title" id="addTypeModelTitle">Добавлення</h4>
                                 <input type="text" id="addSubcategoryItemCategory" hidden="" name="categoryName">
                                 <div class="form-group"  style="margin-top: 2rem;">
@@ -212,13 +212,13 @@
                     <div class="modal-content">
                         <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                         <div class="modal-body modal-body-sm">
-                            <form action="/admin/editType" method="post">
+                            <form action="/admin/editSize" method="post">
                                 <h4 class="title">Редагування</h4>
                                 <input type="number" id="selectedForEditItem" hidden="" name="id">
                                 <div class="form-group"  style="margin-top: 2rem;">
                                     <label class="form-label" for="editSubcategoryItemName">Розмір</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="editSubcategoryItemName" placeholder="Не заповнено..." name="name">
+                                        <input type="text" class="form-control" id="editSubcategoryItemName" placeholder="Не заповнено..." name="size">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -239,7 +239,7 @@
                         <div class="modal-body modal-body-sm">
                             <h4 class="title">Видалення</h4>
                             <br>
-                            <form action="/admin/deleteType" method="post">
+                            <form action="/admin/deleteSize" method="post">
                                 <input type="text" id="selectedForDeleteItem" hidden="" name="typeId">
                                 <p style="margin-bottom: 2rem;">Ви впеанені, що хочете видалити розмір? Підтвердивши дію, ви не зможете повернутися до попереднього стану.</p>
                                 <div class="form-group">

@@ -18,12 +18,14 @@ public class Size {
 
     private String size;
 
+    private Category category;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "product_sizes",
-//            inverseJoinColumns = @JoinColumn(name = "products", referencedColumnName = "id"),
-//            joinColumns = @JoinColumn(name = "sizes",referencedColumnName = "id")
-//    )
-//    private List<Product>  products;
+
+    @ManyToMany
+    @JoinTable(
+            name = "product_size",
+            inverseJoinColumns = @JoinColumn(name = "product", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "size",referencedColumnName = "id")
+    )
+    private List<Product>  products;
 }

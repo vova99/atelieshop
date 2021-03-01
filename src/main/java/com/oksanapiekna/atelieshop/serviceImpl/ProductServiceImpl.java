@@ -33,7 +33,8 @@ public class ProductServiceImpl implements ProductService {
         if(multipartFile!=null && product!=null){
             try {
                 if(sizes!=null && sizes.length>0){
-                    product.setSizes(Arrays.toString(sizes));
+                    // TODO: 01.03.2021 add array of size
+//                    product.setSizes(Arrays.toString(sizes));
                 }
                 product.setImg(multipartFile.getBytes());
                 product.setImgName(multipartFile.getOriginalFilename());
@@ -62,7 +63,8 @@ public class ProductServiceImpl implements ProductService {
             productDB.setTypeOfProduct(product.getTypeOfProduct());
 
             if(sizes!=null && sizes.length>0){
-                product.setSizes(Arrays.toString(sizes));
+                // TODO: 01.03.2021 add array of size
+//                product.setSizes(Arrays.toString(sizes));
             }
             if(multipartFile!=null){
                 try {
