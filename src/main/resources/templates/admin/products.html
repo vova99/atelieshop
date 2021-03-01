@@ -261,14 +261,7 @@
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options" name="sizes">
-                                                <option value="40">40</option>
-                                                <option value="42">42</option>
-                                                <option value="44">44</option>
-                                                <option value="46">46</option>
-                                                <option value="48">48</option>
-                                                <option value="50">50</option>
-                                                <option value="52">52</option>
-                                                <option value="54">54</option>
+                                                <option th:each="s : ${sizes}" th:if="${s.getCategory().name().equals('CLOTHES')}" th:value="${s.getId()}" th:text="${s.getSize()}"></option>
                                             </select>
                                         </div>
                                     </div>
@@ -302,13 +295,7 @@
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options" name="sizes">
-                                                <option value="36">36</option>
-                                                <option value="37">37</option>
-                                                <option value="38">38</option>
-                                                <option value="39">39</option>
-                                                <option value="40">40</option>
-                                                <option value="41">41</option>
-                                                <option value="42">42</option>
+                                                <option th:each="s : ${sizes}" th:if="${s.getCategory().name().equals('SHOES')}" th:value="${s.getId()}" th:text="${s.getSize()}"></option>
                                             </select>
                                         </div>
                                     </div>
@@ -419,14 +406,7 @@
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select" multiple="multiple" data-placeholder="Виберіть значення..." name="sizes" id="selectClothesSizesEdit">
-                                                <option value="40">40</option>
-                                                <option value="42">42</option>
-                                                <option value="44">44</option>
-                                                <option value="46">46</option>
-                                                <option value="48">48</option>
-                                                <option value="50">50</option>
-                                                <option value="52">52</option>
-                                                <option value="54">54</option>
+                                                <option th:each="s : ${sizes}" th:if="${s.getCategory().name().equals('CLOTHES')}" th:value="${s.getId()}" th:text="${s.getSize()}"></option>
                                             </select>
                                         </div>
                                     </div>
@@ -460,13 +440,7 @@
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select" multiple="multiple" data-placeholder="Виберіть значення..." id="selectShoesSizesEdit">
-                                                <option value="36">36</option>
-                                                <option value="37">37</option>
-                                                <option value="38">38</option>
-                                                <option value="39">39</option>
-                                                <option value="40">40</option>
-                                                <option value="41">41</option>
-                                                <option value="42">42</option>
+                                                <option th:each="s : ${sizes}" th:if="${s.getCategory().name().equals('SHOES')}" th:value="${s.getId()}" th:text="${s.getSize()}"></option>
                                             </select>
                                         </div>
                                     </div>
