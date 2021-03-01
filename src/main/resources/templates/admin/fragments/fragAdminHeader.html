@@ -2,7 +2,7 @@
 <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu" xmlns:th="http://www.thymeleaf.org">
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
-            <a href="html/general/index.html" class="logo-link nk-sidebar-logo">
+            <a href="#" class="logo-link nk-sidebar-logo">
                 <img class="logo-light logo-img" th:src="@{/admin/src/images/logo.png}" th:srcset="@{/admin/src/images/logo.png}" alt="logo">
                 <img class="logo-dark logo-img" th:src="@{/admin/src/images/logo-dark.png}" th:srcset="@{/admin/src/images/logo-dark.png}" alt="logo-dark">
             </a>
@@ -16,6 +16,12 @@
         <div class="nk-sidebar-content">
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
+                    <li class="nk-menu-item">
+                        <a href="/orders" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span>
+                            <span class="nk-menu-text">Замовлення</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
                         <a href="/admin/products" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-microsoft"></em></span>

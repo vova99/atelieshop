@@ -37,7 +37,7 @@
                             <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                         </div>
                         <div class="nk-header-brand d-xl-none">
-                            <a href="html/crypto/index.html" class="logo-link">
+                            <a href="#" class="logo-link">
                                 <img class="logo-light logo-img" th:src="@{/admin/src/images/logo.png}" th:srcset="@{/admin/src/images/logo.png}" alt="logo">
                                 <img class="logo-dark logo-img" th:src="@{/admin/src/images/logo-dark.png}" th:srcset="@{/admin/src/images/logo-dark.png}" alt="logo-dark">
                             </a>
@@ -89,10 +89,11 @@
                                                     <th class="nk-tb-col tb-col-md"><span class="sub-text">Артикул</span></th>
                                                     <th class="nk-tb-col tb-col-md"><span class="sub-text">Ціна</span></th>
                                                     <th class="nk-tb-col tb-col-lg"><span class="sub-text">Статус</span></th>
-                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Опис</span></th>
-                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Сезон</span></th>
-                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Тип</span></th>
-                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Розміри</span></th>
+                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Категорія</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Опис</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Сезон</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Тип</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Розміри</span></th>
                                                     <th class="nk-tb-col"><span class="sub-text" style="text-align: right; padding-right: 2rem;">Дії</span></th>
                                                 </tr>
                                                 </thead>
@@ -118,15 +119,18 @@
                                                         <span class="tb-status text-danger" th:if="${p?.getStatusOfEntity()?.name()?.equals('ARCHIVED')}">Archive</span>
                                                     </td>
                                                     <td class="nk-tb-col tb-col-lg">
+                                                        <span th:text="${p?.getCategory()?.name()}"></span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getDescription()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col tb-col-lg">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getSeason()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col tb-col-lg">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p?.getTypeOfProduct()?.getName()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col tb-col-lg">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getSizes()}"></span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
@@ -148,7 +152,6 @@
                                                         </ul>
                                                     </td>
                                                 </tr><!-- .nk-tb-item  -->
-
 
                                                 </tbody>
                                             </table>
@@ -180,7 +183,7 @@
                                         <label class="form-label" for="productImage">Зображення</label>
                                         <div class="form-control-wrap">
                                             <div class="custom-file">
-                                                <input type="file" multiple class="custom-file-input" id="productImage" name="multipartFile">
+                                                <input type="file" multiple class="custom-file-input" id="productImage" name="multipartFile" onchange="validateimg(this)">
                                                 <label class="custom-file-label" for="productImage"></label>
                                             </div>
                                         </div>
@@ -237,8 +240,11 @@
                                         <div class="form-control-wrap">
                                             <select class="form-select form-control form-control-lg" name="season">
                                                 <option value="default_option">Не вибрано</option>
-                                                <option value="option_select_name">Option select name</option>
-                                                <option value="option_select_name">Option select name</option>
+                                                <option value="spring">Весна</option>
+                                                <option value="summer">Літо</option>
+                                                <option value="autumn">Осінь</option>
+                                                <option value="winter">Зима</option>
+                                                <option value="demiseason">Демісезон</option>
                                             </select>
                                         </div>
                                     </div>
@@ -255,6 +261,8 @@
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options" name="sizes">
+                                                <option value="40">40</option>
+                                                <option value="42">42</option>
                                                 <option value="44">44</option>
                                                 <option value="46">46</option>
                                                 <option value="48">48</option>
@@ -273,8 +281,11 @@
                                         <div class="form-control-wrap">
                                             <select class="form-select form-control form-control-lg" name="season">
                                                 <option value="default_option">Не вибрано</option>
-                                                <option value="option_select_name">Option select name</option>
-                                                <option value="option_select_name">Option select name</option>
+                                                <option value="spring">Весна</option>
+                                                <option value="summer">Літо</option>
+                                                <option value="autumn">Осінь</option>
+                                                <option value="winter">Зима</option>
+                                                <option value="demiseason">Демісезон</option>
                                             </select>
                                         </div>
                                     </div>
@@ -297,6 +308,7 @@
                                                 <option value="39">39</option>
                                                 <option value="40">40</option>
                                                 <option value="41">41</option>
+                                                <option value="42">42</option>
                                             </select>
                                         </div>
                                     </div>
@@ -329,7 +341,7 @@
                                         <label class="form-label" for="editProductImage">Зображення</label>
                                         <div class="form-control-wrap">
                                             <div class="custom-file">
-                                                <input type="file" multiple class="custom-file-input" id="editProductImage">
+                                                <input type="file" multiple class="custom-file-input" id="editProductImage" onchange="validateimg(this)">
                                                 <label class="custom-file-label" for="editProductImage"></label>
                                             </div>
                                         </div>
@@ -384,19 +396,20 @@
                                     <div class="col-12 form-group">
                                         <label class="form-label">Сезон</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg">
+                                            <select class="form-select form-control form-control-lg" id="selectClothesSeasonEdit">
                                                 <option value="default_option">Не вибрано</option>
-                                                <option value="option_select_name">Весна</option>
-                                                <option value="option_select_name">Літо</option>
-                                                <option value="option_select_name">Осінь</option>
-                                                <option value="option_select_name">Зима</option>
+                                                <option value="spring">Весна</option>
+                                                <option value="summer">Літо</option>
+                                                <option value="autumn">Осінь</option>
+                                                <option value="winter">Зима</option>
+                                                <option value="demiseason">Демісезон</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Тип</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.id">
+                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.id" id="selectClothesTypeEdit">
                                                 <option th:each="t :${types}" th:value="${t.getId()}" th:text="${t.getName()}"
                                                         th:if="${t.getCategory().name().equals('CLOTHES')}"></option>
                                             </select>
@@ -405,15 +418,15 @@
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options" name="sizes">
-                                                <option value="option_select_name">40</option>
-                                                <option value="option_select_name">42</option>
-                                                <option value="option_select_name">44</option>
-                                                <option value="option_select_name">46</option>
-                                                <option value="option_select_name">48</option>
-                                                <option value="option_select_name">50</option>
-                                                <option value="option_select_name">52</option>
-                                                <option value="option_select_name">54</option>
+                                            <select class="form-select" multiple="multiple" data-placeholder="Виберіть значення..." name="sizes" id="selectClothesSizesEdit">
+                                                <option value="40">40</option>
+                                                <option value="42">42</option>
+                                                <option value="44">44</option>
+                                                <option value="46">46</option>
+                                                <option value="48">48</option>
+                                                <option value="50">50</option>
+                                                <option value="52">52</option>
+                                                <option value="54">54</option>
                                             </select>
                                         </div>
                                     </div>
@@ -424,19 +437,20 @@
                                     <div class="col-12 form-group">
                                         <label class="form-label">Сезон</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg">
+                                            <select class="form-select form-control form-control-lg" id="selectShoesSeasonEdit">
                                                 <option value="default_option">Не вибрано</option>
-                                                <option value="option_select_name">Весна</option>
-                                                <option value="option_select_name">Літо</option>
-                                                <option value="option_select_name">Осінь</option>
-                                                <option value="option_select_name">Зима</option>
+                                                <option value="spring">Весна</option>
+                                                <option value="summer">Літо</option>
+                                                <option value="autumn">Осінь</option>
+                                                <option value="winter">Зима</option>
+                                                <option value="demiseason">Демісезон</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Тип</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.id">
+                                            <select class="form-select form-control form-control-lg" name="typeOfProduct.id" id="selectShoesTypesEdit">
                                                 <option th:each="t :${types}" th:value="${t.getId()}" th:text="${t.getName()}"
                                                         th:if="${t.getCategory().name().equals('SHOES')}"></option>
                                             </select>
@@ -445,14 +459,14 @@
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Розміри</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select" multiple="multiple" data-placeholder="Select Multiple options">
-                                                <option value="option_select_name">36</option>
-                                                <option value="option_select_name">37</option>
-                                                <option value="option_select_name">38</option>
-                                                <option value="option_select_name">39</option>
-                                                <option value="option_select_name">40</option>
-                                                <option value="option_select_name">41</option>
-                                                <option value="option_select_name">42</option>
+                                            <select class="form-select" multiple="multiple" data-placeholder="Виберіть значення..." id="selectShoesSizesEdit">
+                                                <option value="36">36</option>
+                                                <option value="37">37</option>
+                                                <option value="38">38</option>
+                                                <option value="39">39</option>
+                                                <option value="40">40</option>
+                                                <option value="41">41</option>
+                                                <option value="42">42</option>
                                             </select>
                                         </div>
                                     </div>
@@ -581,14 +595,33 @@
 
         console.log("row id:" + $(trObj).attr('id'));
 
+        // let image =         $(trObj).find('td:eq(0) img').attr('src');
+        // console.log("img: "+image);
         let productName =   $(trObj).find('td:eq(1)').text();
         let article =       $(trObj).find('td:eq(2)').text();
         let price =         $(trObj).find('td:eq(3)').text();
+        let category =      $(trObj).find('td:eq(5)').text();
+        console.log("Category: "+category);
+        let description =   $(trObj).find('td:eq(6)').text();
+        let season =        $(trObj).find('td:eq(7)').text();
+        console.log("Season: "+season);
+        let type =          $(trObj).find('td:eq(8)').text();
+        console.log("Type: "+type);
+        let size =          $(trObj).find('td:eq(9)').text();
+        console.log("Sizes: "+size);
+
 
         $('#selectedForEditItem')           .val(trId);
+        // $('#editProductImage')              .val(image.toString());
         $('#editProductName')               .val(productName.trim());
         $('#editArticleNumber')             .val(article.trim());
         $('#editProductPrice')              .val(price.trim());
+        $('#mainCategoriesEdit')            .val(category.trim()).change();
+        $('#editProductDescription')        .val(description.trim());
+        $('#selectClothesSeasonEdit')       .val(season);
+        $('#selectClothesTypeEdit')         .val(type);
+        // $('#selectClothesSizesEdit')        .val(size);
+
 
         $('#editProductModal').modal('show');
     }
@@ -613,6 +646,43 @@
         $('#selectedForDeleteItem').val(trId);
 
         $('#deleteProductModal').modal('show');
+    }
+
+    function validateimg(ctrl) {
+        var fileUpload = ctrl;
+        var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
+        if (regex.test(fileUpload.value.toLowerCase())) {
+            if (typeof (fileUpload.files) != "undefined") {
+                var reader = new FileReader();
+                reader.readAsDataURL(fileUpload.files[0]);
+                reader.onload = function (e) {
+                    var image = new Image();
+                    image.src = e.target.result;
+                    image.onload = function () {
+                        let height = this.height;
+                        let width = this.width;
+                        let aspectRatio = width/height;
+                        if ((aspectRatio.toFixed(2)>0.60) && (aspectRatio.toFixed(2)<0.70)) {
+                            console.log("Asp rat: "+aspectRatio.toFixed(2));
+                            $("#productImage").val('');
+                            return false;
+                        }else{
+                            console.log("Asp rat: "+aspectRatio.toFixed(2));
+                            alert("Некоректне співвідношення сторін фотографії!");
+                            return true;
+                        }
+                    };
+                }
+            } else {
+                alert("Ваш браузер не підтримує HTML5.");
+                $("#productImage").val('');
+                return false;
+            }
+        } else {
+            alert("Недопустимий формат файлу.");
+            $("#productImage").val('');
+            return false;
+        }
     }
 
 </script>
