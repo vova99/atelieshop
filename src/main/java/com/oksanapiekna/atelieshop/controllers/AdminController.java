@@ -3,6 +3,8 @@ package com.oksanapiekna.atelieshop.controllers;
 import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.service.ProductService;
 import com.oksanapiekna.atelieshop.service.TypeOfProductService;
+import com.oksanapiekna.atelieshop.service.ViberTokenService;
+import com.oksanapiekna.atelieshop.viberBot.ViberListenerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ public class AdminController {
     private ProductService productService;
 
     @Autowired
+    private ViberTokenService viberTokenService;
+
+    @Autowired
     private TypeOfProductService typeOfProductService;
 
     @GetMapping("/")
@@ -31,6 +36,18 @@ public class AdminController {
         model.addAttribute("types",typeOfProductService.findAll());
         model.addAttribute("products",productService.findAll());
         return "admin/products";
+    }
+
+    @GetMapping("/viberInfo")
+    public String getViberInfo(Model model){
+        model.addAttribute("viberToken",viberTokenService.getToken());
+        return "admin/viberInfo";
+    }
+
+    @PostMapping("/viberInfo")
+    public String getNewToken(){
+        viberTokenService.generateNewToken();
+        return  "redirect:/admin/viberInfo";
     }
 
     @PostMapping("/addProduct")
