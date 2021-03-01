@@ -42,6 +42,11 @@ public class AdminController {
         return "admin/products";
     }
 
+    @GetMapping("/error")
+    public String getAdminError(Model model){
+        return "admin/error";
+    }
+
 
     @GetMapping("/viberInfo")
     public String getViberInfo(Model model){
