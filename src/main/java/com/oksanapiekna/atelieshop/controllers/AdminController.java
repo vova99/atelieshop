@@ -37,6 +37,11 @@ public class AdminController {
         return "admin/products";
     }
 
+    @GetMapping("/sizes")
+    public String getSizes(Model model){
+        return "admin/sizes";
+    }
+
     @GetMapping("/viberInfo")
     public String getViberInfo(Model model){
         model.addAttribute("viberToken",viberTokenService.getToken());
