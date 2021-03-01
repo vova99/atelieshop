@@ -41,6 +41,7 @@ public class Product {
     @ManyToOne
     private TypeOfProduct typeOfProduct;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @Enumerated(EnumType.STRING)
