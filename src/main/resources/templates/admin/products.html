@@ -90,10 +90,10 @@
                                                     <th class="nk-tb-col tb-col-md"><span class="sub-text">Ціна</span></th>
                                                     <th class="nk-tb-col tb-col-lg"><span class="sub-text">Статус</span></th>
                                                     <th class="nk-tb-col tb-col-lg"><span class="sub-text">Категорія</span></th>
-                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Опис</span></th>
-                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Сезон</span></th>
-                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Тип</span></th>
-                                                    <th class="nk-tb-col tb-col-lg"><span class="sub-text">Розміри</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Опис</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Сезон</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Тип</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Розміри</span></th>
                                                     <th class="nk-tb-col"><span class="sub-text" style="text-align: right; padding-right: 2rem;">Дії</span></th>
                                                 </tr>
                                                 </thead>
@@ -121,16 +121,16 @@
                                                     <td class="nk-tb-col tb-col-lg">
                                                         <span th:text="${p?.getCategory()?.name()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col tb-col-lg">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getDescription()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col tb-col-lg">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getSeason()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col tb-col-lg">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p?.getTypeOfProduct()?.getId()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col tb-col-lg">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getSizes()}"></span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
@@ -577,9 +577,11 @@
         let category =      $(trObj).find('td:eq(5)').text();
         let description =   $(trObj).find('td:eq(6)').text();
         let season =        $(trObj).find('td:eq(7)').text();
+        season = season.split(',')[0];
         let type =          $(trObj).find('td:eq(8)').text();
         console.log("Type: "+type);
         let size =          $(trObj).find('td:eq(9)').text();
+        size = size.replace(/[\[\]']+/g, '');
         console.log("Sizes: "+size);
 
 
@@ -592,8 +594,11 @@
         $('#editProductDescription')        .val(description.trim());
         $('#selectClothesSeasonEdit')       .val(season.trim()).change();
         $('#selectClothesTypeEdit')         .val(type.trim()).change();
-        $('#selectClothesSizesEdit')        .val(size).change();
-
+        $.each(size.split(","), function(i,e){
+            $("#selectClothesSizesEdit option[value='" + e.trim() + "']").prop("selected", true);
+            console.log("e: "+e.trim());
+        });
+        $('#selectClothesSizesEdit').change();
 
         $('#editProductModal').modal('show');
     }
