@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface ProductService {
     Product save(Product product);
-    Product save(Product product, MultipartFile multipartFile,String[] sizes);
-    Product update(Product product, MultipartFile multipartFile,String[] sizes);
+    Product save(Product product, MultipartFile multipartFile);
+    Product update(Product product, MultipartFile multipartFile);
     Product findById(int id);
     Product changeStatus(int id, boolean status);
     List<Product> findAll();

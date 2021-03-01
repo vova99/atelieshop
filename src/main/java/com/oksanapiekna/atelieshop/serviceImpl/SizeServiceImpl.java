@@ -2,7 +2,6 @@ package com.oksanapiekna.atelieshop.serviceImpl;
 
 import com.oksanapiekna.atelieshop.entity.Category;
 import com.oksanapiekna.atelieshop.entity.Size;
-import com.oksanapiekna.atelieshop.entity.TypeOfProduct;
 import com.oksanapiekna.atelieshop.jpa.SizeJPA;
 import com.oksanapiekna.atelieshop.service.SizeService;
 import lombok.AllArgsConstructor;

@@ -29,13 +29,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product save(Product product, MultipartFile multipartFile,String[] sizes) {
+    public Product save(Product product, MultipartFile multipartFile) {
         if(multipartFile!=null && product!=null){
             try {
-                if(sizes!=null && sizes.length>0){
-                    // TODO: 01.03.2021 add array of size
-//                    product.setSizes(Arrays.toString(sizes));
-                }
                 product.setImg(multipartFile.getBytes());
                 product.setImgName(multipartFile.getOriginalFilename());
                 product.setImgType(multipartFile.getContentType());
@@ -50,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(Product product, MultipartFile multipartFile, String[] sizes) {
+    public Product update(Product product, MultipartFile multipartFile) {
         if(product!=null){
             Product productDB = productJPA.getOne(product.getId());
 
@@ -61,11 +57,7 @@ public class ProductServiceImpl implements ProductService {
             productDB.setSeason(product.getSeason());
             productDB.setPrice(product.getPrice());
             productDB.setTypeOfProduct(product.getTypeOfProduct());
-
-            if(sizes!=null && sizes.length>0){
-                // TODO: 01.03.2021 add array of size
-//                product.setSizes(Arrays.toString(sizes));
-            }
+            productDB.setSizes(product.getSizes());
             if(multipartFile!=null){
                 try {
                     product.setImg(multipartFile.getBytes());
