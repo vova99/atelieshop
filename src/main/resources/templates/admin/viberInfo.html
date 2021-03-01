@@ -76,101 +76,23 @@
                             <div class="components-preview wide-md mx-auto">
                                 <div class="nk-block-head nk-block-head-lg wide-sm">
                                     <div class="nk-block-head-content">
-                                        <h3 class="nk-block-title fw-normal">Категорії</h3>
+                                        <h3 class="nk-block-title fw-normal">Viber</h3>
                                     </div>
                                 </div><!-- .nk-block-head -->
 
                                 <div class="nk-block nk-block-lg">
                                     <div class="card card-bordered card-preview">
                                         <div class="card-inner">
-                                            <ul class="nav nav-tabs mt-n3">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" th:classappend="(${tabName?.equals('CLOTHES')})?'active':''" data-toggle="tab"
-                                                       href="#clothesTab"><em
-                                                            class="icon ni ni-tags"></em><span>Одяг</span></a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" th:classappend="(${tabName?.equals('SHOES')})?'active':''" data-toggle="tab" href="#shoesTab"><em
-                                                            class="icon ni ni-tags-fill"></em><span>Взуття</span></a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content">
-                                                <div class="tab-pane" th:classappend="(${tabName?.equals('CLOTHES')})?'active':''" id="clothesTab">
-                                                    <h5>Типи одягу</h5>
-                                                    <table class="table table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Назва</th>
-                                                            <th scope="col" style="text-align: right; padding-right: 2rem;" >Дії</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr th:each="t, c : ${types}" th:id="${t.getId()}" th:if="${t.getCategory().name().equals('CLOTHES')}">
-                                                            <th scope="row" th:text="${c.count}">1</th>
-                                                            <td th:text="${t.getName()}">Mark</td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-toggle="modal" onclick="showEditProductTypeModal(this)"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
-                                                                                    <li><a data-toggle="modal" onclick="showConfirmationDeleteProductTypeModal(this)" ><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <a href="" data-toggle="modal" onclick="addClothesType()" title="Добавити"
-                                                       class="btn btn-icon btn-lg btn-primary float-right"
-                                                       style="position: fixed; bottom: 25px; right: 25px; z-index: 1000;">
-                                                        <em class="icon ni ni-grid-add-c"></em>
-                                                    </a>
+                                            <div class="form-group">
+                                                <label class="form-label" for="default-05">Ключ авторизації Viber</label>
+                                                <div class="form-control-wrap">
+                                                    <div class="form-text-hint">
+                                                        <span class="overline-title">UUID</span>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="default-05" placeholder="Input placeholder">
                                                 </div>
-                                                <div class="tab-pane" th:classappend="(${tabName?.equals('SHOES')})?'active':''" id="shoesTab">
-                                                    <h5>Типи взуття</h5>
-                                                    <table class="table table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Назва</th>
-                                                            <th scope="col" style="text-align: right; padding-right: 2rem;" >Дії</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr th:each="t, count : ${types}" th:id="${t.getId()}" th:if="${t.getCategory().name().equals('SHOES')}">
-                                                            <th scope="row" th:text="${count.count}">1</th>
-                                                            <td th:text="${t.getName()}">Mark</td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-toggle="modal" onclick="showEditProductTypeModal(this)"><em class="icon ni ni-edit-alt"></em><span>Редагувати</span></a></li>
-                                                                                    <li><a data-toggle="modal" onclick="showConfirmationDeleteProductTypeModal(this)" ><em class="icon ni ni-trash"></em><span>Видалити</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <a href="" data-toggle="modal" onclick="addShoesType()" title="Добавити"
-                                                       class="btn btn-icon btn-lg btn-primary float-right"
-                                                       style="position: fixed; bottom: 25px; right: 25px; z-index: 1000;">
-                                                        <em class="icon ni ni-grid-add-c"></em>
-                                                    </a>
-                                                </div>
+                                                <a href="#" class="btn btn-primary" style="margin-top: 1.2rem">Empty</a>
+                                                <a href="#" class="btn btn-primary" style="margin-top: 1.2rem">Згенерувати новий</a>
                                             </div>
                                         </div>
                                     </div><!-- .card-preview -->
