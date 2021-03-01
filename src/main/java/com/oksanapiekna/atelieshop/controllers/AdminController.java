@@ -2,6 +2,7 @@ package com.oksanapiekna.atelieshop.controllers;
 
 import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.service.ProductService;
+import com.oksanapiekna.atelieshop.service.SizeService;
 import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import com.oksanapiekna.atelieshop.service.ViberTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class AdminController {
     private ProductService productService;
 
     @Autowired
+    private SizeService sizeService;
+
+    @Autowired
     private ViberTokenService viberTokenService;
 
     @Autowired
@@ -33,6 +37,7 @@ public class AdminController {
     @GetMapping("/products")
     public String getAdminProducts(Model model){
         model.addAttribute("types",typeOfProductService.findAll());
+        model.addAttribute("sizes",sizeService.findAll());
         model.addAttribute("products",productService.findAll());
         return "admin/products";
     }
@@ -51,8 +56,10 @@ public class AdminController {
     }
 
     @PostMapping("/addProduct")
-    public String addProducts(@RequestParam MultipartFile multipartFile, Product product,String[] sizes){
-        productService.save(product,multipartFile,sizes);
+    public String addProducts(@RequestParam MultipartFile multipartFile, Product product){
+        System.out.println(product);
+        System.out.println(product.getSizes().size());
+//        productService.save(product,multipartFile,sizes);
         return "redirect:/admin/products";
     }
 
