@@ -320,7 +320,7 @@
                         <div class="modal-body modal-body-md">
                             <h4 class="title">Редагування</h4>
                             <br>
-                            <form action="">
+                            <form action="/admin/editProduct" method="post" enctype="multipart/form-data">
                                 <input type="text" id="selectedForEditItem" hidden="" name="id">
                                 <div class="row form-group mb-md-0">
                                     <div class="col-md-6 form-group">
@@ -328,7 +328,7 @@
                                         <label class="form-label" for="editProductImage">Зображення</label>
                                         <div class="form-control-wrap">
                                             <div class="custom-file">
-                                                <input type="file" multiple class="custom-file-input" id="editProductImage" onchange="validateimg(this)">
+                                                <input type="file" multiple class="custom-file-input" id="editProductImage" name="multipartFile" onchange="validateimg(this)">
                                                 <label class="custom-file-label" for="editProductImage"></label>
                                             </div>
                                         </div>

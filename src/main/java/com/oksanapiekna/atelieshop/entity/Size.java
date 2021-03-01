@@ -28,4 +28,9 @@ public class Size {
             joinColumns = @JoinColumn(name = "size",referencedColumnName = "id")
     )
     private List<Product>  products;
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
+    }
 }

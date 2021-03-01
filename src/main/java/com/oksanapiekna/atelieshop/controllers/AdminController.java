@@ -62,8 +62,7 @@ public class AdminController {
     }
 
     @PostMapping("/editProduct")
-    public String editProduct(@RequestParam MultipartFile multipartFile, Product product
-    ){
+    public String editProduct(@RequestParam MultipartFile multipartFile, Product product){
         productService.update(product,multipartFile);
         return "redirect:/admin/products";
     }
