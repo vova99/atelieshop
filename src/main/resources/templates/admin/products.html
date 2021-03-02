@@ -607,6 +607,14 @@
         let trObj = btnObj.closest("tbody tr");
         let trId =  $(trObj).attr('id');
 
+        let status = $(trObj).find('td:eq(4)').text();
+
+        if (status.trim()=="Active"){
+            $('#showItemSwitch').attr("checked", true);
+        }else if (status.trim()=="Archive") {
+            $('#showItemSwitch').attr("checked", false);
+        }
+
         console.log("row id:" + $(trObj).attr('id'));
 
         $('#selectedForChangingStatusItem') .val(trId);
