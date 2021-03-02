@@ -131,10 +131,9 @@
               <div class="section-md">
                 <h5>Розмір</h5>
                 <ul class="small list">
-                  <li><a href="#">2020 (9)</a></li>
-                  <li><a href="#">2019 (3)</a></li>
-                  <li><a href="#">2018 (5)</a></li>
-                  <li><a href="#">2017 (7)</a></li>
+                  <li th:each="s : ${sizes}">
+                    <a href="#" th:text="${s.getSize()}">2017 (7)</a>
+                  </li>
                 </ul>
               </div>
 
@@ -144,7 +143,7 @@
                 <!--RD Range-->
                 <div class="rd-range-wrap">
                   <div class="rd-range-inner"><span>Ціна: </span><span class="rd-range-input-value-1"></span><span>—</span><span class="rd-range-input-value-2"></span></div>
-                  <div class="rd-range" data-min="10" data-max="500" data-start="[75, 244]" data-step="1" data-tooltip="true" data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
+                  <div class="rd-range" data-min="10" data-max="500" th:data-start="'['+${minPrice}+','+${maxPrice}+']'" data-step="1" data-tooltip="true" data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
                 </div><a class="button button-gray-light-outline" href="#">Фільтрувати</a>
               </div>
 

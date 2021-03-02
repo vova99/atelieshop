@@ -1,16 +1,12 @@
 package com.oksanapiekna.atelieshop.controllers;
 
-import com.oksanapiekna.atelieshop.entity.OrderDetails;
+import com.oksanapiekna.atelieshop.entity.Category;
 import com.oksanapiekna.atelieshop.entity.OrderInfo;
+import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
-import com.oksanapiekna.atelieshop.service.OrderDetailsService;
-import com.oksanapiekna.atelieshop.service.OrderService;
-import com.oksanapiekna.atelieshop.service.ProductService;
-import com.oksanapiekna.atelieshop.service.TypeOfProductService;
-import com.oksanapiekna.atelieshop.viberBot.ViberBotConfig;
+import com.oksanapiekna.atelieshop.service.*;
 import com.oksanapiekna.atelieshop.viberBot.ViberListenerService;
 import lombok.AllArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,18 +23,22 @@ public class MainController {
     private final OrderService orderService;
     private final OrderDetailsService orderDetailsService;
     private final TypeOfProductService typeOfProductService;
+    private final SizeService sizeService;
     private final ViberListenerService viberListenerService;
 
 
     public void checkCheckCookie(String id,HttpServletResponse httpServletResponse,Model model){
-        if(id.isEmpty()){
-            OrderInfo order = new OrderInfo();
-            order = orderService.save(order);
-            httpServletResponse.addCookie(new Cookie("id", order.getId().toString()));
-            model.addAttribute("order",order);
-        }else {
-            model.addAttribute("order",orderService.findById(UUID.fromString(id)));
+        if(!id.isEmpty()) {
+            OrderInfo  orderInfo = orderService.findById(UUID.fromString(id));
+            if(orderInfo!=null) {
+                model.addAttribute("order", orderInfo);
+                return;
+            }
         }
+        OrderInfo order = new OrderInfo();
+        order = orderService.save(order);
+        httpServletResponse.addCookie(new Cookie("id", order.getId().toString()));
+        model.addAttribute("order",order);
     }
 
     @GetMapping("/")
@@ -49,11 +49,23 @@ public class MainController {
     }
 
     @GetMapping("/shop")
-    public String getShop(@CookieValue(value = "id", defaultValue = "") String username, Model model,HttpServletResponse httpServletResponse){
+    public String getShop(@CookieValue(value = "id", defaultValue = "") String username, Model model,HttpServletResponse httpServletResponse,String category){
         checkCheckCookie(username,httpServletResponse,model);
         System.out.println(username);
-        model.addAttribute("types",typeOfProductService.findAll());
-        model.addAttribute("products",productService.findByStatus(StatusOfEntity.ACTIVE));
+        List<Product> products = productService.findByStatus(StatusOfEntity.ACTIVE);
+        if(category!=null && category.toLowerCase().equals("clothes")) {
+            model.addAttribute("types", typeOfProductService.findByCategory(Category.CLOTHES));
+            model.addAttribute("sizes", sizeService.findByCategory(Category.CLOTHES));
+            model.addAttribute("products", productService.findByStatus(StatusOfEntity.ACTIVE));
+        }else{
+            model.addAttribute("types", typeOfProductService.findByCategory(Category.SHOES));
+            model.addAttribute("sizes", sizeService.findByCategory(Category.SHOES));
+            model.addAttribute("products", productService.findByStatus(StatusOfEntity.ACTIVE));
+        }
+        Product maxPrice = products.stream().max((o1, o2) -> (int) (o1.getPrice() - o2.getPrice())).orElse(new Product());
+        Product minPrice = products.stream().min((o1, o2) -> (int) (o1.getPrice() - o2.getPrice())).orElse(new Product());
+        model.addAttribute("maxPrice",maxPrice.getPrice());
+        model.addAttribute("minPrice",minPrice.getPrice());
         model.addAttribute("activeLink","shop");
         return "shop-grid";
     }

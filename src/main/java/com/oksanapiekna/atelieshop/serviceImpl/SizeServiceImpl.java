@@ -57,6 +57,11 @@ public class SizeServiceImpl implements SizeService {
     }
 
     @Override
+    public List<Size> findByCategory(Category category) {
+        return sizeJPA.findByCategory(category);
+    }
+
+    @Override
     public void deleteByID(int id) {
         sizeJPA.deleteById(id);
     }

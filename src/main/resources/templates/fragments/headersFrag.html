@@ -22,7 +22,7 @@
                     <div class="rd-navbar-nav-wrap">
                         <ul class="rd-navbar-nav">
                             <li class="rd-nav-item" th:classappend="${activeLink?.equals('index')}?'active':''"><a class="rd-nav-link" href="/">Головна</a></li>
-                            <li class="rd-nav-item" th:classappend="(${activeLink?.equals('shop')})?'active':''"><a class="rd-nav-link" href="/shop">Магазин</a></li>
+                            <li class="rd-nav-item" th:classappend="(${activeLink?.equals('shop')})?'active':''"><a class="rd-nav-link" href="/shop?category=clothes">Магазин</a></li>
                             <li class="rd-nav-item" th:classappend="(${activeLink?.equals('pricing')})?'active':''"><a class="rd-nav-link" href="/pricing">Оплата і доставка</a></li>
                             <li class="rd-nav-item" th:classappend="(${activeLink?.equals('contacts')})?'active':''"><a class="rd-nav-link" href="/contacts">Контакти</a></li>
                         </ul>
@@ -62,7 +62,7 @@
                                 <div class="container">
                                     <h2 data-caption-animate="fadeInUpSmall">Капсульні колекції одягу</h2>
                                     <h5 class="text-width-2 block-centered" data-caption-animate="fadeInUpSmall" data-caption-delay="200">Monstroid² aims to satisfy real needs of real projects. We've got a pack of useful tools for that.</h5>
-                                    <div class="group-lg group-middle"><a class="button button-primary" data-caption-animate="fadeInUpSmall" data-caption-delay="350" href="/shop">До магазину</a></div>
+                                    <div class="group-lg group-middle"><a class="button button-primary" data-caption-animate="fadeInUpSmall" data-caption-delay="350" href="/shop?category=clothes">До магазину</a></div>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                     <div class="rd-navbar-nav-wrap">
                         <ul class="rd-navbar-nav">
                             <li class="rd-nav-item" th:classappend="${activeLink?.equals('index')}?'active':''"><a class="rd-nav-link" href="/">Головна</a></li>
-                            <li class="rd-nav-item" th:classappend="(${activeLink?.equals('shop')})?'active':''"><a class="rd-nav-link" href="/shop">Магазин</a></li>
+                            <li class="rd-nav-item" th:classappend="(${activeLink?.equals('shop')})?'active':''"><a class="rd-nav-link" href="/shop?category=clothes">Магазин</a></li>
                             <li class="rd-nav-item" th:classappend="(${activeLink?.equals('pricing')})?'active':''"><a class="rd-nav-link" href="/pricing">Оплата і доставка</a></li>
                             <li class="rd-nav-item" th:classappend="(${activeLink?.equals('contacts')})?'active':''"><a class="rd-nav-link" href="/contacts">Контакти</a></li>
                         </ul>
