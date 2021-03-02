@@ -93,13 +93,13 @@
                   <tbody>
                     <tr th:each="pr : ${order.getOrderDetails()}" >
                       <td>
-                        <h6><a class="thumbnail-classic-title" th:href="@{|/singleProduct/${pr.getProduct().getId()}|}" th:text="${pr.getProduct().getName()}">Adidas Originals Trefoil Logo Snapback Trucker Cap</a></h6>
+                        <h6><a class="thumbnail-classic-title" th:href="@{|/singleProduct/${pr.getProduct().getId()}|}" th:text="${pr.getProduct().getName()}"></a></h6>
                       </td>
                       <td>
-                        <div class="product-caption"><span th:text="${pr.getCount()}">45</span></div>
+                        <div class="product-caption"><span th:text="${pr.getCount()}"></span></div>
                       </td>
                       <td>
-                        <div class="product-price"><span th:text="${pr.getProduct().getPrice()*pr.getCount()}">45</span></div>
+                        <div class="product-price"><span class="single-product-price" th:text="${pr.getProduct().getPrice()*pr.getCount()}"></span></div>
                       </td>
                     </tr>
                   </tbody>
@@ -107,8 +107,8 @@
                     <tr>
                       <td class="text-md-right" colspan="3">
                         <dl class="heading-5 list-terms-minimal">
-                          <dt>До сплати</dt>
-                          <dd>$90</dd>
+                          <dt>До оплати</dt>
+                          <dd id="checkoutSum">$90</dd>
                         </dl>
                       </td>
                     </tr>
@@ -143,5 +143,16 @@
     <!-- Javascript-->
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
+  <script>
+    $( document ).ready(function() {
+      let sum = 0.0;
+      $(".single-product-price").each(function() {
+        console.log($(this).html());
+        sum += parseFloat($(this).html().trim());
+      });
+      $('#checkoutSum').text("₴"+sum.toFixed(2));
+      console.log(sum);
+    });
+  </script>
   </body>
 </html>

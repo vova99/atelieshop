@@ -4992,8 +4992,15 @@ h3 + .card-custom-group-wrap {
 	color: #2ed3ae;
 }
 
-.product-price span:before {
-	content: "$";
+/*.product-price span:before {*/
+/*	content: "UAH";*/
+/*	display: inline-block;*/
+/*}*/
+
+.product-price span:after {
+	content: "UAH";
+	margin-left: 0.5rem;
+	font-size: 1.2rem;
 	display: inline-block;
 }
 
@@ -15813,8 +15820,15 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 	padding: 0 2px;
 }
 
-.rd-range-inner [class*='rd-range-input-value-']:before {
-	content: "$";
+/*.rd-range-inner [class*='rd-range-input-value-']:before {*/
+/*	content: "UAH";*/
+/*	display: inline-block;*/
+/*}*/
+
+.rd-range-inner [class*='rd-range-input-value-']:after {
+	content: "UAH";
+	margin-left: 0.5rem;
+	font-size: 1.5rem;
 	display: inline-block;
 }
 
