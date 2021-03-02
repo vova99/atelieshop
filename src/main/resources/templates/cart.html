@@ -54,7 +54,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="pr, i : ${order?.getOrderDetails()}" th>
+                <tr class="row-item" th:each="pr, i : ${order?.getOrderDetails()}" th:id="${pr.getProduct().getId()}">
                   <td class="table-cart-remove-item">
                     <a th:href="@{'/deleteFromCart/'+${pr.getProduct().getId()}}">
                       <span class="icon novi-icon icon-sm linear-icon-cross2 icon-gray-4"></span>
@@ -70,14 +70,14 @@
                     </div>
                   </td>
                   <td>
-                    <div class="product-price"><span th:text="${pr.getProduct().getPrice()}">45</span></div>
+                    <div class="product-price"><span class="single-product-price" th:text="${pr.getProduct().getPrice()}"></span></div>
                   </td>
                   <td>
-                    <input class="form-input" type="number" data-zeros="true" th:value="${pr.getCount()}" min="1" max="20" name="count">
+                    <input class="row-item-count form-input" type="number" data-zeros="true" th:value="${pr.getCount()}" min="1" max="20" name="count" onchange="checkoutPrice()">
                     <input type="hidden"  th:value="${pr.getId()}" name="id">
                   </td>
                   <td>
-                    <div class="product-price"><span class="single-product-price" th:text="${pr.getProduct().getPrice()*pr.getCount()}">45</span></div>
+                    <div class="product-price"><span class="total-product-price" th:text="${pr.getProduct().getPrice()*pr.getCount()}"></span></div>
                   </td>
                 </tr>
                 </tbody>
@@ -108,14 +108,18 @@
     <script src="js/script.js"></script>
     <script>
       $( document ).ready(function() {
+        checkoutPrice();
+      });
+
+      function checkoutPrice() {
         let sum = 0.0;
-        $(".single-product-price").each(function() {
-          console.log($(this).html());
-          sum += parseFloat($(this).html().trim());
+        $(".row-item").each(function() {
+          $(this).find(".total-product-price").text(parseFloat($(this).find(".single-product-price").text())*parseFloat($(this).find(".row-item-count").val()));
+          sum+=parseFloat($(this).find(".total-product-price").text());
         });
         $('#checkoutSum').text("₴"+sum.toFixed(2));
-        console.log(sum);
-      });
+      }
+
     </script>
   </body>
 </html>
