@@ -27124,3 +27124,44 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .linear-icon-copyright:before {
 	content: "\a9";
 }
+
+/*Checkbox*/
+input[type='checkbox'] {
+	position: relative;
+	cursor: pointer;
+	margin-right: 1rem;
+}
+input[type=checkbox]:before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: -2px;
+	left: 0;
+	background-color:#e9e9e9;
+}
+input[type=checkbox]:checked:before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: -2px;
+	left: 0;
+	background-color:#2ed3ae;
+}
+input[type=checkbox]:checked:after {
+	content: "";
+	display: block;
+	width: 9px;
+	height: 15px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	-webkit-transform: rotate(42deg);
+	-ms-transform: rotate(42deg);
+	transform: rotate(42deg);
+	position: absolute;
+	top: -2px;
+	left: 6px;
+}
