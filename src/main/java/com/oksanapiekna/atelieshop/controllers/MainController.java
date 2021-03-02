@@ -2,9 +2,11 @@ package com.oksanapiekna.atelieshop.controllers;
 
 import com.oksanapiekna.atelieshop.entity.OrderDetails;
 import com.oksanapiekna.atelieshop.entity.OrderInfo;
+import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
 import com.oksanapiekna.atelieshop.service.OrderDetailsService;
 import com.oksanapiekna.atelieshop.service.OrderService;
 import com.oksanapiekna.atelieshop.service.ProductService;
+import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import com.oksanapiekna.atelieshop.viberBot.ViberBotConfig;
 import com.oksanapiekna.atelieshop.viberBot.ViberListenerService;
 import lombok.AllArgsConstructor;
@@ -24,6 +26,7 @@ public class MainController {
     private final ProductService productService;
     private final OrderService orderService;
     private final OrderDetailsService orderDetailsService;
+    private final TypeOfProductService typeOfProductService;
     private final ViberListenerService viberListenerService;
 
 
@@ -49,7 +52,8 @@ public class MainController {
     public String getShop(@CookieValue(value = "id", defaultValue = "") String username, Model model,HttpServletResponse httpServletResponse){
         checkCheckCookie(username,httpServletResponse,model);
         System.out.println(username);
-        model.addAttribute("products",productService.findAll());
+        model.addAttribute("types",typeOfProductService.findAll());
+        model.addAttribute("products",productService.findByStatus(StatusOfEntity.ACTIVE));
         model.addAttribute("activeLink","shop");
         return "shop-grid";
     }

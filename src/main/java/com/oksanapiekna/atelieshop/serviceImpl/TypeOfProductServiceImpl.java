@@ -61,6 +61,11 @@ public class TypeOfProductServiceImpl implements TypeOfProductService {
     }
 
     @Override
+    public List<TypeOfProduct> findByCategory(Category category) {
+        return typeOfProductJPA.findByCategory(category);
+    }
+
+    @Override
     public void deleteByID(int id) {
         typeOfProductJPA.deleteById(id);
     }

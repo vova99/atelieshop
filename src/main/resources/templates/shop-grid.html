@@ -111,11 +111,9 @@
               <div class="section-md">
                 <h5>Тип</h5>
                 <ul class="small list">
-                  <li><a href="#">Black (9)</a></li>
-                  <li><a href="#">Blue (3)</a></li>
-                  <li><a href="#">Brown (5)</a></li>
-                  <li><a href="#">Gray (7)</a></li>
-                  <li><a href="#">White (6)</a></li>
+                  <li th:each="t : ${types}">
+                    <a href="#" th:text="${t.getName()}"></a>
+                  </li>
                 </ul>
               </div>
 

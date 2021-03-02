@@ -1,5 +1,6 @@
 package com.oksanapiekna.atelieshop.service;
 
+import com.oksanapiekna.atelieshop.entity.Category;
 import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
 import com.oksanapiekna.atelieshop.entity.TypeOfProduct;
@@ -13,5 +14,6 @@ public interface TypeOfProductService {
     TypeOfProduct create(String nameType,String categoryName);
     TypeOfProduct findById(int id);
     List<TypeOfProduct> findAll();
+    List<TypeOfProduct> findByCategory(Category category);
     void deleteByID(int id);
 }
