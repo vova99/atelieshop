@@ -110,7 +110,7 @@
                 <h5>Тип</h5>
                 <ul class="small list">
                   <li th:each="t : ${types}">
-                    <input type="checkbox"   th:text="${t.getName()}"/>
+                    <input type="checkbox" th:text="${t.getName()}"/>
                   </li>
                 </ul>
               </div>
@@ -119,10 +119,21 @@
               <div class="section-md">
                 <h5>Сезон</h5>
                 <ul class="small list">
-                  <li><a href="#">2020 (9)</a></li>
-                  <li><a href="#">2019 (3)</a></li>
-                  <li><a href="#">2018 (5)</a></li>
-                  <li><a href="#">2017 (7)</a></li>
+                  <li>
+                    <input type="checkbox" th:text="Весна"/>
+                  </li>
+                  <li>
+                    <input type="checkbox" th:text="Літо"/>
+                  </li>
+                  <li>
+                    <input type="checkbox" th:text="Осінь"/>
+                  </li>
+                  <li>
+                    <input type="checkbox" th:text="Зима"/>
+                  </li>
+                  <li>
+                    <input type="checkbox" th:text="Демісезон"/>
+                  </li>
                 </ul>
               </div>
 
