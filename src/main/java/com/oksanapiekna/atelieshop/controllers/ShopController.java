@@ -54,8 +54,7 @@ public class ShopController {
     public List<Product> getFilteredProducts(String category,int[] types,String[] seasons,String[] sizes,
                                              double maxPrice,double minPrice, String sortType){
         System.out.println();
-//        return productService.getFilteredProducts(category,types,seasons,sizes,maxPrice,minPrice,sortType);
-        return productService.findAll();
+        return productService.getFilteredProducts(category,types,seasons,sizes,maxPrice,minPrice,sortType);
     }
 
 }
