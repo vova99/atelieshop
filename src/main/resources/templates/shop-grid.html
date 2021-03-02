@@ -111,7 +111,7 @@
                 <h5>Тип</h5>
                 <ul class="small list">
                   <li th:each="t : ${types}">
-                    <a href="#" th:text="${t.getName()}"></a>
+                    <input type="checkbox"   th:text="${t.getName()}"/>
                   </li>
                 </ul>
               </div>

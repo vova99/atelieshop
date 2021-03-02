@@ -58,13 +58,8 @@
                 <p class="product-text" th:text="${product?.getDescription()}">Product description</p>
                 <div class="form-wrap product-select">
                   <!--Select 2-->
-                  <select class="form-input select-filter" data-placeholder="Size" data-minimum-results-for-search="Infinity">
+                  <select class="form-input select-filter" data-placeholder="Size" name="" data-minimum-results-for-search="Infinity">
                     <option th:each="s :${product.getSizes()}" th:value="${s}" th:text="${s}"></option>
-                    <option value="2">XS</option>
-                    <option value="3">S</option>
-                    <option value="4">M</option>
-                    <option value="5">L</option>
-                    <option value="6">XL</option>
                   </select>
                 </div>
                 <div class="group group-middle">
@@ -83,10 +78,7 @@
                       <dt>Category</dt>
                       <dd>
                         <ul class="product-categories">
-                          <li><a href="single-product.html">Accessories</a></li>
-                          <li><a href="single-product.html">Shoes</a></li>
-                          <li><a href="single-product.html">Sport</a></li>
-                          <li><a href="single-product.html">Women</a></li>
+                          <li><a th:href="@{'/shop?category='+${product.getCategory().name()}}">Accessories</a></li>
                         </ul>
                       </dd>
                     </dl>
