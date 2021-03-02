@@ -5000,7 +5000,7 @@ h3 + .card-custom-group-wrap {
 .product-price span:after {
 	content: "UAH";
 	margin-left: 0.5rem;
-	font-size: 1.2rem;
+	/*font-size: 1.2rem;*/
 	display: inline-block;
 }
 
@@ -15828,7 +15828,7 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 .rd-range-inner [class*='rd-range-input-value-']:after {
 	content: "UAH";
 	margin-left: 0.5rem;
-	font-size: 1.5rem;
+	/*font-size: 1.5rem;*/
 	display: inline-block;
 }
 
