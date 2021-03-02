@@ -63,7 +63,6 @@
                   <div class="col-md-6 col-xl-4" th:each="pr : ${products}">
                     <div class="product product-grid">
                       <div class="product-img-wrap"><img th:src="@{'/shop/getImgByProductId/'+${pr.getId()}}" alt="" width="300" height="400"/>
-                        <div class="product-label-wrap"><span class="featured">Featured</span></div>
                       </div>
                       <div class="product-caption">
                         <ul class="product-categories">
