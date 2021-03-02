@@ -102,7 +102,7 @@
                 <ul class="small list">
                   <li><a href="/shop?category=clothes">Одяг</a></li>
                   <li><a href="/shop?category=shoes">Взуття</a></li>
-                  <input type="hidden" id="mainCategoryId"/>
+                  <input type="hidden" id="mainCategoryId" th:value="${category}"/>
                 </ul>
               </div>
 
@@ -178,8 +178,8 @@
       let types = [];
       let seasons = [];
       let sizes = [];
-      let minPrice = $('.rd-range__pointer-tooltip').eq(0).text();
-      let maxPrice = $('.rd-range__pointer-tooltip').eq(1).text();
+      let minPrice = parseInt($('.rd-range__pointer-tooltip').eq(0).text());
+      let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
       let sortType = $('#sortingType').val();
 
       $(".typeInput").each(function() {
@@ -208,7 +208,7 @@
       console.log("sort: "+sortType);
       $.ajax({
         method: "post",
-        url: "/admin/",
+        url: "/shop",
         contextType: "application/json",
         data: {
           category: category,

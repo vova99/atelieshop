@@ -1,26 +1,35 @@
 package com.oksanapiekna.atelieshop.serviceImpl;
 
+import com.oksanapiekna.atelieshop.entity.Category;
 import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
 import com.oksanapiekna.atelieshop.jpa.PageableProductJPA;
 import com.oksanapiekna.atelieshop.jpa.ProductJPA;
 import com.oksanapiekna.atelieshop.service.ProductService;
+import com.oksanapiekna.atelieshop.service.SizeService;
+import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductJPA productJPA;
     private final PageableProductJPA pageableProductJPA;
+    private final TypeOfProductService typeOfProductService;
+    private final SizeService sizeService;
 
     @Autowired
-    public ProductServiceImpl(ProductJPA productJPA, PageableProductJPA pageableProductJPA) {
+    public ProductServiceImpl(ProductJPA productJPA, PageableProductJPA pageableProductJPA, TypeOfProductService typeOfProductService, SizeService sizeService) {
         this.productJPA = productJPA;
         this.pageableProductJPA = pageableProductJPA;
+        this.typeOfProductService = typeOfProductService;
+        this.sizeService = sizeService;
     }
 
     @Override
@@ -102,6 +111,32 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findByStatus(StatusOfEntity status) {
         return productJPA.findByStatus(status);
+    }
+
+    @Override
+    public List<Product> getFilteredProducts(String category, int[] types, String[] seasons, String[] sizes, double maxPrice,double minPrice, String sortType) {
+        Category categoryEnum;
+        if(category.toLowerCase().equals("clothes"))
+        {
+            categoryEnum = Category.CLOTHES;
+        }else{
+            categoryEnum = Category.SHOES;
+        }
+        if(types==null){
+            types = typeOfProductService.findByCategory(categoryEnum).stream().flatMapToInt(typeOfProduct -> IntStream.of(typeOfProduct.getId())).toArray();
+        }
+//        if(sizes.length==0){
+//            sizes = sizeService.findByCategory(categoryEnum).stream().flatMapToInt(typeOfProduct -> IntStream.of(typeOfProduct.getId())).toArray();
+//        }
+        if(seasons==null){
+            seasons = new String[1];
+            seasons[0] = "summer";
+        }
+        System.out.println(types.length);
+        System.out.println(seasons.length);
+
+        List<Product> products = pageableProductJPA.getFilterProduct(StatusOfEntity.ACTIVE,types,seasons,maxPrice,minPrice, PageRequest.of(0,1));
+        return products;
     }
 
     @Override

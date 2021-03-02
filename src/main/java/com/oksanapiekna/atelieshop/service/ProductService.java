@@ -14,5 +14,7 @@ public interface ProductService {
     Product changeStatus(int id, boolean status);
     List<Product> findAll();
     List<Product> findByStatus(StatusOfEntity status);
+    List<Product> getFilteredProducts(String category,int[] types,String[] seasons,String[] sizes,
+                                      double maxPrice,double minPrice, String sortType);
     void deleteByID(int id);
 }

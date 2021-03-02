@@ -17,4 +17,11 @@ public class OrderDetails {
     @ManyToOne
     private OrderInfo orderInfo;
 
+    @Override
+    public String toString() {
+        return "OrderDetails{" +
+                "id=" + id +
+                ", count=" + count +
+                '}';
+    }
 }

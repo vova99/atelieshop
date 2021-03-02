@@ -11,8 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -41,8 +44,18 @@ public class ShopController {
         Product minPrice = products.stream().min((o1, o2) -> (int) (o1.getPrice() - o2.getPrice())).orElse(new Product());
         model.addAttribute("maxPrice",maxPrice.getPrice());
         model.addAttribute("minPrice",minPrice.getPrice());
+        model.addAttribute("category",category);
         model.addAttribute("activeLink","shop");
         return "shop-grid";
+    }
+
+    @ResponseBody
+    @PostMapping("/shop")
+    public List<Product> getFilteredProducts(String category,int[] types,String[] seasons,String[] sizes,
+                                             double maxPrice,double minPrice, String sortType){
+        System.out.println();
+//        return productService.getFilteredProducts(category,types,seasons,sizes,maxPrice,minPrice,sortType);
+        return productService.findAll();
     }
 
 }
