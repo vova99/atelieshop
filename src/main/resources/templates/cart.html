@@ -54,7 +54,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="pr, i : ${order.getOrderDetails()}" th>
+                <tr th:each="pr, i : ${order?.getOrderDetails()}" th>
                   <td class="table-cart-remove-item">
                     <a th:href="@{'/deleteFromCart/'+${pr.getProduct().getId()}}">
                       <span class="icon novi-icon icon-sm linear-icon-cross2 icon-gray-4"></span>
