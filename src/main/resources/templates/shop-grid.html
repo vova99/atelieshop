@@ -100,8 +100,8 @@
               <div class="section-md">
                 <h5>Категорії</h5>
                 <ul class="small list">
-                  <li><a href="#">Одяг</a></li>
-                  <li><a href="#">Взуття</a></li>
+                  <li><a href="/shop?category=clothes">Одяг</a></li>
+                  <li><a href="/shop?category=shoes">Взуття</a></li>
                 </ul>
               </div>
 
@@ -142,7 +142,7 @@
                 <h5>Розмір</h5>
                 <ul class="small list">
                   <li th:each="s : ${sizes}">
-                    <a href="#" th:text="${s.getSize()}">2017 (7)</a>
+                    <input type="checkbox" th:text="${s.getSize()}"/>
                   </li>
                 </ul>
               </div>
@@ -153,7 +153,7 @@
                 <!--RD Range-->
                 <div class="rd-range-wrap">
                   <div class="rd-range-inner"><span>Ціна: </span><span class="rd-range-input-value-1"></span><span>—</span><span class="rd-range-input-value-2"></span></div>
-                  <div class="rd-range" data-min="10" data-max="500" th:data-start="'['+${minPrice}+','+${maxPrice}+']'" data-step="1" data-tooltip="true" data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
+                  <div class="rd-range" th:data-min="${minPrice}" th:data-max="${maxPrice}" th:data-start="'['+${minPrice}+','+${maxPrice}+']'" data-step="1" data-tooltip="true" data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
                 </div><a class="button button-gray-light-outline" href="#">Фільтрувати</a>
               </div>
 

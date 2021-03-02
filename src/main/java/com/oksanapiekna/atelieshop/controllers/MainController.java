@@ -22,8 +22,6 @@ public class MainController {
     private final ProductService productService;
     private final OrderService orderService;
     private final OrderDetailsService orderDetailsService;
-    private final TypeOfProductService typeOfProductService;
-    private final SizeService sizeService;
     private final ViberListenerService viberListenerService;
 
 
@@ -48,27 +46,6 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/shop")
-    public String getShop(@CookieValue(value = "id", defaultValue = "") String username, Model model,HttpServletResponse httpServletResponse,String category){
-        checkCheckCookie(username,httpServletResponse,model);
-        System.out.println(username);
-        List<Product> products = productService.findByStatus(StatusOfEntity.ACTIVE);
-        if(category!=null && category.toLowerCase().equals("clothes")) {
-            model.addAttribute("types", typeOfProductService.findByCategory(Category.CLOTHES));
-            model.addAttribute("sizes", sizeService.findByCategory(Category.CLOTHES));
-            model.addAttribute("products", productService.findByStatus(StatusOfEntity.ACTIVE));
-        }else{
-            model.addAttribute("types", typeOfProductService.findByCategory(Category.SHOES));
-            model.addAttribute("sizes", sizeService.findByCategory(Category.SHOES));
-            model.addAttribute("products", productService.findByStatus(StatusOfEntity.ACTIVE));
-        }
-        Product maxPrice = products.stream().max((o1, o2) -> (int) (o1.getPrice() - o2.getPrice())).orElse(new Product());
-        Product minPrice = products.stream().min((o1, o2) -> (int) (o1.getPrice() - o2.getPrice())).orElse(new Product());
-        model.addAttribute("maxPrice",maxPrice.getPrice());
-        model.addAttribute("minPrice",minPrice.getPrice());
-        model.addAttribute("activeLink","shop");
-        return "shop-grid";
-    }
 
     @GetMapping("/contacts")
     public String getContact(@CookieValue(value = "id", defaultValue = "") String username,Model model,HttpServletResponse httpServletResponse){
