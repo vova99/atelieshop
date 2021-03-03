@@ -3,10 +3,12 @@ package com.oksanapiekna.atelieshop.controllers;
 import com.oksanapiekna.atelieshop.entity.Category;
 import com.oksanapiekna.atelieshop.entity.Product;
 import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
+import com.oksanapiekna.atelieshop.entity.dto.ProductDTO;
 import com.oksanapiekna.atelieshop.service.ProductService;
 import com.oksanapiekna.atelieshop.service.SizeService;
 import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import lombok.AllArgsConstructor;
+import net.minidev.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -51,10 +53,17 @@ public class ShopController {
 
     @ResponseBody
     @PostMapping("/shop")
-    public List<Product> getFilteredProducts(String category,int[] types,String[] seasons,String[] sizes,
-                                             double maxPrice,double minPrice, String sortType){
-        System.out.println();
-        return productService.getFilteredProducts(category,types,seasons,sizes,maxPrice,minPrice,sortType);
+    public JSONArray getFilteredProducts(String category, Integer[] types, String[] seasons, Integer[] sizes,
+                                          double maxPrice, double minPrice, String sortType){
+        if(types==null){types = new Integer[0];}
+        if(seasons==null){seasons = new String[0];}
+        if(sizes==null){sizes = new Integer[0];}
+        List<Product> products = productService.getFilteredProducts(category, Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType);
+        JSONArray jsonArray = new JSONArray();
+        for(Product product:products){
+            jsonArray.add(ProductDTO.convertToDTO(product));
+        }
+        return jsonArray;
     }
 
 }

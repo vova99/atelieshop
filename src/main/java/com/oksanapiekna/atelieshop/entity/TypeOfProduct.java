@@ -17,5 +17,6 @@ public class TypeOfProduct {
     @OneToMany
     private List<Product> products;
 
+    @Enumerated(EnumType.ORDINAL)
     private Category category;
 }
