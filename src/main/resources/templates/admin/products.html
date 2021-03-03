@@ -237,14 +237,14 @@
                                     <div class="col-12 form-group">
                                         <label class="form-label">Сезон</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" name="season">
-                                                <option value="default_option">Не вибрано</option>
+                                            <select class="form-select form-control form-control-lg" id="selectClothesSeason" onchange="setSingleHiddenValue(this.id, $(this).siblings('input').prop('id'))">
                                                 <option value="spring">Весна</option>
                                                 <option value="summer">Літо</option>
                                                 <option value="autumn">Осінь</option>
                                                 <option value="winter">Зима</option>
                                                 <option value="demiseason">Демісезон</option>
                                             </select>
+                                            <input type="hidden" id="selectHiddenClothesSeason" name="season"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -271,14 +271,14 @@
                                     <div class="col-12 form-group">
                                         <label class="form-label">Сезон</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" name="season">
-                                                <option value="default_option">Не вибрано</option>
+                                            <select class="form-select form-control form-control-lg" id="selectShoesSeason" onchange="setSingleHiddenValue(this.id, $(this).siblings('input').prop('id'))">
                                                 <option value="spring">Весна</option>
                                                 <option value="summer">Літо</option>
                                                 <option value="autumn">Осінь</option>
                                                 <option value="winter">Зима</option>
                                                 <option value="demiseason">Демісезон</option>
                                             </select>
+                                            <input type="hidden" id="selectHiddenShoesSeason" name="season"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -327,7 +327,7 @@
                                         <label class="form-label" for="editProductImage">Зображення</label>
                                         <div class="form-control-wrap">
                                             <div class="custom-file">
-                                                <input type="file" multiple class="custom-file-input" id="editProductImage" name="multipartFile" onchange="validateimg(this)">
+                                                <input type="file" multiple class="custom-file-input" id="editProductImage" name="multipartFile">
                                                 <label class="custom-file-label" for="editProductImage"></label>
                                             </div>
                                         </div>
@@ -382,14 +382,14 @@
                                     <div class="col-12 form-group">
                                         <label class="form-label">Сезон</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" name="season" id="selectClothesSeasonEdit">
-                                                <option value="">Не вибрано</option>
+                                            <select class="form-select form-control form-control-lg" id="selectClothesSeasonEdit" onchange="setSingleHiddenValue(this.id, $(this).siblings('input').prop('id'))">
                                                 <option value="spring">Весна</option>
                                                 <option value="summer">Літо</option>
                                                 <option value="autumn">Осінь</option>
                                                 <option value="winter">Зима</option>
                                                 <option value="demiseason">Демісезон</option>
                                             </select>
+                                            <input type="hidden" id="selectHiddenClothesSeasonEdit" name="season"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -416,14 +416,14 @@
                                     <div class="col-12 form-group">
                                         <label class="form-label">Сезон</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control form-control-lg" name="season" id="selectShoesSeasonEdit">
-                                                <option value="">Не вибрано</option>
+                                            <select class="form-select form-control form-control-lg" id="selectShoesSeasonEdit" onchange="setSingleHiddenValue(this.id, $(this).siblings('input').prop('id'))">
                                                 <option value="spring">Весна</option>
                                                 <option value="summer">Літо</option>
                                                 <option value="autumn">Осінь</option>
                                                 <option value="winter">Зима</option>
                                                 <option value="demiseason">Демісезон</option>
                                             </select>
+                                            <input type="hidden" id="selectHiddenShoesSeasonEdit" name="season"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -561,6 +561,12 @@
         }
     });
 
+    function setSingleHiddenValue(idVal, idHiddenVal) {
+        console.log("1. selectId: "+$('#'+idVal).val()+"; hiddenId: "+ $("#"+idHiddenVal).val());
+        $("#"+idHiddenVal).val($('#'+idVal).val().toString().split(',')[0]);
+        console.log("2. selectId: "+$('#'+idVal).val()+"; hiddenId: "+ $("#"+idHiddenVal).val());
+    }
+
 
     function showEditProductModal(btnObj) {
         let trObj = btnObj.closest("tbody tr");
@@ -575,8 +581,7 @@
         let price =         $(trObj).find('td:eq(3)').text();
         let category =      $(trObj).find('td:eq(5)').text();
         let description =   $(trObj).find('td:eq(6)').text();
-        let season =        $(trObj).find('td:eq(7)').text();
-        season = season.split(',')[0];
+        let season =        $(trObj).find('td:eq(7)').text().split(',')[0];
         let type =          $(trObj).find('td:eq(8)').text();
         console.log("Type: "+type);
         let size =          $(trObj).find('td:eq(9)').text();
