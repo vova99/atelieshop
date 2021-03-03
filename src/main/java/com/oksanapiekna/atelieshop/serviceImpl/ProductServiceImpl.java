@@ -1,8 +1,6 @@
 package com.oksanapiekna.atelieshop.serviceImpl;
 
-import com.oksanapiekna.atelieshop.entity.Category;
-import com.oksanapiekna.atelieshop.entity.Product;
-import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
+import com.oksanapiekna.atelieshop.entity.*;
 import com.oksanapiekna.atelieshop.jpa.PageableProductJPA;
 import com.oksanapiekna.atelieshop.jpa.ProductJPA;
 import com.oksanapiekna.atelieshop.service.ProductService;
@@ -15,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Service
@@ -114,28 +113,32 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getFilteredProducts(String category, int[] types, String[] seasons, String[] sizes, double maxPrice,double minPrice, String sortType) {
+    public List<Product> getFilteredProducts(String category, List<Integer> types,List<String> seasons,List<Integer> sizes, double maxPrice,double minPrice, String sortType) {
         Category categoryEnum;
+        System.out.println("category " + category);
         if(category.toLowerCase().equals("clothes"))
         {
             categoryEnum = Category.CLOTHES;
         }else{
             categoryEnum = Category.SHOES;
         }
-        if(types==null){
-            types = typeOfProductService.findByCategory(categoryEnum).stream().flatMapToInt(typeOfProduct -> IntStream.of(typeOfProduct.getId())).toArray();
+        if(types.isEmpty()){
+            types = typeOfProductService.findByCategory(categoryEnum).stream().map(TypeOfProduct::getId).collect(Collectors.toList());
         }
-//        if(sizes.length==0){
-//            sizes = sizeService.findByCategory(categoryEnum).stream().flatMapToInt(typeOfProduct -> IntStream.of(typeOfProduct.getId())).toArray();
-//        }
-        if(seasons==null){
-            seasons = new String[1];
-            seasons[0] = "summer";
+        if(sizes.isEmpty()){
+            sizes = sizeService.findByCategory(categoryEnum).stream().map(Size::getId).collect(Collectors.toList());
         }
-        System.out.println(types.length);
-        System.out.println(seasons.length);
+        if(seasons.isEmpty()){
+            seasons = new ArrayList<>();
+            seasons.add("summer");
+            seasons.add("demiseason");
+        }
+        System.out.println(types);
+        System.out.println(sizes);
+        System.out.println(seasons);
 
-        List<Product> products = pageableProductJPA.getFilterProduct(StatusOfEntity.ACTIVE,types,seasons,maxPrice,minPrice, PageRequest.of(0,1));
+        List<Product> products = new ArrayList<>(pageableProductJPA.getFilterProduct(StatusOfEntity.ACTIVE, types, seasons, PageRequest.of(0, 12)));
+        System.out.println(products);
         return products;
     }
 
