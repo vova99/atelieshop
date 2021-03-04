@@ -56,16 +56,20 @@
                 <h4 th:text="${product?.getName()}">Product Name</h4>
                 <p class="product-price"><span th:text="${product?.getPrice()}">Price</span></p>
                 <p class="product-text" th:text="${product?.getDescription()}">Product description</p>
+
+                <form th:action="@{|/addToCart/${product.getId()}|}">
                 <div class="form-wrap product-select">
+
                   <!--Select 2-->
-                  <select class="form-input select-filter" data-placeholder="Size" name="" data-minimum-results-for-search="Infinity">
-                    <option th:each="s :${product.getSizes()}" th:value="${s}" th:text="${s}"></option>
+                  <select class="form-input select-filter" data-placeholder="Size" name="size" data-minimum-results-for-search="Infinity">
+                    <option th:each="s :${product.getSizes()}" th:value="${s}" th:text="${s.getSize()}"></option>
                   </select>
                 </div>
                 <div class="group group-middle">
-                  <input class="form-input" type="number" data-zeros="true" value="1" min="1" max="50">
+                  <input class="form-input" type="number" name="count" data-zeros="true" value="1" min="1" max="50">
                   <button class="button button-primary button-icon button-icon-left" type="submit"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></button>
                 </div>
+                </form>
                 <ul class="product-meta">
                   <li>
                     <dl class="list-terms-minimal">
@@ -79,19 +83,6 @@
                       <dd>
                         <ul class="product-categories">
                           <li><a  th:href="@{'/shop?category='+${product.getCategory().name()}}" >Accessories</a></li>
-                        </ul>
-                      </dd>
-                    </dl>
-                  </li>
-                  <li>
-                    <dl class="list-terms-minimal">
-                      <dt>Tags</dt>
-                      <dd>
-                        <ul class="product-categories">
-                          <li><a href="single-product.html">skirt</a></li>
-                          <li><a href="single-product.html">Shoes</a></li>
-                          <li><a href="single-product.html">style</a></li>
-                          <li><a href="single-product.html">trend</a></li>
                         </ul>
                       </dd>
                     </dl>

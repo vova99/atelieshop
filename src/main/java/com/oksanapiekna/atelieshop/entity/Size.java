@@ -29,6 +29,9 @@ public class Size {
     )
     private List<Product>  products;
 
+    @OneToMany
+    private List<OrderDetails> orderDetails;
+
     @Override
     public String toString() {
         return String.valueOf(id);

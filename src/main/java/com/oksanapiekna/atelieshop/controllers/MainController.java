@@ -68,11 +68,12 @@ public class MainController {
     }
 
     @GetMapping("/addToCart/{productId}")
-    public String addToCart(@PathVariable int productId, @CookieValue(value = "id", defaultValue = "") String username,Model model,HttpServletResponse httpServletResponse){
+    public String addToCart(@PathVariable int productId, @CookieValue(value = "id", defaultValue = "") String username,Model model,HttpServletResponse httpServletResponse,int size,int count){
         checkCheckCookie(username,httpServletResponse,model);
         OrderInfo order = (OrderInfo) model.getAttribute("order");
-        orderDetailsService.addProductToOrder(order.getId(),productId);
-        return "redirect:/shop";
+        System.out.println("Count " + count);
+        orderDetailsService.addProductToOrder(order.getId(),productId,size,count);
+        return "redirect:/shop?category=clothes";
     }
 
     @GetMapping("/deleteFromCart/{productId}")
@@ -121,8 +122,9 @@ public class MainController {
     @GetMapping("/singleProduct/{id}")
     public String getSingleProduct(@PathVariable int id,@CookieValue(value = "id", defaultValue = "") String username, Model model,HttpServletResponse httpServletResponse){
         checkCheckCookie(username,httpServletResponse,model);
-        model.addAttribute("product",productService.findById(id));
-        model.addAttribute("allProducts",productService.findAll());
+        Product product = productService.findById(id);
+        model.addAttribute("product",product);
+        model.addAttribute("allProducts",productService.findSameProducts(product));
         model.addAttribute("activeLink","singleProduct");
         return "single-product";
     }

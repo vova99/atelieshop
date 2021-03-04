@@ -15,6 +15,8 @@ public class OrderDetails {
     @ManyToOne
     private Product product;
     @ManyToOne
+    private Size size;
+    @ManyToOne
     private OrderInfo orderInfo;
 
     @Override

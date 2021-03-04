@@ -5,6 +5,7 @@ import com.oksanapiekna.atelieshop.jpa.OrderDetailsJPA;
 import com.oksanapiekna.atelieshop.service.OrderDetailsService;
 import com.oksanapiekna.atelieshop.service.OrderService;
 import com.oksanapiekna.atelieshop.service.ProductService;
+import com.oksanapiekna.atelieshop.service.SizeService;
 import com.oksanapiekna.atelieshop.viberBot.ViberBotConfig;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     private OrderDetailsJPA detailsJPA;
     private OrderService orderService;
     private ProductService productService;
+    private SizeService sizeService;
 
 
     @Override
@@ -44,17 +46,26 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public OrderDetails addProductToOrder(UUID orderId, int productId) {
+    public OrderDetails addProductToOrder(UUID orderId, int productId,int sizeId, int count) {
         OrderDetails orderDetails = findByOrderInfoIdAndOrderByProductId(orderId,productId);
         if (orderDetails==null){
             orderDetails = new OrderDetails();
             orderDetails.setOrderInfo(orderService.findById(orderId));
             orderDetails.setProduct(productService.findById(productId));
-            orderDetails.setCount(1);
+            if(count<=0) {
+                orderDetails.setCount(1);
+            }else{
+                orderDetails.setCount(count);
+            }
         }else{
-            orderDetails.setCount(orderDetails.getCount()+1);
+            if(count>0) {
+                orderDetails.setCount(orderDetails.getCount() + count);
+            }
         }
 
+        if(sizeId>0) {
+            orderDetails.setSize(sizeService.findById(sizeId));
+        }
         return save(orderDetails);
     }
 

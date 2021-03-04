@@ -60,6 +60,7 @@ public class ViberListenerServiceImpl implements ViberListenerService {
         for(OrderDetails details:orderInfo.getOrderDetails()){
             str+="\n\nТовар: "+details.getProduct().getName()+
                     "\nКількість: "+details.getCount()+
+                    "\nРозмір: "+details.getSize().getSize()+
                     "\nСума: "+details.getCount()*details.getProduct().getPrice();
         }
 

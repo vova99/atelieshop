@@ -7,17 +7,15 @@ import com.oksanapiekna.atelieshop.service.ProductService;
 import com.oksanapiekna.atelieshop.service.SizeService;
 import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.*;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -114,6 +112,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findByStatus(StatusOfEntity status) {
         return productJPA.findByStatus(status);
+    }
+
+    @Override
+    public List<Product> findSameProducts(Product product) {
+        List<Product> products = productJPA.findFirst10ByTypeOfProductId(product.getTypeOfProduct().getId());
+        products.remove(product);
+        if(products.size()<5){
+            products.addAll(productJPA.findFirst5ByCategoryAndTypeOfProductIdIsNot(product.getCategory(),product.getTypeOfProduct().getId()));
+        }
+        return products;
     }
 
     public Category checkCategory(String category){
