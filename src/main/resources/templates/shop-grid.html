@@ -189,10 +189,14 @@
 <script src="js/core.min.js"></script>
 <script src="js/script.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", getData());
-
+    // document.addEventListener("DOMContentLoaded", getData());
     let currentPage = 0;
     let lastPage;
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+        currentPage = 0;
+        getData();
+    });
 
     function clearExistingData() {
         let parent = document.getElementById('productsContainer');
