@@ -40,6 +40,7 @@ public class ProductServiceImpl implements ProductService {
     public Product save(Product product, MultipartFile multipartFile) {
         if(multipartFile!=null && product!=null){
             try {
+                product.setSeason(product.getSeason().replace(",",""));
                 product.setImg(multipartFile.getBytes());
                 product.setImgName(multipartFile.getOriginalFilename());
                 product.setImgType(multipartFile.getContentType());
@@ -63,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
             productDB.setArticle(product.getArticle());
             productDB.setDescription(product.getDescription());
             productDB.setCategory(product.getCategory());
-            productDB.setSeason(product.getSeason());
+            productDB.setSeason(product.getSeason().replace(",",""));
             productDB.setPrice(product.getPrice());
             productDB.setTypeOfProduct(product.getTypeOfProduct());
             productDB.setSizes(product.getSizes());
@@ -114,6 +115,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getFilteredProducts(String category, List<Integer> types,List<String> seasons,List<Integer> sizes, double maxPrice,double minPrice, String sortType) {
+        System.out.println(productJPA.findBySizesId(24));
         Category categoryEnum;
         System.out.println("category " + category);
         if(category.toLowerCase().equals("clothes"))
@@ -137,7 +139,8 @@ public class ProductServiceImpl implements ProductService {
         System.out.println(sizes);
         System.out.println(seasons);
 
-        List<Product> products = new ArrayList<>(pageableProductJPA.getFilterProduct(StatusOfEntity.ACTIVE, types, seasons, PageRequest.of(0, 12)));
+//        List<Product> products = new ArrayList<>(pageableProductJPA.getFilterProduct(StatusOfEntity.ACTIVE, types, seasons,sizes, PageRequest.of(0, 12)));
+        List<Product> products = new ArrayList<>(pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInOrderByIdDesc(StatusOfEntity.ACTIVE, types,seasons,sizes));
         System.out.println(products);
         return products;
     }
