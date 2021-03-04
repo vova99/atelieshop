@@ -3,231 +3,289 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <!-- Site Title-->
     <title>Магазин</title>
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet"> -->
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
-  </head>
-  <body>
-    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
-    <div id="page-loader">
-      <div class="cssload-container">
-        <div class="cssload-speeding-wheel"></div>
-      </div>
-    </div>
-    <!-- Page-->
-    <div class="page">
-     <!-- Page header-->
-      <div th:replace="~{fragments/headersFrag.html :: mainHeader}"></div>
-
-      <!-- Breadcrumbs-->
-      <section class="section novi-bg novi-bg-img breadcrumbs-custom">
-        <div class="container">
-          <div class="breadcrumbs-custom__inner">
-            <p class="breadcrumbs-custom__title">Магазин</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section novi-bg novi-bg-img section-lg bg-default">
-        <div class="container">
-          <div class="row row-fix row-60 flex-lg-row-reverse">
-            <div class="col-lg-9 section-divided__main section-divided__main-left">
-              <div class="section-md">
-                <div class="filter-shop-box">
-                  <p>Відображено 1–12 з 15 товарів</p>
-                  <div class="form-wrap">
-                    <!-- Select 2-->
-                    <select id="sortingType" class="form-input select-filter" data-placeholder="Default sorting" data-minimum-results-for-search="Infinity">
-                      <option value="default">За замовчуванням</option>
-                      <option value="lowPrice">Сортувати за ціною: спочатку найдешевші</option>
-                      <option value="highPrice">Сортувати за ціною: спочатку найдорожчі</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="row justify-content-sm-center row-70">
-                  <div class="col-md-6 col-xl-4" th:each="pr : ${products}">
-                    <div class="product product-grid">
-                      <div class="product-img-wrap"><img th:src="@{'/shop/getImgByProductId/'+${pr.getId()}}" alt="" width="300" height="400"/>
-                      </div>
-                      <div class="product-caption">
-                        <ul class="product-categories">
-                          <li><a href="#">Accessories</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Sport</a></li>
-                          <li><a href="#">Women</a></li>
-                        </ul>
-                        <h6 class="product-title"><a th:href="@{'/singleProduct/'+${pr.getId()}}" th:text="${pr.getName()}">Product name</a></h6>
-                        <p class="product-price"><span th:text="${pr.getPrice()}">price</span>
-                        </p><a class="button-primary button button-icon button-icon-left" th:href="@{'/addToCart/'+${pr.getId()}}"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="button button-gray-light-outline" style="margin-top: 3rem;">завантажити ще</div>
-              </div>
-              <!-- Pagination-->
-<!--              <div class="section-md">-->
-<!--                &lt;!&ndash; Classic Pagination&ndash;&gt;-->
-<!--                <nav>-->
-<!--                  <ul class="pagination-classic">-->
-<!--                    <li class="active"><span>1</span></li>-->
-<!--                    <li><a href="#">2</a></li>-->
-<!--                    <li><a href="#">3</a></li>-->
-<!--                    <li><a href="#">4</a></li>-->
-<!--                    <li><a class="icon novi-icon linear-icon-arrow-right" href="#"></a></li>-->
-<!--                  </ul>-->
-<!--                </nav>-->
-<!--              </div>-->
-            </div>
-
-            <div class="col-lg-3 section-divided__aside section__aside-left group-shop">
-              <!-- Categories-->
-              <div class="section-md">
-                <h5>Категорії</h5>
-                <ul class="small list">
-                  <li><a href="/shop?category=clothes">Одяг</a></li>
-                  <li><a href="/shop?category=shoes">Взуття</a></li>
-                  <input type="hidden" id="mainCategoryId" th:value="${category}"/>
-                </ul>
-              </div>
-
-              <!-- Filter type-->
-              <div class="section-md">
-                <h5>Тип</h5>
-                <ul class="small list">
-                  <li th:each="t : ${types}">
-                    <input type="checkbox" class="typeInput" th:text="${t.getName()}" th:value="${t.getId()}"/>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Filter season-->
-              <div class="section-md">
-                <h5>Сезон</h5>
-                <ul class="small list">
-                  <li>
-                    <input type="checkbox" class="seasonInput" th:value="spring" th:text="Весна"/>
-                  </li>
-                  <li>
-                    <input type="checkbox" class="seasonInput" th:value="summer" th:text="Літо"/>
-                  </li>
-                  <li>
-                    <input type="checkbox" class="seasonInput" th:value="autumn" th:text="Осінь"/>
-                  </li>
-                  <li>
-                    <input type="checkbox" class="seasonInput" th:value="winter" th:text="Зима"/>
-                  </li>
-                  <li>
-                    <input type="checkbox" class="seasonInput" th:value="demiseason" th:text="Демісезон"/>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Filter size-->
-              <div class="section-md">
-                <h5>Розмір</h5>
-                <ul class="small list">
-                  <li th:each="s : ${sizes}">
-                    <input type="checkbox" class="sizeInput" th:text="${s.getSize()}" th:value="${s.getId()}"/>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Range-->
-              <div class="section-md">
-                <h5>Ціна</h5>
-                <!--RD Range-->
-                <div class="rd-range-wrap">
-                  <div class="rd-range-inner"><span>Ціна: </span><span class="rd-range-input-value-1"></span><span>—</span><span class="rd-range-input-value-2"></span></div>
-                  <div class="rd-range" th:data-min="${minPrice}" th:data-max="${maxPrice}" th:data-start="'['+${minPrice}+','+${maxPrice}+']'" data-step="1" data-tooltip="true" data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
-                </div>
-                <button class="button button-gray-light-outline" onclick="getData()">Фільтрувати</button>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </section>
-      <!-- Page Footer-->
-      <div th:replace="~{fragments/footersFrag.html :: mainFooter}"></div>
-    </div>
-    <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript-->
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
-  <script>
-    function getData(){
-      let category = $('#mainCategoryId').val();
-      let types = [];
-      let seasons = [];
-      let sizes = [];
-      let minPrice = parseInt($('.rd-range__pointer-tooltip').eq(0).text());
-      let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
-      let sortType = $('#sortingType').val();
-
-      $(".typeInput").each(function() {
-        if ($(this).is(':checked')) {
-          types.push($(this).val());
-        }
-      });
-
-      $(".seasonInput").each(function() {
-        if ($(this).is(':checked')) {
-          seasons.push($(this).val());
-        }
-      });
-
-      $(".sizeInput").each(function() {
-        if ($(this).is(':checked')) {
-          sizes.push($(this).val());
-        }
-      });
-
-      console.log("types: "+types);
-      console.log("seasons: "+seasons);
-      console.log("sizes: "+sizes);
-      console.log("min: "+minPrice);
-      console.log("max: "+maxPrice);
-      console.log("sort: "+sortType);
-      $.ajax({
-        method: "post",
-        url: "/shop",
-        contextType: "application/json",
-        data: {
-          category: category,
-          types: types,
-          seasons: seasons,
-          sizes: sizes,
-          minPrice: minPrice,
-          maxPrice: maxPrice,
-          sortType: sortType
-        },
-        traditional: true,
-        success: function (statisticInfo) {
-          console.log(statisticInfo);
-        },
-        error: function () {
-          alert("Error");
-        }
-      });
+    <style>.ie-panel {
+        display: none;
+        background: #212121;
+        padding: 10px 0;
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+        clear: both;
+        text-align: center;
+        position: relative;
+        z-index: 1;
     }
-  </script>
-  </body>
+
+    html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
+        display: block;
+    }</style>
+</head>
+<body>
+<div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img
+        src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820"
+        alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a>
+</div>
+<div id="page-loader">
+    <div class="cssload-container">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+</div>
+<!-- Page-->
+<div class="page">
+    <!-- Page header-->
+    <div th:replace="~{fragments/headersFrag.html :: mainHeader}"></div>
+
+    <!-- Breadcrumbs-->
+    <section class="section novi-bg novi-bg-img breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <p class="breadcrumbs-custom__title">Магазин</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section novi-bg novi-bg-img section-lg bg-default">
+        <div class="container">
+            <div class="row row-fix row-60 flex-lg-row-reverse">
+                <div class="col-lg-9 section-divided__main section-divided__main-left">
+                    <div class="section-md">
+                        <div class="filter-shop-box">
+                            <p>Відображено 1–12 з 15 товарів</p>
+                            <div class="form-wrap">
+                                <!-- Select 2-->
+                                <select id="sortingType" class="form-input select-filter"
+                                        data-placeholder="Default sorting" data-minimum-results-for-search="Infinity">
+                                    <option value="default">За замовчуванням</option>
+                                    <option value="lowPrice">Сортувати за ціною: спочатку найдешевші</option>
+                                    <option value="highPrice">Сортувати за ціною: спочатку найдорожчі</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-sm-center row-70" id="productsContainer">
+                            <!--                  Product item start-->
+                            <!--                  <div class="col-md-6 col-xl-4" th:each="pr : ${products}">-->
+                            <!--                    <div class="product product-grid">-->
+                            <!--                      <div class="product-img-wrap"><img th:src="@{'/shop/getImgByProductId/'+${pr.getId()}}" alt="" width="300" height="400"/>-->
+                            <!--                      </div>-->
+                            <!--                      <div class="product-caption">-->
+                            <!--                        <ul class="product-categories">-->
+                            <!--                          <li><a href="#">Accessories</a></li>-->
+                            <!--                          <li><a href="#">Shoes</a></li>-->
+                            <!--                          <li><a href="#">Sport</a></li>-->
+                            <!--                          <li><a href="#">Women</a></li>-->
+                            <!--                        </ul>-->
+                            <!--                        <h6 class="product-title"><a th:href="@{'/singleProduct/'+${pr.getId()}}" th:text="${pr.getName()}">Product name</a></h6>-->
+                            <!--                        <p class="product-price"><span th:text="${pr.getPrice()}">price</span>-->
+                            <!--                        </p><a class="button-primary button button-icon button-icon-left" th:href="@{'/addToCart/'+${pr.getId()}}"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>-->
+                            <!--                      </div>-->
+                            <!--                    </div>-->
+                            <!--                  </div>-->
+                            <!--                  Product item end-->
+                        </div>
+                        <div class="button button-gray-light-outline" style="margin-top: 3rem;">завантажити ще</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 section-divided__aside section__aside-left group-shop">
+                    <!-- Categories-->
+                    <div class="section-md">
+                        <h5>Категорії</h5>
+                        <ul class="small list">
+                            <li><a href="/shop?category=clothes">Одяг</a></li>
+                            <li><a href="/shop?category=shoes">Взуття</a></li>
+                            <input type="hidden" id="mainCategoryId" th:value="${category}"/>
+                        </ul>
+                    </div>
+
+                    <!-- Filter type-->
+                    <div class="section-md">
+                        <h5>Тип</h5>
+                        <ul class="small list">
+                            <li th:each="t : ${types}">
+                                <input type="checkbox" class="typeInput" th:text="${t.getName()}"
+                                       th:value="${t.getId()}"/>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Filter season-->
+                    <div class="section-md">
+                        <h5>Сезон</h5>
+                        <ul class="small list">
+                            <li>
+                                <input type="checkbox" class="seasonInput" th:value="spring" th:text="Весна"/>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="seasonInput" th:value="summer" th:text="Літо"/>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="seasonInput" th:value="autumn" th:text="Осінь"/>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="seasonInput" th:value="winter" th:text="Зима"/>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="seasonInput" th:value="demiseason" th:text="Демісезон"/>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Filter size-->
+                    <div class="section-md">
+                        <h5>Розмір</h5>
+                        <ul class="small list">
+                            <li th:each="s : ${sizes}">
+                                <input type="checkbox" class="sizeInput" th:text="${s.getSize()}"
+                                       th:value="${s.getId()}"/>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Range-->
+                    <div class="section-md">
+                        <h5>Ціна</h5>
+                        <!--RD Range-->
+                        <div class="rd-range-wrap">
+                            <div class="rd-range-inner"><span>Ціна: </span><span
+                                    class="rd-range-input-value-1"></span><span>—</span><span
+                                    class="rd-range-input-value-2"></span></div>
+                            <div class="rd-range" th:data-min="${minPrice}" th:data-max="${maxPrice}"
+                                 th:data-start="'['+${minPrice}+','+${maxPrice}+']'" data-step="1" data-tooltip="true"
+                                 data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1"
+                                 data-input-2=".rd-range-input-value-2"></div>
+                        </div>
+                        <button class="button button-gray-light-outline" onclick="getData()">Фільтрувати</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Page Footer-->
+    <div th:replace="~{fragments/footersFrag.html :: mainFooter}"></div>
+</div>
+<!-- Global Mailform Output-->
+<div class="snackbars" id="form-output-global"></div>
+<!-- Javascript-->
+<script src="js/core.min.js"></script>
+<script src="js/script.js"></script>
+<script>
+    // $( document ).ready(function() {
+    //     getData();
+    // });
+
+    document.addEventListener("DOMContentLoaded", getData());
+
+    function showContent(array) {
+        let parent = document.getElementById('productsContainer');
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+
+        for (let i =0; i<array.length; i++){
+            let product = document.createRange()
+                .createContextualFragment('<div class="col-md-6 col-xl-4">\n' +
+            '                                    <div class="product product-grid">\n' +
+            '                                        <div class="product-img-wrap">\n' +
+            '                                            <img src="/shop/getImgByProductId/'+array[i].id+'" alt="" width="300" height="400"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="product-caption">\n' +
+            '                                            <ul class="product-categories">\n' +
+            '                                                <li><a href="#">Accessories</a></li>\n' +
+            '                                                <li><a href="#">Shoes</a></li>\n' +
+            '                                                <li><a href="#">Sport</a></li>\n' +
+            '                                                <li><a href="#">Women</a></li>\n' +
+            '                                            </ul>\n' +
+            '                                            <h6 class="product-title"><a href="/singleProduct/'+array[i].id+'">'+array[i].name+'</a></h6>\n' +
+            '                                            <p class="product-price">\n' +
+            '                                                <span>'+array[i].price.toFixed(2)+'</span>\n' +
+            '                                            </p>\n' +
+            '                                            <a class="button-primary button button-icon button-icon-left" href="/addToCart/'+array[i].id+'">\n' +
+            '                                                <span class="icon novi-icon icon-md linear-icon-cart"></span>\n' +
+            '                                                <span>До кошика</span>\n' +
+            '                                            </a>\n' +
+            '                                        </div>\n' +
+            '                                    </div>\n' +
+            '                                </div>');
+            document.getElementById('productsContainer').appendChild(product);
+        }
+    }
+
+    function getData() {
+        let category = $('#mainCategoryId').val();
+        let types = [];
+        let seasons = [];
+        let sizes = [];
+        let minPrice = parseInt($('.rd-range__pointer-tooltip').eq(0).text());
+        let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
+        let sortType = $('#sortingType').val();
+
+        $(".typeInput").each(function () {
+            if ($(this).is(':checked')) {
+                types.push($(this).val());
+            }
+        });
+
+        $(".seasonInput").each(function () {
+            if ($(this).is(':checked')) {
+                seasons.push($(this).val());
+            }
+        });
+
+        $(".sizeInput").each(function () {
+            if ($(this).is(':checked')) {
+                sizes.push($(this).val());
+            }
+        });
+
+        console.log("types: " + types);
+        console.log("seasons: " + seasons);
+        console.log("sizes: " + sizes);
+        console.log("min: " + minPrice);
+        console.log("max: " + maxPrice);
+        console.log("sort: " + sortType);
+        $.ajax({
+            method: "post",
+            url: "/shop",
+            contextType: "application/json",
+            data: {
+                category: category,
+                types: types,
+                seasons: seasons,
+                sizes: sizes,
+                minPrice: minPrice,
+                maxPrice: maxPrice,
+                sortType: sortType
+            },
+            traditional: true,
+            success: function (statisticInfo) {
+                console.log(statisticInfo);
+                showContent(statisticInfo);
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
+    }
+</script>
+</body>
 </html>

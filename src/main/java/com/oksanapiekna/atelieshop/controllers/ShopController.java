@@ -58,7 +58,8 @@ public class ShopController {
         if(types==null){types = new Integer[0];}
         if(seasons==null){seasons = new String[0];}
         if(sizes==null){sizes = new Integer[0];}
-        List<Product> products = productService.getFilteredProducts(category, Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType);
+//        List<Product> products = productService.getFilteredProducts(category, Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType);
+        List<Product> products = productService.findAll();
         JSONArray jsonArray = new JSONArray();
         for(Product product:products){
             jsonArray.add(ProductDTO.convertToDTO(product));
