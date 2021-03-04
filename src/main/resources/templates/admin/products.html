@@ -244,7 +244,7 @@
                                                 <option value="winter">Зима</option>
                                                 <option value="demiseason">Демісезон</option>
                                             </select>
-                                            <input type="hidden" id="selectHiddenClothesSeason" name="season"/>
+                                            <input type="hidden" id="selectHiddenClothesSeason" name="season" value=""/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -278,7 +278,7 @@
                                                 <option value="winter">Зима</option>
                                                 <option value="demiseason">Демісезон</option>
                                             </select>
-                                            <input type="hidden" id="selectHiddenShoesSeason" name="season"/>
+                                            <input type="hidden" id="selectHiddenShoesSeason" name="season" value=""/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -531,6 +531,12 @@
 <script th:src="@{/admin/src/assets/js/scripts.js}"></script>
 <script th:src="@{/admin/src/assets/js/example-sweetalert.js}"></script>
 <script>
+    $('#addProductModal').on('shown.bs.modal', function () {
+        setSingleHiddenValue('selectClothesSeason', 'selectHiddenShoesSeason');
+        setSingleHiddenValue('selectShoesSeason', 'selectHiddenShoesSeason');
+        console.log("Changed!");
+    });
+
     $('#mainCategories').on('change', function (e) {
         let optionSelected = $("option:selected", this);
         let selectedValue = this.value;
@@ -563,7 +569,8 @@
 
     function setSingleHiddenValue(idVal, idHiddenVal) {
         console.log("1. selectId: "+$('#'+idVal).val()+"; hiddenId: "+ $("#"+idHiddenVal).val());
-        $("#"+idHiddenVal).val($('#'+idVal).val().toString().split(',')[0]);
+        // $("#"+idHiddenVal).val($('#'+idVal).val().toString().split(',')[0]);
+        $("#"+idHiddenVal).val($('#'+idVal).val().toString());
         console.log("2. selectId: "+$('#'+idVal).val()+"; hiddenId: "+ $("#"+idHiddenVal).val());
     }
 

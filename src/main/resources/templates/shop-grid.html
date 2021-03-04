@@ -67,7 +67,7 @@
                 <div class="col-lg-9 section-divided__main section-divided__main-left">
                     <div class="section-md">
                         <div class="filter-shop-box">
-                            <p>Відображено 1–12 з 15 товарів</p>
+                            <p id="productsCounter"></p>
                             <div class="form-wrap">
                                 <!-- Select 2-->
                                 <select id="sortingType" class="form-input select-filter"
@@ -80,27 +80,9 @@
                         </div>
 
                         <div class="row justify-content-sm-center row-70" id="productsContainer">
-                            <!--                  Product item start-->
-                            <!--                  <div class="col-md-6 col-xl-4" th:each="pr : ${products}">-->
-                            <!--                    <div class="product product-grid">-->
-                            <!--                      <div class="product-img-wrap"><img th:src="@{'/shop/getImgByProductId/'+${pr.getId()}}" alt="" width="300" height="400"/>-->
-                            <!--                      </div>-->
-                            <!--                      <div class="product-caption">-->
-                            <!--                        <ul class="product-categories">-->
-                            <!--                          <li><a href="#">Accessories</a></li>-->
-                            <!--                          <li><a href="#">Shoes</a></li>-->
-                            <!--                          <li><a href="#">Sport</a></li>-->
-                            <!--                          <li><a href="#">Women</a></li>-->
-                            <!--                        </ul>-->
-                            <!--                        <h6 class="product-title"><a th:href="@{'/singleProduct/'+${pr.getId()}}" th:text="${pr.getName()}">Product name</a></h6>-->
-                            <!--                        <p class="product-price"><span th:text="${pr.getPrice()}">price</span>-->
-                            <!--                        </p><a class="button-primary button button-icon button-icon-left" th:href="@{'/addToCart/'+${pr.getId()}}"><span class="icon novi-icon icon-md linear-icon-cart"></span><span>До кошика</span></a>-->
-                            <!--                      </div>-->
-                            <!--                    </div>-->
-                            <!--                  </div>-->
-                            <!--                  Product item end-->
+                            <!--items-->
                         </div>
-                        <div class="button button-gray-light-outline" onclick="loadMore()" style="margin-top: 3rem;">завантажити ще</div>
+                        <div class="button button-gray-light-outline" id="loadMoreButton" onclick="loadMore()" style="margin-top: 3rem; display: block!important; margin-right: auto; margin-left: auto; width: max-content!important;">завантажити ще</div>
                     </div>
                 </div>
 
@@ -120,8 +102,7 @@
                         <h5>Тип</h5>
                         <ul class="small list">
                             <li th:each="t : ${types}">
-                                <input type="checkbox" class="typeInput" th:text="${t.getName()}"
-                                       th:value="${t.getId()}"/>
+                                <input type="checkbox" class="typeInput" th:text="${t.getName()}" th:value="${t.getId()}" onchange="getData()"/>
                             </li>
                         </ul>
                     </div>
@@ -131,19 +112,19 @@
                         <h5>Сезон</h5>
                         <ul class="small list">
                             <li>
-                                <input type="checkbox" class="seasonInput" th:value="spring" th:text="Весна"/>
+                                <input type="checkbox" class="seasonInput" th:value="spring" th:text="Весна" onchange="getData()"/>
                             </li>
                             <li>
-                                <input type="checkbox" class="seasonInput" th:value="summer" th:text="Літо"/>
+                                <input type="checkbox" class="seasonInput" th:value="summer" th:text="Літо" onchange="getData()"/>
                             </li>
                             <li>
-                                <input type="checkbox" class="seasonInput" th:value="autumn" th:text="Осінь"/>
+                                <input type="checkbox" class="seasonInput" th:value="autumn" th:text="Осінь" onchange="getData()"/>
                             </li>
                             <li>
-                                <input type="checkbox" class="seasonInput" th:value="winter" th:text="Зима"/>
+                                <input type="checkbox" class="seasonInput" th:value="winter" th:text="Зима" onchange="getData()"/>
                             </li>
                             <li>
-                                <input type="checkbox" class="seasonInput" th:value="demiseason" th:text="Демісезон"/>
+                                <input type="checkbox" class="seasonInput" th:value="demiseason" th:text="Демісезон" onchange="getData()"/>
                             </li>
                         </ul>
                     </div>
@@ -153,8 +134,7 @@
                         <h5>Розмір</h5>
                         <ul class="small list">
                             <li th:each="s : ${sizes}">
-                                <input type="checkbox" class="sizeInput" th:text="${s.getSize()}"
-                                       th:value="${s.getId()}"/>
+                                <input type="checkbox" class="sizeInput" th:text="${s.getSize()}" th:value="${s.getId()}" onchange="getData()"/>
                             </li>
                         </ul>
                     </div>
@@ -164,13 +144,13 @@
                         <h5>Ціна</h5>
                         <!--RD Range-->
                         <div class="rd-range-wrap">
-                            <div class="rd-range-inner"><span>Ціна: </span><span
-                                    class="rd-range-input-value-1"></span><span>—</span><span
-                                    class="rd-range-input-value-2"></span></div>
-                            <div class="rd-range" th:data-min="${minPrice}" th:data-max="${maxPrice}"
-                                 th:data-start="'['+${minPrice}+','+${maxPrice}+']'" data-step="1" data-tooltip="true"
-                                 data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1"
-                                 data-input-2=".rd-range-input-value-2"></div>
+                            <div class="rd-range-inner">
+                                <span>Ціна: </span>
+                                <span class="rd-range-input-value-1"></span>
+                                <span>—</span>
+                                <span class="rd-range-input-value-2"></span>
+                            </div>
+                            <div class="rd-range" th:data-min="${minPrice}" th:data-max="${maxPrice}" th:data-start="'['+${minPrice}+','+${maxPrice}+']'" data-step="1" data-tooltip="true" data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
                         </div>
                         <button class="button button-gray-light-outline" onclick="getData()">Фільтрувати</button>
                     </div>
@@ -189,18 +169,13 @@
 <script src="js/core.min.js"></script>
 <script src="js/script.js"></script>
 <script>
-    // document.addEventListener("DOMContentLoaded", getData());
     let currentPage = 0;
     let countOfPage = 0;
+    let itemsCount = 0;
 
     $( document ).ready(function() {
         getData();
     });
-
-    // window.addEventListener('DOMContentLoaded', (event) => {
-    //     currentPage = 0;
-    //     getData();
-    // });
 
     function clearExistingData() {
         let parent = document.getElementById('productsContainer');
@@ -209,9 +184,27 @@
         }
     }
 
+    function calculateVisibleItems() {
+        let totalVisibleAmount = document.getElementsByClassName('product').length;
+        document.getElementById('productsCounter').innerHTML = "Відображено "+totalVisibleAmount+" з "+itemsCount+" товарів";
+        if (totalVisibleAmount===itemsCount){
+            document.getElementById('loadMoreButton').style.display = "none";
+        } else {
+            document.getElementById('loadMoreButton').style.display = "block";
+        }
+    }
+
     function showContent(object) {
         let array = object['products'];
+        itemsCount = object['countOfAllProducts'];
+        let categoryName = '';
         for (let i =0; i<array.length; i++){
+            if (array[i].category==='CLOTHES'){
+                categoryName = 'Одяг';
+            }else if (array[i].category==='SHOES'){
+                categoryName = 'Взуття';
+            }
+
             let product = document.createRange()
                 .createContextualFragment('<div class="col-md-6 col-xl-4">\n' +
             '                                    <div class="product product-grid">\n' +
@@ -220,10 +213,8 @@
             '                                        </div>\n' +
             '                                        <div class="product-caption">\n' +
             '                                            <ul class="product-categories">\n' +
-            '                                                <li><a href="#">Accessories</a></li>\n' +
-            '                                                <li><a href="#">Shoes</a></li>\n' +
-            '                                                <li><a href="#">Sport</a></li>\n' +
-            '                                                <li><a href="#">Women</a></li>\n' +
+            '                                                <li><a href="/shop?category='+array[i].category.toString().toLowerCase()+'">'+categoryName+'</a></li>\n' +
+            '                                                <li><a href="/shop?category='+array[i].category.toString().toLowerCase()+'">'+array[i].typeOfProduct+'</a></li>\n' +
             '                                            </ul>\n' +
             '                                            <h6 class="product-title"><a href="/singleProduct/'+array[i].id+'">'+array[i].name+'</a></h6>\n' +
             '                                            <p class="product-price">\n' +
@@ -238,6 +229,7 @@
             '                                </div>');
             document.getElementById('productsContainer').appendChild(product);
         }
+        calculateVisibleItems();
     }
 
     function loadMore() {
@@ -268,13 +260,6 @@
                 }
             });
 
-            // console.log("types: " + types);
-            // console.log("seasons: " + seasons);
-            // console.log("sizes: " + sizes);
-            // console.log("min: " + minPrice);
-            // console.log("max: " + maxPrice);
-
-            // console.log("sort: " + sortType);
             let page = currentPage + 1;
             console.log("currentPage: " + page);
             $.ajax({
@@ -300,7 +285,7 @@
                     countOfPage = products['pageCount'];
                 },
                 error: function () {
-                    alert("Error");
+                    alert("Помилка!");
                 }
             });
         }
@@ -334,12 +319,6 @@
             }
         });
 
-        console.log("types: " + types);
-        console.log("seasons: " + seasons);
-        console.log("sizes: " + sizes);
-        console.log("min: " + minPrice);
-        console.log("max: " + maxPrice);
-        console.log("sort: " + sortType);
         $.ajax({
             method: "post",
             url: "/shop",
@@ -363,7 +342,7 @@
                 countOfPage = products['pageCount'];
             },
             error: function () {
-                alert("Error");
+                alert("Помилка!");
             }
         });
     }
