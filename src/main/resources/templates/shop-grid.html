@@ -193,10 +193,14 @@
     let currentPage = 0;
     let lastPage;
 
-    window.addEventListener('DOMContentLoaded', (event) => {
-        currentPage = 0;
+    $( document ).ready(function() {
         getData();
     });
+
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    //     currentPage = 0;
+    //     getData();
+    // });
 
     function clearExistingData() {
         let parent = document.getElementById('productsContainer');
