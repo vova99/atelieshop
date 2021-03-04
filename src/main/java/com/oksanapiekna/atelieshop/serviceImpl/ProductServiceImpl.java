@@ -7,12 +7,15 @@ import com.oksanapiekna.atelieshop.service.ProductService;
 import com.oksanapiekna.atelieshop.service.SizeService;
 import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -113,17 +116,22 @@ public class ProductServiceImpl implements ProductService {
         return productJPA.findByStatus(status);
     }
 
-    @Override
-    public List<Product> getFilteredProducts(String category, List<Integer> types,List<String> seasons,List<Integer> sizes, double maxPrice,double minPrice, String sortType) {
-        System.out.println(productJPA.findBySizesId(24));
-        Category categoryEnum;
-        System.out.println("category " + category);
+    public Category checkCategory(String category){
         if(category.toLowerCase().equals("clothes"))
         {
-            categoryEnum = Category.CLOTHES;
+           return  Category.CLOTHES;
         }else{
-            categoryEnum = Category.SHOES;
+            return  Category.SHOES;
         }
+    }
+
+    @Override
+    public List<Product> getFilteredProducts(String category, List<Integer> types,List<String> seasons,
+                                             List<Integer> sizes, double maxPrice,double minPrice,
+                                             String sortType,int page,int size) {
+        System.out.println(productJPA.findBySizesId(24));
+        Category categoryEnum = checkCategory(category);
+
         if(types.isEmpty()){
             types = typeOfProductService.findByCategory(categoryEnum).stream().map(TypeOfProduct::getId).collect(Collectors.toList());
         }
@@ -133,17 +141,59 @@ public class ProductServiceImpl implements ProductService {
         if(seasons.isEmpty()){
             seasons = new ArrayList<>();
             seasons.add("summer");
+            seasons.add("winter");
+            seasons.add("spring");
+            seasons.add("autumn");
             seasons.add("demiseason");
         }
         System.out.println(types);
         System.out.println(sizes);
         System.out.println(seasons);
-
+        System.out.println("max" + maxPrice);
+        System.out.println("min" + minPrice);
+        System.out.println("page" + page);
+        System.out.println("size" + size);
 //        List<Product> products = new ArrayList<>(pageableProductJPA.getFilterProduct(StatusOfEntity.ACTIVE, types, seasons,sizes, PageRequest.of(0, 12)));
-        List<Product> products = new ArrayList<>(pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInOrderByIdDesc(StatusOfEntity.ACTIVE, types,seasons,sizes));
-        System.out.println(products);
-        return products;
+
+        List<Product> products = new ArrayList<>(pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity.ACTIVE, types,seasons,sizes,maxPrice,minPrice));
+        Comparator<Product> productComparator;
+        System.out.println("Sort type" + sortType);
+        switch (sortType){
+            case "highPrice":productComparator = (o1, o2) ->  (int) (o2.getPrice()-o1.getPrice());break;
+            case "lowPrice":productComparator = (o1, o2) ->  (int) (o1.getPrice()-o2.getPrice());break;
+            default:productComparator = (o1, o2) -> o2.getId()-o1.getId();
+        }
+        products.sort(productComparator);
+
+        Pageable paging = PageRequest.of(page,size);
+        int start = Math.min((int)paging.getOffset(), products.size());
+        int end = Math.min((start + paging.getPageSize()), products.size());
+
+        return products.subList(start,end);
     }
+
+    @Override
+    public int getCountOfPages(String category, List<Integer> types, List<String> seasons, List<Integer> sizes, double maxPrice, double minPrice, String sortType, int page, int size) {
+        if(types.isEmpty()){
+            types = typeOfProductService.findByCategory(checkCategory(category)).stream().map(TypeOfProduct::getId).collect(Collectors.toList());
+        }
+        if(sizes.isEmpty()){
+            sizes = sizeService.findByCategory(checkCategory(category)).stream().map(Size::getId).collect(Collectors.toList());
+        }
+        if(seasons.isEmpty()){
+            seasons = new ArrayList<>();
+            seasons.add("summer");
+            seasons.add("winter");
+            seasons.add("spring");
+            seasons.add("autumn");
+            seasons.add("demiseason");
+        }
+
+        double countOfElements = pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity.ACTIVE, types,seasons,sizes,maxPrice,minPrice).size();
+        System.out.println(countOfElements/ size);
+        return (int) Math.ceil(countOfElements/ size);
+    }
+
 
     @Override
     public void deleteByID(int id) {

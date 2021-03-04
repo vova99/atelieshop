@@ -9,6 +9,8 @@ import com.oksanapiekna.atelieshop.service.SizeService;
 import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+import netscape.javascript.JSObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -53,18 +55,23 @@ public class ShopController {
 
     @ResponseBody
     @PostMapping("/shop")
-    public JSONArray getFilteredProducts(String category, Integer[] types, String[] seasons, Integer[] sizes,
-                                          double maxPrice, double minPrice, String sortType){
+    public JSONObject getFilteredProducts(String category, Integer[] types, String[] seasons, Integer[] sizes,
+                                          double maxPrice, double minPrice, String sortType, Integer page, Integer size){
         if(types==null){types = new Integer[0];}
         if(seasons==null){seasons = new String[0];}
         if(sizes==null){sizes = new Integer[0];}
-//        List<Product> products = productService.getFilteredProducts(category, Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType);
-        List<Product> products = productService.findAll();
+        List<Product> products = productService.getFilteredProducts(category, Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size);
+//        List<Product> products = productService.findAll();
+        int pageCount =  productService.getCountOfPages(category,Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size);
+        JSONObject object = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         for(Product product:products){
             jsonArray.add(ProductDTO.convertToDTO(product));
         }
-        return jsonArray;
+
+        object.put("products",jsonArray);
+        object.put("pageCount",pageCount);
+        return object;
     }
 
 }

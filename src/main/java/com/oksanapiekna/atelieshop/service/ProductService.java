@@ -15,6 +15,8 @@ public interface ProductService {
     List<Product> findAll();
     List<Product> findByStatus(StatusOfEntity status);
     List<Product> getFilteredProducts(String category,List<Integer> types,List<String> seasons,List<Integer> sizes,
-                                      double maxPrice,double minPrice, String sortType);
+                                      double maxPrice,double minPrice, String sortType,int page,int size);
+    int getCountOfPages(String category,List<Integer> types,List<String> seasons,List<Integer> sizes,
+                                      double maxPrice,double minPrice, String sortType,int page,int size);
     void deleteByID(int id);
 }

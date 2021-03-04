@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Set;
 
+
 @Repository
 public interface PageableProductJPA extends PagingAndSortingRepository<Product, Integer> {
-    Set<Product> findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInOrderByIdDesc(StatusOfEntity status, List<Integer> type, List<String> seasons, List<Integer> sizes);
-
-}
+  Set<Product> findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity status, List<Integer> type, List<String> seasons, List<Integer> sizes, double maxPrice, double minPrice);
+ }

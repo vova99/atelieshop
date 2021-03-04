@@ -191,7 +191,7 @@
 <script>
     // document.addEventListener("DOMContentLoaded", getData());
     let currentPage = 0;
-    let lastPage;
+    let countOfPage = 0;
 
     $( document ).ready(function() {
         getData();
@@ -209,7 +209,8 @@
         }
     }
 
-    function showContent(array) {
+    function showContent(object) {
+        let array = object['products'];
         for (let i =0; i<array.length; i++){
             let product = document.createRange()
                 .createContextualFragment('<div class="col-md-6 col-xl-4">\n' +
@@ -240,57 +241,69 @@
     }
 
     function loadMore() {
-        let category = $('#mainCategoryId').val();
-        let types = [];
-        let seasons = [];
-        let sizes = [];
-        let minPrice = parseInt($('.rd-range__pointer-tooltip').eq(0).text());
-        let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
-        let sortType = $('#sortingType').val();
+        if(currentPage<countOfPage) {
+            let category = $('#mainCategoryId').val();
+            let types = [];
+            let seasons = [];
+            let sizes = [];
+            let minPrice = parseInt($('.rd-range__pointer-tooltip').eq(0).text());
+            let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
+            let sortType = $('#sortingType').val();
 
-        $(".typeInput").each(function () {
-            if ($(this).is(':checked')) {
-                types.push($(this).val());
-            }
-        });
+            $(".typeInput").each(function () {
+                if ($(this).is(':checked')) {
+                    types.push($(this).val());
+                }
+            });
 
-        $(".seasonInput").each(function () {
-            if ($(this).is(':checked')) {
-                seasons.push($(this).val());
-            }
-        });
+            $(".seasonInput").each(function () {
+                if ($(this).is(':checked')) {
+                    seasons.push($(this).val());
+                }
+            });
 
-        $(".sizeInput").each(function () {
-            if ($(this).is(':checked')) {
-                sizes.push($(this).val());
-            }
-        });
+            $(".sizeInput").each(function () {
+                if ($(this).is(':checked')) {
+                    sizes.push($(this).val());
+                }
+            });
 
-        $.ajax({
-            method: "post",
-            url: "/shop",
-            contextType: "application/json",
-            data: {
-                category: category,
-                types: types,
-                seasons: seasons,
-                sizes: sizes,
-                minPrice: minPrice,
-                maxPrice: maxPrice,
-                sortType: sortType,
-                size: 1,
-                page: 0
-            },
-            traditional: true,
-            success: function (products) {
-                console.log(products);
-                showContent(products)
-                currentPage++;
-            },
-            error: function () {
-                alert("Error");
-            }
-        });
+            // console.log("types: " + types);
+            // console.log("seasons: " + seasons);
+            // console.log("sizes: " + sizes);
+            // console.log("min: " + minPrice);
+            // console.log("max: " + maxPrice);
+
+            // console.log("sort: " + sortType);
+            let page = currentPage + 1;
+            console.log("currentPage: " + page);
+            $.ajax({
+                method: "post",
+                url: "/shop",
+                contextType: "application/json",
+                data: {
+                    category: category,
+                    types: types,
+                    seasons: seasons,
+                    sizes: sizes,
+                    minPrice: minPrice,
+                    maxPrice: maxPrice,
+                    sortType: sortType,
+                    size: 1,
+                    page: page
+                },
+                traditional: true,
+                success: function (products) {
+                    console.log(products);
+                    showContent(products);
+                    currentPage++;
+                    countOfPage = products['pageCount'];
+                },
+                error: function () {
+                    alert("Error");
+                }
+            });
+        }
     }
 
     function getData() {
@@ -301,6 +314,7 @@
         let minPrice = parseInt($('.rd-range__pointer-tooltip').eq(0).text());
         let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
         let sortType = $('#sortingType').val();
+        currentPage = 0;
 
         $(".typeInput").each(function () {
             if ($(this).is(':checked')) {
@@ -320,6 +334,12 @@
             }
         });
 
+        console.log("types: " + types);
+        console.log("seasons: " + seasons);
+        console.log("sizes: " + sizes);
+        console.log("min: " + minPrice);
+        console.log("max: " + maxPrice);
+        console.log("sort: " + sortType);
         $.ajax({
             method: "post",
             url: "/shop",
@@ -340,6 +360,7 @@
                 console.log(products);
                 clearExistingData();
                 showContent(products);
+                countOfPage = products['pageCount'];
             },
             error: function () {
                 alert("Error");
