@@ -100,7 +100,7 @@
                             <!--                  </div>-->
                             <!--                  Product item end-->
                         </div>
-                        <div class="button button-gray-light-outline" style="margin-top: 3rem;">завантажити ще</div>
+                        <div class="button button-gray-light-outline" onclick="loadMore()" style="margin-top: 3rem;">завантажити ще</div>
                     </div>
                 </div>
 
@@ -189,11 +189,10 @@
 <script src="js/core.min.js"></script>
 <script src="js/script.js"></script>
 <script>
-    // $( document ).ready(function() {
-    //     getData();
-    // });
-
     document.addEventListener("DOMContentLoaded", getData());
+
+    let currentPage = 0;
+    let lastPage;
 
     function showContent(array) {
         let parent = document.getElementById('productsContainer');
@@ -228,6 +227,92 @@
             '                                </div>');
             document.getElementById('productsContainer').appendChild(product);
         }
+    }
+
+    function loadMore() {
+        let category = $('#mainCategoryId').val();
+        let types = [];
+        let seasons = [];
+        let sizes = [];
+        let minPrice = parseInt($('.rd-range__pointer-tooltip').eq(0).text());
+        let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
+        let sortType = $('#sortingType').val();
+
+        $(".typeInput").each(function () {
+            if ($(this).is(':checked')) {
+                types.push($(this).val());
+            }
+        });
+
+        $(".seasonInput").each(function () {
+            if ($(this).is(':checked')) {
+                seasons.push($(this).val());
+            }
+        });
+
+        $(".sizeInput").each(function () {
+            if ($(this).is(':checked')) {
+                sizes.push($(this).val());
+            }
+        });
+
+        console.log("types: " + types);
+        console.log("seasons: " + seasons);
+        console.log("sizes: " + sizes);
+        console.log("min: " + minPrice);
+        console.log("max: " + maxPrice);
+        console.log("sort: " + sortType);
+        $.ajax({
+            method: "post",
+            url: "/shop",
+            contextType: "application/json",
+            data: {
+                category: category,
+                types: types,
+                seasons: seasons,
+                sizes: sizes,
+                minPrice: minPrice,
+                maxPrice: maxPrice,
+                sortType: sortType,
+                size: 2,
+                page: currentPage+1
+            },
+            traditional: true,
+            success: function (array) {
+                console.log(array);
+                for (let i =0; i<array.length; i++){
+                    let product = document.createRange()
+                        .createContextualFragment('<div class="col-md-6 col-xl-4">\n' +
+                    '                                    <div class="product product-grid">\n' +
+                    '                                        <div class="product-img-wrap">\n' +
+                    '                                            <img src="/shop/getImgByProductId/'+array[i].id+'" alt="" width="300" height="400"/>\n' +
+                    '                                        </div>\n' +
+                    '                                        <div class="product-caption">\n' +
+                    '                                            <ul class="product-categories">\n' +
+                    '                                                <li><a href="#">Accessories</a></li>\n' +
+                    '                                                <li><a href="#">Shoes</a></li>\n' +
+                    '                                                <li><a href="#">Sport</a></li>\n' +
+                    '                                                <li><a href="#">Women</a></li>\n' +
+                    '                                            </ul>\n' +
+                    '                                            <h6 class="product-title"><a href="/singleProduct/'+array[i].id+'">'+array[i].name+'</a></h6>\n' +
+                    '                                            <p class="product-price">\n' +
+                    '                                                <span>'+array[i].price.toFixed(2)+'</span>\n' +
+                    '                                            </p>\n' +
+                    '                                            <a class="button-primary button button-icon button-icon-left" href="/addToCart/'+array[i].id+'">\n' +
+                    '                                                <span class="icon novi-icon icon-md linear-icon-cart"></span>\n' +
+                    '                                                <span>До кошика</span>\n' +
+                    '                                            </a>\n' +
+                    '                                        </div>\n' +
+                    '                                    </div>\n' +
+                    '                                </div>');
+                    document.getElementById('productsContainer').appendChild(product);
+                }
+                currentPage++;
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
     }
 
     function getData() {
@@ -274,7 +359,9 @@
                 sizes: sizes,
                 minPrice: minPrice,
                 maxPrice: maxPrice,
-                sortType: sortType
+                sortType: sortType,
+                size: 2,
+                page: currentPage+1
             },
             traditional: true,
             success: function (statisticInfo) {
