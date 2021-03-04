@@ -7,6 +7,7 @@ import com.oksanapiekna.atelieshop.entity.StatusOfEntity;
 import com.oksanapiekna.atelieshop.service.*;
 import com.oksanapiekna.atelieshop.viberBot.ViberListenerService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

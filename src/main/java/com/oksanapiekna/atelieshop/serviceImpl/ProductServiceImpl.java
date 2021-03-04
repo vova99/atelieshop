@@ -173,7 +173,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public int getCountOfPages(String category, List<Integer> types, List<String> seasons, List<Integer> sizes, double maxPrice, double minPrice, String sortType, int page, int size) {
+    public int getCountOfElements(String category, List<Integer> types, List<String> seasons, List<Integer> sizes, double maxPrice, double minPrice, String sortType, int page, int size) {
         if(types.isEmpty()){
             types = typeOfProductService.findByCategory(checkCategory(category)).stream().map(TypeOfProduct::getId).collect(Collectors.toList());
         }
@@ -189,10 +189,8 @@ public class ProductServiceImpl implements ProductService {
             seasons.add("demiseason");
         }
 
-        double countOfElements = pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity.ACTIVE, types,seasons,sizes,maxPrice,minPrice).size();
-        System.out.println(countOfElements/ size);
-        return (int) Math.ceil(countOfElements/ size);
-    }
+        return pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity.ACTIVE, types,seasons,sizes,maxPrice,minPrice).size();
+  }
 
 
     @Override

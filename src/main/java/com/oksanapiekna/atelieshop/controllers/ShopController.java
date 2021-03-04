@@ -62,15 +62,18 @@ public class ShopController {
         if(sizes==null){sizes = new Integer[0];}
         List<Product> products = productService.getFilteredProducts(category, Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size);
 //        List<Product> products = productService.findAll();
-        int pageCount =  productService.getCountOfPages(category,Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size);
+        int countOfAllProducts =  productService.getCountOfElements(category,Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size);
         JSONObject object = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         for(Product product:products){
             jsonArray.add(ProductDTO.convertToDTO(product));
         }
 
+        double countOfElements = countOfAllProducts;
+
         object.put("products",jsonArray);
-        object.put("pageCount",pageCount);
+        object.put("countOfAllProducts",countOfAllProducts);
+        object.put("pageCount",Math.ceil(countOfElements/ size));
         return object;
     }
 
