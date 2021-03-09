@@ -10,7 +10,6 @@ import com.oksanapiekna.atelieshop.service.TypeOfProductService;
 import lombok.AllArgsConstructor;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
-import netscape.javascript.JSObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
