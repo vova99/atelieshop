@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
 public class ViberBotConfig extends NanoHTTPD {
     private static final int PORT =8081;
 
-    private static final String AUTH_TOKEN = "4cc3fede4d67de74-d83368003d5b2c32-db48269e48e4be64";
+    private static final String AUTH_TOKEN = "4cc3fede4d67de74-f44493db6e9d86af-4897346c7bac46e9";
     private static final String WEBHOOK_URL = "https://oksanapiekna.herokuapp.com/";
 
     private final ViberBot bot;
