@@ -152,7 +152,7 @@
                             </div>
                             <div class="rd-range" th:data-min="${minPrice}" th:data-max="${maxPrice}" th:data-start="'['+${minPrice}+','+${maxPrice}+']'" data-step="1" data-tooltip="true" data-placement="top" data-min-diff="10" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
                         </div>
-                        <button class="button button-gray-light-outline" onclick="getData()">Фільтрувати</button>
+                        <button class="button button-gray-light-outline" id="filterButton" onclick="getData()">Фільтрувати</button>
                     </div>
 
                 </div>
@@ -194,7 +194,12 @@
         }
     }
 
+    $("#filterButton").click( function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
     function showContent(object) {
+        $().UItoTop({ easingType: 'easeOutQuart' });
         let array = object['products'];
         itemsCount = object['countOfAllProducts'];
         let categoryName = '';
