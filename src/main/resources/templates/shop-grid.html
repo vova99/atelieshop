@@ -186,7 +186,7 @@
 
     function calculateVisibleItems() {
         let totalVisibleAmount = document.getElementsByClassName('product').length;
-        document.getElementById('productsCounter').innerHTML = "Відображено "+totalVisibleAmount+" з "+itemsCount+" товарів";
+        document.getElementById('productsCounter').innerHTML = "Показано "+totalVisibleAmount+" з "+itemsCount+" товарів";
         if (totalVisibleAmount===itemsCount){
             document.getElementById('loadMoreButton').style.display = "none";
         } else {
