@@ -35,6 +35,7 @@ public class MainController {
             }
         }
         OrderInfo order = new OrderInfo();
+        order.setId(UUID.randomUUID());
         order = orderService.save(order);
         httpServletResponse.addCookie(new Cookie("id", order.getId().toString()));
         model.addAttribute("order",order);
@@ -68,10 +69,16 @@ public class MainController {
     }
 
     @GetMapping("/addToCart/{productId}")
-    public String addToCart(@PathVariable int productId, @CookieValue(value = "id", defaultValue = "") String username,Model model,HttpServletResponse httpServletResponse,int size,int count){
+    public String addToCart(@PathVariable int productId, @CookieValue(value = "id", defaultValue = "") String username,Model model,HttpServletResponse httpServletResponse,Integer size,Integer count){
         checkCheckCookie(username,httpServletResponse,model);
         OrderInfo order = (OrderInfo) model.getAttribute("order");
         System.out.println("Count " + count);
+        if(size==null){
+            size = 1;
+        }
+        if(count==null){
+            count = 1;
+        }
         orderDetailsService.addProductToOrder(order.getId(),productId,size,count);
         return "redirect:/shop?category=clothes";
     }

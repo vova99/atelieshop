@@ -6,7 +6,6 @@ import com.oksanapiekna.atelieshop.service.OrderDetailsService;
 import com.oksanapiekna.atelieshop.service.OrderService;
 import com.oksanapiekna.atelieshop.service.ProductService;
 import com.oksanapiekna.atelieshop.service.SizeService;
-import com.oksanapiekna.atelieshop.viberBot.ViberBotConfig;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

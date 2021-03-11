@@ -6,6 +6,7 @@ import com.oksanapiekna.atelieshop.service.ViberTokenService;
 import com.oksanapiekna.atelieshop.service.ViberUserProfileService;
 import com.viber.bot.Response;
 import com.viber.bot.api.MessageDestination;
+import com.viber.bot.api.ViberBot;
 import com.viber.bot.event.incoming.IncomingMessageEvent;
 import com.viber.bot.message.Message;
 import com.viber.bot.message.TextMessage;
@@ -16,9 +17,9 @@ import org.springframework.stereotype.Service;
 public class ViberListenerServiceImpl implements ViberListenerService {
     private final ViberUserProfileService viberUserProfileService;
     private final ViberTokenService viberTokenService;
-    private final ViberBotConfig viberBot;
+    private final ViberBot viberBot;
 
-    public ViberListenerServiceImpl(ViberUserProfileService viberUserProfileService, ViberTokenService viberTokenService,@Lazy ViberBotConfig viberBot) {
+    public ViberListenerServiceImpl(ViberUserProfileService viberUserProfileService, ViberTokenService viberTokenService,@Lazy ViberBot viberBot) {
         this.viberUserProfileService = viberUserProfileService;
         this.viberTokenService = viberTokenService;
         this.viberBot = viberBot;
