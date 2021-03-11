@@ -248,8 +248,8 @@
                         '                                                <li><a href="/shop?category=' + array[i].category.toString().toLowerCase() + '">' + array[i].typeOfProduct + '</a></li>\n' +
                         '                                            </ul>\n' +
                         '                                            <h6 class="product-title"><a href="/singleProduct/' + array[i].id + '">' + array[i].name + '</a></h6>\n' +
-                        '                                            <p class="product-price">\n' +
-                        '                                                <span>' + array[i].newPrice.toFixed(2) + '</span>\n' +
+                        '                                            <p class="product-price sale-price">\n' +
+                        '                                                <span>' + array[i].newPrice.toFixed(2) + '</span><span>' + array[i].price.toFixed(2) + '</span> \n' +
                         '                                            </p>\n' +
                         '                                            <a class="button-primary button button-icon button-icon-left" href="/addToCart/' + array[i].id + '">\n' +
                         '                                                <span class="icon novi-icon icon-md linear-icon-cart"></span>\n' +

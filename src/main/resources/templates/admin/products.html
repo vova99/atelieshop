@@ -94,8 +94,8 @@
                                                     <th class="nk-tb-col tb-col-hide"><span class="sub-text">Сезон</span></th>
                                                     <th class="nk-tb-col tb-col-hide"><span class="sub-text">Тип</span></th>
                                                     <th class="nk-tb-col tb-col-hide"><span class="sub-text">Розміри</span></th>
-                                                    <th class="nk-tb-col "><span class="sub-text">Акційна ціна</span></th>
-                                                    <th class="nk-tb-col "><span class="sub-text">Акційний товар</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Акційна ціна</span></th>
+                                                    <th class="nk-tb-col tb-col-hide"><span class="sub-text">Акційний товар</span></th>
                                                     <th class="nk-tb-col"><span class="sub-text" style="text-align: right; padding-right: 2rem;">Дії</span></th>
                                                 </tr>
                                                 </thead>
@@ -135,10 +135,10 @@
                                                     <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getSizes()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col ">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getNewPrice()}"></span>
                                                     </td>
-                                                    <td class="nk-tb-col ">
+                                                    <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.isProductForSales()}"></span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
@@ -246,7 +246,7 @@
                                         <div class="form-group">
                                             <div class="preview-block">
                                                 <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" checked id="promotedProduct" name="productForSales">
+                                                    <input type="checkbox" class="custom-control-input" id="promotedProduct" name="productForSales">
                                                     <label class="custom-control-label" for="promotedProduct">Акційний товар</label>
                                                 </div>
                                             </div>
@@ -595,6 +595,7 @@
         setSingleHiddenValue('selectClothesSeason', 'selectHiddenShoesSeason');
         setSingleHiddenValue('selectShoesSeason', 'selectHiddenShoesSeason');
         console.log("Changed!");
+
     });
 
     $('#mainCategories').on('change', function (e) {

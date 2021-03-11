@@ -5024,7 +5024,7 @@ h3 + .card-custom-group-wrap {
 	font-size: 18px;
 }
 
-.product-price.sale-price span:last-of-type:after {
+.product-price.sale-price span:last-of-type:before {
 	position: absolute;
 	top: 50%;
 	left: 0;
