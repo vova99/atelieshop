@@ -22,12 +22,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
-@Component
 public class ViberBotConfig extends NanoHTTPD {
-    private static final int PORT =8081;
+    private static final int PORT =8080;
 
     private static final String AUTH_TOKEN = "4cc3fede4d67de74-6cb0f9e4b7c4a852-a4750ccfaf485f2e";
-    private static final String WEBHOOK_URL = "https://oksanapiekna.herokuapp.com/";
+    private static final String WEBHOOK_URL = "https://fc9ea9fa7b2b.ngrok.io:8080";
 
     private final ViberBot bot;
     private final ViberSignatureValidator signatureValidator;
