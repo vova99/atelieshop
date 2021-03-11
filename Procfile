@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Ddw.server.applicationConnectors[0].port=8080 -Ddw.server.applicationConnectors[1].port=8081 -Dspring.profiles.active=prod -jar target/dependency/project.jar
+web: java $JAVA_OPTS -Dspring.profiles.active=prod -jar target/dependency/project.jar
