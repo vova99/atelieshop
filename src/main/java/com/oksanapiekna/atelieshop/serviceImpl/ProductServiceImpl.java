@@ -67,6 +67,8 @@ public class ProductServiceImpl implements ProductService {
             productDB.setCategory(product.getCategory());
             productDB.setSeason(product.getSeason().replace(",",""));
             productDB.setPrice(product.getPrice());
+            productDB.setNewPrice(product.getNewPrice());
+            productDB.setProductForSales(product.isProductForSales());
             productDB.setTypeOfProduct(product.getTypeOfProduct());
             productDB.setSizes(product.getSizes());
             System.out.println("Mulipart "+multipartFile.getSize());
