@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,8 @@ public class Product {
     private String description;
 
     private double price;
+    private double newPrice;
+    private boolean productForSales;
     private String season;
 
     @Lob

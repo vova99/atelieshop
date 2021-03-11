@@ -17,6 +17,8 @@ public class ProductDTO {
     private String description;
 
     private double price;
+    private double newPrice;
+    private boolean productForSales;
     private String season;
 
     private List<String> sizes;
@@ -30,6 +32,8 @@ public class ProductDTO {
         productDTO.setArticle(product.getArticle());
         productDTO.setDescription(product.getDescription());
         productDTO.setPrice(product.getPrice());
+        productDTO.setNewPrice(product.getNewPrice());
+        productDTO.setProductForSales(product.isProductForSales());
         productDTO.setSeason(product.getSeason());
 
         productDTO.setSizes(product.getSizes().stream().map(Size::getSize).collect(Collectors.toList()));
