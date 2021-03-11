@@ -9,6 +9,7 @@ import com.viber.bot.ViberSignatureValidator;
 import com.viber.bot.api.ViberBot;
 import com.viber.bot.message.TextMessage;
 import com.viber.bot.profile.BotProfile;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
@@ -32,6 +33,8 @@ public class BotConfig implements ApplicationListener<ApplicationReadyEvent> {
 
     @Inject
     private ViberBot bot;
+    @Autowired
+    private ViberListenerService viberListenerService;
 
     @Inject
     private ViberSignatureValidator signatureValidator;
@@ -48,7 +51,7 @@ public class BotConfig implements ApplicationListener<ApplicationReadyEvent> {
             e.printStackTrace();
         }
 
-        bot.onMessageReceived((event, message, response) -> response.send(message)); // echos everything back
+        bot.onMessageReceived(viberListenerService);
         bot.onConversationStarted(event -> Futures.immediateFuture(Optional.of( // send 'Hi UserName' when conversation is started
                 new TextMessage("Hi " + event.getUser().getName()))));
     }
