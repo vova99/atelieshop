@@ -94,6 +94,8 @@
                                                     <th class="nk-tb-col tb-col-hide"><span class="sub-text">Сезон</span></th>
                                                     <th class="nk-tb-col tb-col-hide"><span class="sub-text">Тип</span></th>
                                                     <th class="nk-tb-col tb-col-hide"><span class="sub-text">Розміри</span></th>
+                                                    <th class="nk-tb-col "><span class="sub-text">Акційна ціна</span></th>
+                                                    <th class="nk-tb-col "><span class="sub-text">Акційний товар</span></th>
                                                     <th class="nk-tb-col"><span class="sub-text" style="text-align: right; padding-right: 2rem;">Дії</span></th>
                                                 </tr>
                                                 </thead>
@@ -132,6 +134,12 @@
                                                     </td>
                                                     <td class="nk-tb-col tb-col-hide">
                                                         <span th:text="${p.getSizes()}"></span>
+                                                    </td>
+                                                    <td class="nk-tb-col ">
+                                                        <span th:text="${p.getNewPrice()}"></span>
+                                                    </td>
+                                                    <td class="nk-tb-col ">
+                                                        <span th:text="${p.isProductForSales()}"></span>
                                                     </td>
                                                     <td class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1">
@@ -223,6 +231,31 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
+                                        <div class="form-control-wrap">
+                                            <div class="form-text-hint" style="top: 50%;">
+                                                <span class="overline-title">UAH</span>
+                                            </div>
+                                            <label class="form-label" for="productPromotionalPrice">Акційна ціна</label>
+                                            <input type="text" pattern="[0-9]*\.?[0-9]*" class="form-control" id="productPromotionalPrice" placeholder="Не заповнено..." name="newPrice" value="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-md-12 form-group">
+                                        <div class="form-group">
+                                            <div class="preview-block">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" checked id="promotedProduct" name="productForSales">
+                                                    <label class="custom-control-label" for="promotedProduct">Акційний товар</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-md-12 form-group">
                                         <label class="form-label">Категорія</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select form-control form-control-lg" id="mainCategories" name="category">
@@ -232,6 +265,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- Одяг start -->
                                 <div class="form-group row mb-md-0" id="clothesDetails">
                                     <div class="col-12 form-group">
@@ -368,6 +402,31 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
+                                        <div class="form-control-wrap">
+                                            <div class="form-text-hint" style="top: 50%;">
+                                                <span class="overline-title">UAH</span>
+                                            </div>
+                                            <label class="form-label" for="productPromotionalPriceEdit">Акційна ціна</label>
+                                            <input type="text" pattern="[0-9]*\.?[0-9]*" class="form-control" id="productPromotionalPriceEdit" placeholder="Не заповнено..." name="newPrice" value="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-md-12 form-group">
+                                        <div class="form-group">
+                                            <div class="preview-block">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" checked id="promotedProductEdit" name="productForSales">
+                                                    <label class="custom-control-label" for="promotedProductEdit">Акційний товар</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-md-12 form-group">
                                         <label class="form-label">Категорія</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select form-control form-control-lg" id="mainCategoriesEdit" name="category">
@@ -377,6 +436,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- Одяг start -->
                                 <div class="form-group row mb-md-0" id="clothesDetailsEdit">
                                     <div class="col-12 form-group">
@@ -583,18 +643,24 @@
 
         // let image =         $(trObj).find('td:eq(0) img').attr('src');
         // console.log("img: "+image);
-        let productName =   $(trObj).find('td:eq(1)').text();
-        let article =       $(trObj).find('td:eq(2)').text();
-        let price =         $(trObj).find('td:eq(3)').text();
-        let category =      $(trObj).find('td:eq(5)').text();
-        let description =   $(trObj).find('td:eq(6)').text();
-        let season =        $(trObj).find('td:eq(7)').text().split(',')[0];
-        let type =          $(trObj).find('td:eq(8)').text();
-        console.log("Type: "+type);
-        let size =          $(trObj).find('td:eq(9)').text();
+        let productName =       $(trObj).find('td:eq(1)').text();
+        let article =           $(trObj).find('td:eq(2)').text();
+        let price =             $(trObj).find('td:eq(3)').text();
+        let category =          $(trObj).find('td:eq(5)').text();
+        let description =       $(trObj).find('td:eq(6)').text();
+        let season =            $(trObj).find('td:eq(7)').text().split(',')[0];
+        let type =              $(trObj).find('td:eq(8)').text();
+        let size =              $(trObj).find('td:eq(9)').text();
+        let promotionPrice =    $(trObj).find('td:eq(10)').text();
+        let promotionProduct =  $(trObj).find('td:eq(11)').text();
         size = size.replace(/[\[\]']+/g, '');
         console.log("Sizes: "+size);
 
+        if (promotionProduct.trim()=="true"){
+            $('#promotedProductEdit').attr("checked", true);
+        }else if (promotionProduct.trim()=="false") {
+            $('#promotedProductEdit').attr("checked", false);
+        }
 
         $('#selectedForEditItem')           .val(trId);
         // $('#editProductImage')              .val(image.toString());
@@ -605,10 +671,13 @@
         $('#editProductDescription')        .val(description.trim());
         $('#selectClothesSeasonEdit')       .val(season.trim()).change();
         $('#selectClothesTypeEdit')         .val(type.trim()).change();
+        $('#productPromotionalPriceEdit')   .val(promotionPrice.trim());
+
         $.each(size.split(","), function(i,e){
             $("#selectClothesSizesEdit option[value='" + e.trim() + "']").prop("selected", true);
             console.log("e: "+e.trim());
         });
+
         $('#selectClothesSizesEdit').change();
 
         $('#editProductModal').modal('show');

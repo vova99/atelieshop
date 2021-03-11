@@ -211,29 +211,55 @@
                 categoryName = 'Взуття';
             }
 
-            let product = document.createRange()
-                .createContextualFragment('<div class="col-md-6 col-xl-4">\n' +
-            '                                    <div class="product product-grid">\n' +
-            '                                        <div class="product-img-wrap">\n' +
-            '                                            <img src="/shop/getImgByProductId/'+array[i].id+'" alt="" width="300" height="400"/>\n' +
-            '                                        </div>\n' +
-            '                                        <div class="product-caption">\n' +
-            '                                            <ul class="product-categories">\n' +
-            '                                                <li><a href="/shop?category='+array[i].category.toString().toLowerCase()+'">'+categoryName+'</a></li>\n' +
-            '                                                <li><a href="/shop?category='+array[i].category.toString().toLowerCase()+'">'+array[i].typeOfProduct+'</a></li>\n' +
-            '                                            </ul>\n' +
-            '                                            <h6 class="product-title"><a href="/singleProduct/'+array[i].id+'">'+array[i].name+'</a></h6>\n' +
-            '                                            <p class="product-price">\n' +
-            '                                                <span>'+array[i].price.toFixed(2)+'</span>\n' +
-            '                                            </p>\n' +
-            '                                            <a class="button-primary button button-icon button-icon-left" href="/addToCart/'+array[i].id+'">\n' +
-            '                                                <span class="icon novi-icon icon-md linear-icon-cart"></span>\n' +
-            '                                                <span>До кошика</span>\n' +
-            '                                            </a>\n' +
-            '                                        </div>\n' +
-            '                                    </div>\n' +
-            '                                </div>');
-            document.getElementById('productsContainer').appendChild(product);
+            if (array[i].productForSales==false){
+                let product = document.createRange()
+                    .createContextualFragment('<div class="col-md-6 col-xl-4">\n' +
+                        '                                    <div class="product product-grid">\n' +
+                        '                                        <div class="product-img-wrap">\n' +
+                        '                                            <img src="/shop/getImgByProductId/' + array[i].id + '" alt="" width="300" height="400"/>\n' +
+                        '                                        </div>\n' +
+                        '                                        <div class="product-caption">\n' +
+                        '                                            <ul class="product-categories">\n' +
+                        '                                                <li><a href="/shop?category=' + array[i].category.toString().toLowerCase() + '">' + categoryName + '</a></li>\n' +
+                        '                                                <li><a href="/shop?category=' + array[i].category.toString().toLowerCase() + '">' + array[i].typeOfProduct + '</a></li>\n' +
+                        '                                            </ul>\n' +
+                        '                                            <h6 class="product-title"><a href="/singleProduct/' + array[i].id + '">' + array[i].name + '</a></h6>\n' +
+                        '                                            <p class="product-price">\n' +
+                        '                                                <span>' + array[i].price.toFixed(2) + '</span>\n' +
+                        '                                            </p>\n' +
+                        '                                            <a class="button-primary button button-icon button-icon-left" href="/addToCart/' + array[i].id + '">\n' +
+                        '                                                <span class="icon novi-icon icon-md linear-icon-cart"></span>\n' +
+                        '                                                <span>До кошика</span>\n' +
+                        '                                            </a>\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '                                </div>');
+                document.getElementById('productsContainer').appendChild(product);
+            } else if (array[i].productForSales==true) {
+                let product = document.createRange()
+                    .createContextualFragment('<div class="col-md-6 col-xl-4">\n' +
+                        '                                    <div class="product product-grid">\n' +
+                        '                                        <div class="product-img-wrap">\n' +
+                        '                                            <img src="/shop/getImgByProductId/' + array[i].id + '" alt="" width="300" height="400"/><div class="product-label-wrap"><span class="featured">Акція!</span></div>\n' +
+                        '                                        </div>\n' +
+                        '                                        <div class="product-caption">\n' +
+                        '                                            <ul class="product-categories">\n' +
+                        '                                                <li><a href="/shop?category=' + array[i].category.toString().toLowerCase() + '">' + categoryName + '</a></li>\n' +
+                        '                                                <li><a href="/shop?category=' + array[i].category.toString().toLowerCase() + '">' + array[i].typeOfProduct + '</a></li>\n' +
+                        '                                            </ul>\n' +
+                        '                                            <h6 class="product-title"><a href="/singleProduct/' + array[i].id + '">' + array[i].name + '</a></h6>\n' +
+                        '                                            <p class="product-price">\n' +
+                        '                                                <span>' + array[i].newPrice.toFixed(2) + '</span>\n' +
+                        '                                            </p>\n' +
+                        '                                            <a class="button-primary button button-icon button-icon-left" href="/addToCart/' + array[i].id + '">\n' +
+                        '                                                <span class="icon novi-icon icon-md linear-icon-cart"></span>\n' +
+                        '                                                <span>До кошика</span>\n' +
+                        '                                            </a>\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '                                </div>');
+                document.getElementById('productsContainer').appendChild(product);
+            }
         }
         calculateVisibleItems();
     }
