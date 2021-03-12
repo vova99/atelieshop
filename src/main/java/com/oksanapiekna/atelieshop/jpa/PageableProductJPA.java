@@ -12,4 +12,5 @@ import java.util.Set;
 @Repository
 public interface PageableProductJPA extends PagingAndSortingRepository<Product, Integer> {
   Set<Product> findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity status, List<Integer> type, List<String> seasons, List<Integer> sizes, double maxPrice, double minPrice);
+  Set<Product> findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualAndProductForSalesOrderByIdDesc(StatusOfEntity status, List<Integer> type, List<String> seasons, List<Integer> sizes, double maxPrice, double minPrice,boolean onSale);
  }

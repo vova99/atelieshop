@@ -99,7 +99,7 @@
                         <div class="product-caption"><span th:text="${pr.getCount()}"></span></div>
                       </td>
                       <td>
-                        <div class="product-price"><span class="single-product-price" th:text="${pr.getProduct().getPrice()*pr.getCount()}"></span></div>
+                        <div class="product-price"><span class="single-product-price" th:text="${(pr.getProduct().isProductForSales()?pr.getProduct().getNewPrice():pr.getProduct().getPrice())*pr.getCount()}"></span></div>
                       </td>
                     </tr>
                   </tbody>

@@ -55,13 +55,15 @@ public class ShopController {
     @ResponseBody
     @PostMapping("/shop")
     public JSONObject getFilteredProducts(String category, Integer[] types, String[] seasons, Integer[] sizes,
-                                          double maxPrice, double minPrice, String sortType, Integer page, Integer size){
+                                          double maxPrice, double minPrice, String sortType, Integer page, Integer size,boolean onSale){
         if(types==null){types = new Integer[0];}
         if(seasons==null){seasons = new String[0];}
         if(sizes==null){sizes = new Integer[0];}
-        List<Product> products = productService.getFilteredProducts(category, Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size);
-//        List<Product> products = productService.findAll();
-        int countOfAllProducts =  productService.getCountOfElements(category,Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size);
+
+        System.out.println("On sale " + onSale);
+
+        List<Product> products = productService.getFilteredProducts(category, Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size,onSale);
+        int countOfAllProducts =  productService.getCountOfElements(category,Arrays.asList(types),Arrays.asList(seasons),Arrays.asList(sizes),maxPrice,minPrice,sortType,page,size,onSale);
         JSONObject object = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         for(Product product:products){
@@ -75,5 +77,7 @@ public class ShopController {
         object.put("pageCount",Math.ceil(countOfElements/ size));
         return object;
     }
+
+
 
 }

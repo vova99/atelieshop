@@ -70,14 +70,14 @@
                     </div>
                   </td>
                   <td>
-                    <div class="product-price"><span class="single-product-price" th:text="${pr.getProduct().getPrice()}"></span></div>
+                    <div class="product-price"><span class="single-product-price" th:text="(${pr.getProduct().isProductForSales()})?${pr.getProduct().getNewPrice()}:${pr.getProduct().getPrice()}"></span></div>
                   </td>
                   <td>
                     <input class="row-item-count form-input" type="number" data-zeros="true" th:value="${pr.getCount()}" min="1" max="20" name="count" onchange="checkoutPrice()">
                     <input type="hidden"  th:value="${pr.getId()}" name="id">
                   </td>
                   <td>
-                    <div class="product-price"><span class="total-product-price" th:text="${pr.getProduct().getPrice()*pr.getCount()}"></span></div>
+                    <div class="product-price"><span class="total-product-price"></span></div>
                   </td>
                 </tr>
                 </tbody>

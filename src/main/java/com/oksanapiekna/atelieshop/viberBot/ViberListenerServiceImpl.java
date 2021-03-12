@@ -59,10 +59,22 @@ public class ViberListenerServiceImpl implements ViberListenerService {
                 "\nТелефон: "+orderInfo.getPhone()+
                 "\nОпис: "+orderInfo.getDescription();
         for(OrderDetails details:orderInfo.getOrderDetails()){
+            String size="";
+            String sum="";
+            if(details.getSize()==null){
+                size="Не вибрано";
+            }else{
+                size=details.getSize().getSize();
+            }
+            if(details.getProduct().isProductForSales()){
+                sum=String.valueOf(details.getCount()*details.getProduct().getNewPrice());
+            }else {
+                sum=String.valueOf(details.getCount()*details.getProduct().getPrice());
+            }
             str+="\n\nТовар: "+details.getProduct().getName()+
                     "\nКількість: "+details.getCount()+
-                    "\nРозмір: "+details.getSize().getSize()+
-                    "\nСума: "+details.getCount()*details.getProduct().getPrice();
+                    "\nРозмір: "+size+
+                    "\nСума: "+sum;
         }
 
         TextMessage message = new TextMessage(str);

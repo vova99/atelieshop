@@ -17,6 +17,5 @@ public interface ProductJPA extends JpaRepository<Product,Integer> {
     List<Product> findFirst5ByCategoryAndTypeOfProductIdIsNot(Category category,int typeId);
 
 
-
     List<Product> findBySizesId(int id);
 }

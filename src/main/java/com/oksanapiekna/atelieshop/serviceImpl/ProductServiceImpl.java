@@ -138,7 +138,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getFilteredProducts(String category, List<Integer> types,List<String> seasons,
                                              List<Integer> sizes, double maxPrice,double minPrice,
-                                             String sortType,int page,int size) {
+                                             String sortType,int page,int size,boolean onSale) {
         System.out.println(productJPA.findBySizesId(24));
         Category categoryEnum = checkCategory(category);
 
@@ -165,7 +165,12 @@ public class ProductServiceImpl implements ProductService {
         System.out.println("size" + size);
 //        List<Product> products = new ArrayList<>(pageableProductJPA.getFilterProduct(StatusOfEntity.ACTIVE, types, seasons,sizes, PageRequest.of(0, 12)));
 
-        List<Product> products = new ArrayList<>(pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity.ACTIVE, types,seasons,sizes,maxPrice,minPrice));
+        List<Product> products;
+        if(onSale){
+            products = new ArrayList<>(pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualAndProductForSalesOrderByIdDesc(StatusOfEntity.ACTIVE, types, seasons, sizes, maxPrice, minPrice, true));
+        }else {
+            products = new ArrayList<>(pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity.ACTIVE, types, seasons, sizes, maxPrice, minPrice));
+        }
         Comparator<Product> productComparator;
         System.out.println("Sort type" + sortType);
         switch (sortType){
@@ -183,7 +188,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public int getCountOfElements(String category, List<Integer> types, List<String> seasons, List<Integer> sizes, double maxPrice, double minPrice, String sortType, int page, int size) {
+    public int getCountOfElements(String category, List<Integer> types, List<String> seasons, List<Integer> sizes, double maxPrice, double minPrice, String sortType, int page, int size,boolean onSale) {
         if(types.isEmpty()){
             types = typeOfProductService.findByCategory(checkCategory(category)).stream().map(TypeOfProduct::getId).collect(Collectors.toList());
         }
@@ -198,9 +203,14 @@ public class ProductServiceImpl implements ProductService {
             seasons.add("autumn");
             seasons.add("demiseason");
         }
-
-        return pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity.ACTIVE, types,seasons,sizes,maxPrice,minPrice).size();
-  }
+        List<Product> products = new ArrayList<>();
+        if(onSale){
+            products = new ArrayList<>(pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualAndProductForSalesOrderByIdDesc(StatusOfEntity.ACTIVE, types, seasons, sizes, maxPrice, minPrice, true));
+        }else {
+            products = new ArrayList<>(pageableProductJPA.findByStatusOfEntityAndTypeOfProductIdInAndSeasonInAndSizesIdInAndPriceLessThanEqualAndPriceGreaterThanEqualOrderByIdDesc(StatusOfEntity.ACTIVE, types, seasons, sizes, maxPrice, minPrice));
+        }
+        return products.size();
+    }
 
 
     @Override

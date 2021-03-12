@@ -28,7 +28,7 @@ import java.io.InputStreamReader;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
-@RestController
+//@RestController
 public class BotConfig implements ApplicationListener<ApplicationReadyEvent> {
 
     @Inject
