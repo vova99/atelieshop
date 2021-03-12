@@ -5918,8 +5918,8 @@ html .page .group-bottom > *, html .page .group-bottom > *:first-child {
 .section-md,
 .section-lg,
 .section-xl {
-	padding-top: 60px;
-	padding-bottom: 60px;
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
 .section-xxl {
@@ -5951,8 +5951,8 @@ html .page .group-bottom > *, html .page .group-bottom > *:first-child {
 		padding-bottom: 60px;
 	}
 	.section-md {
-		padding-top: 70px;
-		padding-bottom: 70px;
+		padding-top: 40px;
+		padding-bottom: 40px;
 	}
 	.section-lg {
 		padding-top: 80px;
@@ -5970,8 +5970,8 @@ html .page .group-bottom > *, html .page .group-bottom > *:first-child {
 
 @media (min-width: 992px) {
 	.section-md {
-		padding-top: 90px;
-		padding-bottom: 90px;
+		padding-top: 40px;
+		padding-bottom: 40px;
 	}
 	.section-lg {
 		padding-top: 100px;
@@ -5985,8 +5985,8 @@ html .page .group-bottom > *, html .page .group-bottom > *:first-child {
 
 @media (min-width: 1200px) and (min-height: 800px) {
 	.section-md {
-		padding-top: 100px;
-		padding-bottom: 100px;
+		padding-top: 50px;
+		padding-bottom: 50px;
 	}
 	.section-lg {
 		padding-top: 135px;
