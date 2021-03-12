@@ -1,302 +1,286 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html class="wide wow-animation" lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <!-- Site Title-->
     <title>Головна</title>
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <link rel="shortcut icon" th:href="@{/images/OP_ico.png}" type="image/x-icon">
     <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic">
+<!--    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic">-->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;}  html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
-  </head>
-  <body>
-    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
-    <div id="page-loader">
-      <div class="cssload-container">
+    <style>.ie-panel {
+        display: none;
+        background: #212121;
+        padding: 10px 0;
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+        clear: both;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
+        display: block;
+    }</style>
+</head>
+<body>
+<div class="ie-panel">
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/">
+        <img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.">
+    </a>
+</div>
+<div id="page-loader">
+    <div class="cssload-container">
         <div class="cssload-speeding-wheel"></div>
-      </div>
     </div>
-    <!-- Page-->
-    <div class="page">
-      <!-- Page header-->
-      <div th:replace="~{fragments/headersFrag.html :: indexHeader}"></div>
+</div>
 
-      <!-- Presentation-->
-      <section class="section novi-bg novi-bg-img section-xl bg-default text-center" id="section-see-features">
+<!-- Page-->
+<div class="page">
+    <!-- Page header-->
+    <div th:replace="~{fragments/headersFrag.html :: indexHeader}"></div>
+
+    <!-- Presentation-->
+    <section class="section novi-bg novi-bg-img section-xl bg-default text-center" id="section-see-features">
         <div class="container">
-          <div class="row justify-content-lg-center">
-            <div class="col-lg-10 col-xl-8">
-              <h3>Oksana Piekna</h3>
-              <h6>АВТОРСЬКЕ АТЕЛЬЄ</h6>
-              <p>Бренд <strong>Oksana Piekna</strong> – стиль, що існує поза часом, і робить тебе особливою. Ми підкреслимо твою індивідуальність ексклюзивними лекалами, бездоганною якістю та лімітованими тканинами.</p>
-               <p>За восьмирічну історію існування бренду кожна дівчина чи жінка, що переступила поріг авторського ательє Oksana Piekna, стала нашою доброю подругою, яка знає, що тут їй завжди радо допоможуть обрати саме те плаття, костюм, пальто і навіть взуття.</p>
-               <p>Беручи участь у модній гонці ми завжди ставимо на якість, адже fast-fashion – це швидкоплинна історія, а ми дбаємо про екологію та гаманці наших красунь.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Взуття-->
-      <section class="section novi-bg bg-gray-lighter object-wrap">
-        <div class="section-xxl section-xxl_bigger">
-          <div class="container">
-            <div class="row row-fix">
-              <div class="col-lg-5">
-                <h3>Колекції одягу</h3>
-                <p>Львівський дизайнер Оксана Пєкна з власним брендом Oksana Piekna на ринку моди з 2012 року. З того часу бренд бере участь у Lviv Fashion Week.</p>
-                <p>Даний бренд створений для сучасних молодих дівчат та жінок, які впевнені у собі, мають власне відчуття стилю та активну життєву позицію.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="novi-bg-img object-wrap__body object-wrap__body-sizing-1 object-wrap__body-md-right bg-image" style="background-image: url(images/323310147_3594741487214369_2356810350416254474_b.jpg); background-size: cover;"></div>
-      </section>
-
-      <!-- Колекції одягу-->
-      <section class="section novi-bg novi-bg-img section-xl bg-default">
-        <div class="container">
-          <div class="row justify-content-md-center flex-lg-row-reverse align-items-lg-center justify-content-lg-between row-50">
-            <div class="col-md-9 col-lg-5">
-              <h3>Взуття</h3>
-              <p>В 2015 році асортимент авторського ательє Oksana Piekna поповнився першою колекцією взуття. Тоді це були вишукані лодочки.</p>
-              <p>Зараз пропозиція бренду налічує не лише туфлі, а й босоніжки, сліпони, кеди, балетки, лофери, черевики та чобітки. Кожна пара виготовлена з високоякісних матеріалів та забезпечує своїй майбутній власниці ідеальну зручність.</p>
-            </div>
-<!--            <div class="col-md-9 col-lg-6"><img src="images/DOV_2986.jpg" alt=""/>-->
-              <div class="col-md-9 col-lg-6"><img src="images/99293120_3117535294934993_3303665380676861952_o.jpg" alt=""/>
-            </div>
-          </div>
-        </div>
-      </section>
-
-<!-- Blurbs-->
-<section class="section novi-bg novi-bg-img section-xl bg-gray-lighter">
-    <div class="container">
-      <div class="row row-50">
-        <div class="col-md-6 col-lg-4">
-          <!-- Blurb minimal-->
-          <article class="blurb blurb-minimal">
-            <div class="unit flex-row unit-spacing-md">
-              <div class="unit-left">
-                <div class="blurb-minimal__icon">
-<!--                  <img src="images/icons/png/002-mannequin.png" alt="">-->
-                  <span class="icon novi-icon linear-icon-users2"></span>
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-10 col-xl-8">
+                    <h3>Oksana Piekna</h3>
+                    <h6>АВТОРСЬКЕ АТЕЛЬЄ</h6>
+                    <p>Бренд <strong>Oksana Piekna</strong> – стиль, що існує поза часом, і робить тебе особливою. Ми
+                        підкреслимо твою індивідуальність ексклюзивними лекалами, бездоганною якістю та лімітованими
+                        тканинами.</p>
+                    <p>За восьмирічну історію існування бренду кожна дівчина чи жінка, що переступила поріг авторського
+                        ательє Oksana Piekna, стала нашою доброю подругою, яка знає, що тут їй завжди радо допоможуть
+                        обрати саме те плаття, костюм, пальто і навіть взуття.</p>
+                    <p>Беручи участь у модній гонці ми завжди ставимо на якість, адже fast-fashion – це швидкоплинна
+                        історія, а ми дбаємо про екологію та гаманці наших красунь.</p>
                 </div>
-              </div>
-              <div class="unit-body">
-                <p class="blurb__title">Чи шиєте ви речі під замовлення?</p>
-                <p>Так, у 2013 році відчинились двері нашого ательє, основна ідея була пошиття дизайнерського одягу під замовлення, від створення ескізу, вибору тканини, розробки лекала до пошиття речі Вашої мрії. Шиємо весь асортимент одягу окрім шкіри, білизни та хутряних виробів!</p>
-              </div>
             </div>
-          </article>
         </div>
-        <div class="col-md-6 col-lg-4">
-          <!-- Blurb minimal-->
-          <article class="blurb blurb-minimal">
-            <div class="unit flex-row unit-spacing-md">
-              <div class="unit-left">
-                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-hanger"></span></div>
-              </div>
-              <div class="unit-body">
-                <p class="blurb__title">Чи можна придбати готовиий одяг?</p>
-                <p>Так, ми створюємо також готові капсульні колекції одягу які Ви можете придбати в нашому шоурум-ательє, якщо у наявності немає бажаного розміру, або хочеться внести корективи у вибраниий вами виріб ми з радістю пошиємо його по Ваших мірках!</p>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <!-- Blurb minimal-->
-          <article class="blurb blurb-minimal">
-            <div class="unit flex-row unit-spacing-md">
-              <div class="unit-left">
-                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-clock3"></span></div>
-              </div>
-              <div class="unit-body">
-                <p class="blurb__title">Якиий термін пошиття?</p>
-                <p>Від моменту вашого замовлення термін виконання від 1.5 до 2.5 тижнів, також можливиий варіант термінового пошиття за додаткову оплату від 2 до 4 днів.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <!-- Blurb minimal-->
-          <article class="blurb blurb-minimal">
-            <div class="unit flex-row unit-spacing-md">
-              <div class="unit-left">
-                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-tags"></span></div>
-              </div>
-              <div class="unit-body">
-                <p class="blurb__title">Яка вартість пошиття?</p>
-                <p>Ми працюємо по встановленому прейскуранту, вартість залежить від виду одягу, складності фасону, обраної тканини та кількості ускладнюючих елементів. Перед пошиттям ми обов’язково прораховуємо вартість та узгоджуємо усе з клієнтом!</p>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <!-- Blurb minimal-->
-          <article class="blurb blurb-minimal">
-            <div class="unit flex-row unit-spacing-md">
-              <div class="unit-left">
-                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-layers"></span></div>
-              </div>
-              <div class="unit-body">
-                <p class="blurb__title">Чи є у Вас тканини у наявності?</p>
-                <p>Так, ми маємо великий асортимент тканин  різноманітних виробників, адже від тканини залежить якість наших виробів! Якщо у наявності немає бажаної тканини, ми замовляємо її індивідуально під клієнта.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <!-- Blurb minimal-->
-          <article class="blurb blurb-minimal">
-            <div class="unit flex-row unit-spacing-md">
-              <div class="unit-left">
-                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-feather"></span></div>
-              </div>
-              <div class="unit-body">
-                <p class="blurb__title">Where does it come from?</p>
-                <p>It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-      <section class="section novi-bg novi-bg-img section-xl bg-default text-center" >
+    <!-- Взуття-->
+    <section class="section novi-bg bg-gray-lighter object-wrap">
+        <div class="section-xxl section-xxl_bigger">
+            <div class="container">
+                <div class="row row-fix">
+                    <div class="col-lg-5">
+                        <h3>Колекції одягу</h3>
+                        <p>Львівський дизайнер Оксана Пєкна з власним брендом Oksana Piekna на ринку моди з 2012 року. З
+                            того часу бренд бере участь у Lviv Fashion Week.</p>
+                        <p>Даний бренд створений для сучасних молодих дівчат та жінок, які впевнені у собі, мають власне
+                            відчуття стилю та активну життєву позицію.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="novi-bg-img object-wrap__body object-wrap__body-sizing-1 object-wrap__body-md-right bg-image"
+             style="background-image: url(images/323310147_3594741487214369_2356810350416254474_b.jpg); background-size: cover;"></div>
+    </section>
+
+    <!-- Колекції одягу-->
+    <section class="section novi-bg novi-bg-img section-xl bg-default">
+        <div class="container">
+            <div class="row justify-content-md-center flex-lg-row-reverse align-items-lg-center justify-content-lg-between row-50">
+                <div class="col-md-9 col-lg-5">
+                    <h3>Взуття</h3>
+                    <p>В 2015 році асортимент авторського ательє Oksana Piekna поповнився першою колекцією взуття. Тоді
+                        це були вишукані лодочки.</p>
+                    <p>Зараз пропозиція бренду налічує не лише туфлі, а й босоніжки, сліпони, кеди, балетки, лофери,
+                        черевики та чобітки. Кожна пара виготовлена з високоякісних матеріалів та забезпечує своїй
+                        майбутній власниці ідеальну зручність.</p>
+                </div>
+                <!--            <div class="col-md-9 col-lg-6"><img src="images/DOV_2986.jpg" alt=""/>-->
+                <div class="col-md-9 col-lg-6"><img src="images/99293120_3117535294934993_3303665380676861952_o.jpg" alt=""/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blurbs-->
+    <section class="section novi-bg novi-bg-img section-xl bg-gray-lighter">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-md-6 col-lg-4">
+                    <!-- Blurb minimal-->
+                    <article class="blurb blurb-minimal">
+                        <div class="unit flex-row unit-spacing-md">
+                            <div class="unit-left">
+                                <div class="blurb-minimal__icon">
+                                    <!--                  <img src="images/icons/png/002-mannequin.png" alt="">-->
+                                    <span class="icon novi-icon linear-icon-users2"></span>
+                                </div>
+                            </div>
+                            <div class="unit-body">
+                                <p class="blurb__title">Чи шиєте ви речі під замовлення?</p>
+                                <p>Так, у 2013 році відчинились двері нашого ательє, основна ідея була пошиття
+                                    дизайнерського одягу під замовлення, від створення ескізу, вибору тканини, розробки
+                                    лекала до пошиття речі Вашої мрії. Шиємо весь асортимент одягу окрім шкіри,
+                                    білизни та хутряних виробів!</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <!-- Blurb minimal-->
+                    <article class="blurb blurb-minimal">
+                        <div class="unit flex-row unit-spacing-md">
+                            <div class="unit-left">
+                                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-hanger"></span>
+                                </div>
+                            </div>
+                            <div class="unit-body">
+                                <p class="blurb__title">Чи можна придбати готовиий одяг?</p>
+                                <p>Так, ми створюємо також готові капсульні колекції одягу які Ви можете придбати в
+                                    нашому шоурум-ательє, якщо у наявності немає бажаного розміру, або хочеться внести
+                                    корективи у вибраниий вами виріб ми з радістю пошиємо його по Ваших мірках!</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <!-- Blurb minimal-->
+                    <article class="blurb blurb-minimal">
+                        <div class="unit flex-row unit-spacing-md">
+                            <div class="unit-left">
+                                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-clock3"></span>
+                                </div>
+                            </div>
+                            <div class="unit-body">
+                                <p class="blurb__title">Якиий термін пошиття?</p>
+                                <p>Від моменту вашого замовлення термін виконання від 1.5 до 2.5 тижнів, також можливиий
+                                    варіант термінового пошиття за додаткову оплату від 2 до 4 днів.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <!-- Blurb minimal-->
+                    <article class="blurb blurb-minimal">
+                        <div class="unit flex-row unit-spacing-md">
+                            <div class="unit-left">
+                                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-tags"></span>
+                                </div>
+                            </div>
+                            <div class="unit-body">
+                                <p class="blurb__title">Яка вартість пошиття?</p>
+                                <p>Ми працюємо по встановленому прейскуранту, вартість залежить від виду одягу,
+                                    складності фасону, обраної тканини та кількості ускладнюючих елементів. Перед
+                                    пошиттям ми обов’язково прораховуємо вартість та узгоджуємо усе з клієнтом!</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <!-- Blurb minimal-->
+                    <article class="blurb blurb-minimal">
+                        <div class="unit flex-row unit-spacing-md">
+                            <div class="unit-left">
+                                <div class="blurb-minimal__icon"><span class="icon novi-icon linear-icon-layers"></span>
+                                </div>
+                            </div>
+                            <div class="unit-body">
+                                <p class="blurb__title">Чи є у Вас тканини у наявності?</p>
+                                <p>Так, ми маємо великий асортимент тканин різноманітних виробників, адже від тканини
+                                    залежить якість наших виробів! Якщо у наявності немає бажаної тканини, ми
+                                    замовляємо її індивідуально під клієнта.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <!-- Blurb minimal-->
+                    <article class="blurb blurb-minimal">
+                        <div class="unit flex-row unit-spacing-md">
+                            <div class="unit-left">
+                                <div class="blurb-minimal__icon"><span
+                                        class="icon novi-icon linear-icon-feather"></span></div>
+                            </div>
+                            <div class="unit-body">
+                                <p class="blurb__title">Where does it come from?</p>
+                                <p>It has roots in a piece of classical Latin literature from 45 BC, making it over 2000
+                                    years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+                                    Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem
+                                    Ipsum passage, and going through the cites of the word in classical literature,
+                                    discovered the undoubtable source.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section novi-bg novi-bg-img section-xl bg-default text-center">
         <h3>Ми в соціальних мережах</h3>
         <img src="images/oksana_piekna.jpg" style="max-height: 85vh;">
         <ul>
-          <li>
-            <span class="icon novi-icon icon-md icon-primary fa fa-instagram"></span>
-            <a href="https://www.instagram.com/shoes_oksana_piekna/" target="_blank" style="margin-left: 0.3rem;">@shoes_oksana_piekna</a>
-          </li>
-          <li>
-            <span class="icon novi-icon icon-md icon-primary fa fa-instagram"></span>
-            <a href="https://www.instagram.com/atelier_oksana_piekna/" target="_blank" style="margin-left: 0.3rem;">@atelier_oksana_piekna</a>
-          </li>
-          <li>
-            <span class="icon novi-icon icon-md icon-primary fa fa-facebook"></span>
-            <a href="https://www.facebook.com/AtelierOksanPiekna" target="_blank" style="margin-left: 0.3rem;">@AtelierOksanaPiekna</a>
-          </li>
+            <li>
+                <span class="icon novi-icon icon-md icon-primary fa fa-instagram"></span>
+                <a href="https://www.instagram.com/shoes_oksana_piekna/" target="_blank" style="margin-left: 0.3rem;">@shoes_oksana_piekna</a>
+            </li>
+            <li>
+                <span class="icon novi-icon icon-md icon-primary fa fa-instagram"></span>
+                <a href="https://www.instagram.com/atelier_oksana_piekna/" target="_blank" style="margin-left: 0.3rem;">@atelier_oksana_piekna</a>
+            </li>
+            <li>
+                <span class="icon novi-icon icon-md icon-primary fa fa-facebook"></span>
+                <a href="https://www.facebook.com/AtelierOksanPiekna" target="_blank" style="margin-left: 0.3rem;">@AtelierOksanaPiekna</a>
+            </li>
         </ul>
-      </section>
+    </section>
 
 
-      <section class="section parallax-container text-center context-dark" data-parallax-img="images/slider-slide-4-1920x1080.jpg">
+    <section class="section parallax-container text-center context-dark" data-parallax-img="images/slider-slide-4-1920x1080.jpg">
         <div class="parallax-content">
-          <div class="container section-xxl">
-            <h2>Вдалося зацікавити?</h2>
-            <p>Запрошуємо до перегляду нашого асортименту.</p><a class="button button-primary" href="/shop">Перейти то магазину</a>
-          </div>
+            <div class="container section-xxl">
+                <h2>Вдалося зацікавити?</h2>
+                <p>Запрошуємо до перегляду нашого асортименту.</p>
+                <a class="button button-primary" href="/shop">Перейти до магазину</a>
+            </div>
         </div>
-      </section>
-            <!-- GPL3 License advantages-->
-            <section class="section novi-bg novi-bg-img section-xl bg-default">
-                <div class="container">
-                  <div class="row row-50 align-items-lg-center justify-content-lg-between">
-                    <div class="col-lg-5">
-                      <h3>Control Your Website</h3>
-                      <p>Monstroid² gives you an ultimate set of tools that allow you to take full  control of your site with responsive & retina-ready design, various child themes, social integration, SEO optimization and other important and powerful features.</p>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="row gallery-wrap">
-                        <div class="col-6"><img src="images/53259888_2232203296801535_1666106840200511488_n.jpg" alt="" width="301" height="227"/>
-                        </div>
-                        <div class="col-6"><img src="images/123310147_3594741487214369_2356810350416254474_o.jpg" alt="" width="301" height="227"/>
-                        </div>
-                        <div class="col-6"><img src="images/17880389_1423357511019455_5551909630099365445_o.jpg" alt="" width="301" height="227"/>
-                        </div>
-                        <div class="col-6"><img src="images/71677052_2568949016460293_351342927701606400_n.jpg" alt="" width="301" height="227"/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+    </section>
+    <!-- GPL3 License advantages-->
+    <section class="section novi-bg novi-bg-img section-xl bg-default">
+        <div class="container">
+            <div class="row row-50 align-items-lg-center justify-content-lg-between">
+                <div class="col-lg-5">
+                    <h3>Control Your Website</h3>
+                    <p>Monstroid² gives you an ultimate set of tools that allow you to take full control of your site
+                        with responsive & retina-ready design, various child themes, social integration, SEO
+                        optimization and other important and powerful features.</p>
                 </div>
-              </section>
-        
-
-      <!-- Page Footer-->
-      <div th:replace="~{fragments/footersFrag.html :: mainFooter}"></div>
-
-    </div>
-
-    <!-- Modal login window-->
-    <div class="modal fade" id="modalLogin" role="dialog">
-      <div class="modal-dialog modal-dialog_custom">
-        <!-- Modal content-->
-        <div class="modal-dialog__inner">
-          <button class="close" type="button" data-dismiss="modal"></button>
-          <div class="modal-dialog__content">
-            <h5>Login Form</h5>
-            <!-- RD Mailform-->
-            <form class="rd-mailform rd-mailform_responsive">
-              <div class="form-wrap form-wrap_icon"><span class="novi-icon form-icon linear-icon-envelope"></span>
-                <input class="form-input" id="modal-login-email" type="email" name="email" data-constraints="@Email @Required">
-                <label class="form-label" for="modal-login-email">Your e-mail</label>
-              </div>
-              <div class="form-wrap form-wrap_icon"><span class="novi-icon form-icon linear-icon-lock"></span>
-                <input class="form-input" id="modal-login-password" type="password" name="password" data-constraints="@Required">
-                <label class="form-label" for="modal-login-password">Your password</label>
-              </div>
-              <button class="button button-primary" type="submit">Login</button>
-            </form>
-            <ul class="list-small">
-              <li><a href="#">Forgot your username?</a></li>
-              <li><a href="#">Forgot your password?</a></li>
-            </ul>
-          </div>
+                <div class="col-lg-6">
+                    <div class="row gallery-wrap">
+                        <div class="col-6"><img src="images/53259888_2232203296801535_1666106840200511488_n.jpg" alt="" width="301" height="227"/></div>
+                        <div class="col-6"><img src="images/123310147_3594741487214369_2356810350416254474_o.jpg" alt="" width="301" height="227"/></div>
+                        <div class="col-6"><img src="images/17880389_1423357511019455_5551909630099365445_o.jpg" alt="" width="301" height="227"/></div>
+                        <div class="col-6"><img src="images/71677052_2568949016460293_351342927701606400_n.jpg" alt="" width="301" height="227"/></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Modal register window-->
-    <div class="modal fade" id="modalRegister" role="dialog">
-      <div class="modal-dialog modal-dialog_custom">
-        <!-- Modal content-->
-        <div class="modal-dialog__inner">
-          <button class="close" type="button" data-dismiss="modal"></button>
-          <div class="modal-dialog__content">
-            <h5>Register Form</h5>
-            <!-- RD Mailform-->
-            <form class="rd-mailform rd-mailform_responsive" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
-              <div class="form-wrap form-wrap_icon"><span class="novi-icon form-icon linear-icon-envelope"></span>
-                <input class="form-input" id="modal-register-email" type="email" name="email" data-constraints="@Email @Required">
-                <label class="form-label" for="modal-register-email">Your e-mail</label>
-              </div>
-              <div class="form-wrap form-wrap_icon"><span class="novi-icon form-icon linear-icon-lock"></span>
-                <input class="form-input" id="modal-register-password" type="password" name="password" data-constraints="@Required">
-                <label class="form-label" for="modal-register-password">Your password</label>
-              </div>
-              <div class="form-wrap form-wrap_icon"><span class="novi-icon form-icon linear-icon-lock"></span>
-                <input class="form-input" id="modal-register-password2" type="password" name="password2" data-constraints="@Required">
-                <label class="form-label" for="modal-register-password2">Confirm password</label>
-              </div>
-              <div class="form-wrap">
-                <label class="checkbox-inline">
-                  <input type="checkbox" name="remember">Remember me
-                </label>
-              </div>
-              <button class="button button-primary" type="submit">Register</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Page Footer-->
+    <div th:replace="~{fragments/footersFrag.html :: mainFooter}"></div>
 
-    <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript-->
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+</div>
+
+<!-- Global Mailform Output-->
+<div class="snackbars" id="form-output-global"></div>
+<!-- Javascript-->
+<script src="js/core.min.js"></script>
+<script src="js/script.js"></script>
+</body>
 </html>
