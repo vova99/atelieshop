@@ -27176,6 +27176,7 @@ input[type=checkbox]:checked:after {
 
 ::-webkit-scrollbar
 {
+	height: 8px;
 	width: 8px;
 	background-color: #F5F5F5;
 }

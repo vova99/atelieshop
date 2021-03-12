@@ -204,7 +204,6 @@
 
 
     function showContent(object) {
-        $().UItoTop({ easingType: 'easeOutQuart' });
         let array = object['products'];
         itemsCount = object['countOfAllProducts'];
         let categoryName = '';
@@ -277,6 +276,7 @@
             let minPrice = parseInt($('.rd-range__pointer-tooltip').eq(0).text());
             let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
             let sortType = $('#sortingType').val();
+            let productsOnSale = $('#saleInput').is(':checked');
 
             $(".typeInput").each(function () {
                 if ($(this).is(':checked')) {
@@ -304,6 +304,7 @@
                 contextType: "application/json",
                 data: {
                     category: category,
+                    onSale: productsOnSale,
                     types: types,
                     seasons: seasons,
                     sizes: sizes,
@@ -336,6 +337,7 @@
         let maxPrice = parseInt($('.rd-range__pointer-tooltip').eq(1).text());
         let sortType = $('#sortingType').val();
         currentPage = 0;
+        let productsOnSale = $('#saleInput').is(':checked');
 
         $(".typeInput").each(function () {
             if ($(this).is(':checked')) {
@@ -361,6 +363,7 @@
             contextType: "application/json",
             data: {
                 category: category,
+                onSale: productsOnSale,
                 types: types,
                 seasons: seasons,
                 sizes: sizes,
